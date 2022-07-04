@@ -26,11 +26,11 @@ import path from 'path'
 //   return Promise.all(promises)
 // })();
 
-import metaDate from './extensions/metaDate'
-import metaFilter from './extensions/metaFilter'
-import metaPage from './extensions/metaPage'
-import metaSort from './extensions/metaSort'
-import meta from './extensions/meta'
+import metaDate from './src/metaDate'
+import metaFilter from './src/metaFilter'
+import metaPage from './src/metaPage'
+import metaSort from './src/metaSort'
+import meta from './src/meta'
 
 const extensions = [
   metaDate,
