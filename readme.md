@@ -17,6 +17,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+![visitors](https://visitor-badge.glitch.me/badge?page_id=karmablackshaw.knex-meta)
 [![GitHub Karmablackshaw](https://img.shields.io/github/last-commit/karmablackshaw/knex-meta?label=Last+Commit)](https://github.com/karmablackshaw)
 [![GitHub Karmablackshaw](https://img.shields.io/github/commit-activity/m/karmablackshaw/knex-meta?color=orange&label=Average+Commits)](https://github.com/karmablackshaw)
 [![GitHub Karmablackshaw](https://img.shields.io/github/last-commit/karmablackshaw/knex-meta?label=Last+Commit)](https://github.com/karmablackshaw)
