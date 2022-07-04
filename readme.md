@@ -36,8 +36,6 @@
     <a href="https://github.com/KarmaBlackshaw/knex-meta"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/KarmaBlackshaw/knex-meta">View Demo</a>
-    ·
     <a href="https://github.com/KarmaBlackshaw/knex-meta/issues">Report Bug</a>
     ·
     <a href="https://github.com/KarmaBlackshaw/knex-meta/issues">Request Feature</a>
