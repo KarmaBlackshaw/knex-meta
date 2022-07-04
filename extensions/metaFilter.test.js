@@ -123,8 +123,7 @@ test('If array "q" and string "filterBy"', () => {
     })
     .toString()
 
-  const expected = "select * from `users` where ((`users`.`fname` like '%john%' or `users`.`lname` like '%john%') or `users`.`address` like '%john%')"
+  const expected = "select * from `users` where (`users`.`fname` like '%john%' or `users`.`fname` like '%paul%')"
 
-  console.log(result)
-  // expect(result).toBe(expected)
+  expect(result).toBe(expected)
 })
