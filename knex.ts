@@ -30,12 +30,14 @@ import metaDate from './extensions/metaDate'
 import metaFilter from './extensions/metaFilter'
 import metaPage from './extensions/metaPage'
 import metaSort from './extensions/metaSort'
+import meta from './extensions/meta'
 
 const extensions = [
   metaDate,
   metaFilter,
   metaPage,
   metaSort,
+  meta
 ]
 
 extensions.forEach(extension => {
