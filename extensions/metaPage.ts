@@ -5,7 +5,7 @@ import {
   isNumber,
 } from '../utils/is'
 
-export interface Arguments {
+export interface IPageArguments {
   page?: number,
   rows?: number,
   isCount: (boolean | number)
@@ -15,7 +15,7 @@ function metaPage({
   page,
   rows,
   isCount
-}: Arguments = { isCount: false }) {
+}: IPageArguments = { isCount: false }) {
   if (isCount) {
     return this
   }

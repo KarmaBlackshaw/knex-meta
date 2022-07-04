@@ -17,7 +17,7 @@ function hasTime(momentDate: Moment) {
     .reduce((acc: number, curr: number) => acc + curr) > 0
 }
 
-export interface Arguments {
+export interface IDateArguments {
   dateBy?: string,
   dateTo: (string | Date),
   dateFrom?: string,
@@ -29,7 +29,7 @@ function metaDate({
   dateTo = new Date(),
   dateFrom,
   dictionary
-}: Arguments = { dateTo: new Date() }) {
+}: IDateArguments = { dateTo: new Date() }) {
   if (!dateBy || !dateFrom) {
     return this
   }

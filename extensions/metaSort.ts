@@ -9,7 +9,7 @@ import {
   isString
 } from '../utils/is'
 
-export interface Arguments {
+export interface ISortArguments {
   sort?: string,
   sortBy?: string,
   dictionary?: Record<string, string>,
@@ -21,7 +21,7 @@ function metaSort({
   sortBy,
   dictionary = {},
   isCount = false
-}: Arguments = {}) {
+}: ISortArguments = {}) {
   if (isCount) {
     return this
   }

@@ -24,7 +24,7 @@ function handleArrayDictionary(dictionaryProp: string[], q: string) {
 /**
  * TYPES
  */
-export interface Arguments {
+export interface IFilterArguments {
   filterBy?: string | string[],
   q?: string | string[],
   dictionary?: Record<string, (string | string[])>
@@ -34,7 +34,7 @@ function metaFilter({
   filterBy,
   q,
   dictionary = {}
-}: Arguments = {}) {
+}: IFilterArguments = {}) {
   if (!filterBy || !q) {
     return this
   }
