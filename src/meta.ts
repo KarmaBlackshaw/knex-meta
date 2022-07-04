@@ -5,19 +5,19 @@ import { ISortArguments } from './metaSort'
 import { IPageArguments } from './metaPage'
 
 export interface IMetaArguments {
-  filterDictionary?: Pick<IFilterArguments, 'dictionary'>,
-  filterBy?: Pick<IFilterArguments, 'filterBy'>,
-  q?: Pick<IFilterArguments, 'q'>,
-  sortDictionary?: Pick<ISortArguments, 'dictionary'>,
-  sortBy?: Pick<ISortArguments, 'sortBy'>,
-  sort?: Pick<ISortArguments, 'sort'>,
-  page?: Pick<IPageArguments, 'page'>,
-  rows?: Pick<IPageArguments, 'rows'>,
-  isCount?: Pick<IPageArguments, 'isCount'>,
-  dateDictionary?: Pick<IDateArguments, 'dictionary'>,
-  dateBy?: Pick<IDateArguments, 'dateBy'>,
-  dateFrom?: Pick<IDateArguments, 'dateFrom'>,
-  dateTo?: Pick<IDateArguments, 'dateTo'>,
+  filterDictionary?: IFilterArguments["dictionary"],
+  filterBy?: IFilterArguments['filterBy'],
+  q?: IFilterArguments['q'],
+  sortDictionary?: ISortArguments['dictionary'],
+  sortBy?: ISortArguments['sortBy'],
+  sort?: ISortArguments['sort'],
+  page?: IPageArguments['page'],
+  rows?: IPageArguments['rows'],
+  isCount?: IPageArguments['isCount'],
+  dateDictionary?: IDateArguments['dictionary'],
+  dateBy?: IDateArguments['dateBy'],
+  dateFrom?: IDateArguments['dateFrom'],
+  dateTo?: IDateArguments['dateTo'],
 }
 
 function meta({
