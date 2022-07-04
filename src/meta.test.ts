@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import knex from '../knex'
+import knex from '../main'
 
 test('Date meta functions correctly', () => {
   const dictionary = {

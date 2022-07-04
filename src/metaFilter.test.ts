@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest'
-import knex from '../knex'
+
+import knex from '../main'
 
 test('Should have correct simple search output', () => {
   const dictionary = {
