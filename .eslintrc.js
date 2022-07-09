@@ -12,7 +12,6 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  plugins: ['jest'],
   extends: ['standard', 'eslint:recommended'],
   rules: {
     'no-await-in-loop': 'off',
