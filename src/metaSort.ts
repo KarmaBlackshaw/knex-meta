@@ -1,6 +1,3 @@
-const _isEmpty = require('lodash/isEmpty')
-const _size = require('lodash/size')
-
 /**
  * UTILITIES
  */
@@ -8,6 +5,11 @@ import {
   isArray,
   isString
 } from '../utils/is'
+
+import {
+  isEmpty,
+  size
+} from '../utils/object'
 
 export interface ISortArguments {
   sort?: string,
@@ -30,14 +32,14 @@ function metaSort({
     return this
   }
 
-  if (_isEmpty(dictionary)) {
+  if (isEmpty(dictionary)) {
     return this
   }
 
   const sortDirections = new Set(['asc', 'desc'])
 
   if (isArray(sortBy) && isArray(sort)) {
-    if (_size(sortBy) !== _size(sort)) {
+    if (size(sortBy) !== size(sort)) {
       return this
     }
 

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import knex from '../main'
+import knex from '../connection'
 import moment from 'moment'
 
 test('Adds startOf day and endOf day if time is not present', () => {

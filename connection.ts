@@ -1,4 +1,4 @@
-import knex from './config/knex'
+import knex from './index'
 
 export default knex({
   client: 'mysql',
