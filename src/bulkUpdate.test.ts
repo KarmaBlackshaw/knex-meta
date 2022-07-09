@@ -8,7 +8,7 @@ test('Single data', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     }
   ]
 
@@ -27,7 +27,7 @@ test('Single data with multiple keys', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     }
   ]
 
@@ -46,13 +46,13 @@ test('Multiple data', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     },
     {
       id: 2,
       name: 'Mark',
       age: 25,
-      address: 'Manila',
+      address: 'Manila'
     }
   ]
 
@@ -71,13 +71,13 @@ test('Multiple data with multiple keys', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     },
     {
       id: 2,
       name: 'Mark',
       age: 25,
-      address: 'Manila',
+      address: 'Manila'
     }
   ]
 
@@ -96,13 +96,13 @@ test('Multiple data with multiple keys', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     },
     {
       id: 2,
       name: 'Mark',
       age: 25,
-      address: 'Manila',
+      address: 'Manila'
     }
   ]
 
@@ -121,27 +121,26 @@ test('Works with alias', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     },
     {
       id: 2,
       name: 'Mark',
       age: 25,
-      address: 'Manila',
+      address: 'Manila'
     }
   ]
 
   const updateOptions = {
     alias: {
       name: 'users.name',
-      age: "users.age"
+      age: 'users.age'
     }
   }
 
   const result = knex('users')
     .bulkUpdate(['id', 'name'], updateData, updateOptions)
     .toString()
-
 
   const expected = "update `users` set `users`.`age` = (CASE WHEN id = 1 AND users.name = 'John' THEN 30 WHEN id = 2 AND users.name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND users.name = 'John' THEN 'Cebu' WHEN id = 2 AND users.name = 'Mark' THEN 'Manila' END) where ((id = 1 AND users.name = 'John') AND (id = 2 AND users.name = 'Mark'))"
 
@@ -154,26 +153,25 @@ test('Works with else', () => {
       id: 1,
       name: 'John',
       age: 30,
-      address: 'Cebu',
+      address: 'Cebu'
     },
     {
       id: 2,
       name: 'Mark',
       age: 25,
-      address: 'Manila',
+      address: 'Manila'
     }
   ]
 
   const updateOptions = {
     else: {
-      age: knex.client.raw('users.age'),
+      age: knex.client.raw('users.age')
     }
   }
 
   const result = knex('users')
     .bulkUpdate(['id', 'name'], updateData, updateOptions)
     .toString()
-
 
   const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 ELSE users.age END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') AND (id = 2 AND name = 'Mark'))"
 

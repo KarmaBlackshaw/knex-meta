@@ -3,7 +3,7 @@ import {
   isObject
 } from './is'
 
-export function isEmpty(val: any): boolean {
+export function isEmpty (val: any): boolean {
   if (isArray(val)) {
     return val.length === 0
   }
@@ -15,7 +15,7 @@ export function isEmpty(val: any): boolean {
   return !val
 }
 
-export function size(val: any): number {
+export function size (val: any): number {
   if (isArray(val)) {
     return val.length
   }

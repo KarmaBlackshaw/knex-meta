@@ -101,7 +101,6 @@ test('All meta functions correctly', () => {
   expect(result).toBe(expected)
 })
 
-
 test('All meta functions correctly', () => {
   const dictionary = {
     birthdate: 'users.birthdate'

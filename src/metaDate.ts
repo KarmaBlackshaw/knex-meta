@@ -1,5 +1,5 @@
 // libs
-import moment, { Moment } from "moment";
+import moment, { Moment } from 'moment'
 
 /**
  * UTILITIES
@@ -9,7 +9,7 @@ import {
   isObject
 } from '../utils/is'
 
-function hasTime(momentDate: Moment) {
+function hasTime (momentDate: Moment) {
   return momentDate
     .format('HH:mm:ss')
     .split(':')
@@ -24,7 +24,7 @@ export interface IDateArguments {
   dictionary?: Record<string, string>
 }
 
-function metaDate({
+function metaDate ({
   dateBy,
   dateTo = new Date(),
   dateFrom,
@@ -59,6 +59,5 @@ function metaDate({
     .where(dateBy, '>=', dateFromTimestamp)
     .where(dateBy, '<=', dateToTimestamp)
 }
-
 
 export default metaDate

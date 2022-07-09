@@ -4,9 +4,8 @@ import _isNil from 'lodash/isNil'
  * UTILITIES
  */
 import {
-  toArray,
+  toArray
 } from '../utils/array'
-
 
 /**
  * TYPES
@@ -41,10 +40,10 @@ const quoter = (foo: any) => {
   console.warn(`${typeof foo} is not accounted.`)
 }
 
-function bulkUpdate(
+function bulkUpdate (
   key: TBulkUpdateKey,
   _payload: TBulkUpdatePayload = [],
-  _options?: IBulkUpdateOptions,
+  _options?: IBulkUpdateOptions
 ) {
   const keys: string[] = toArray(key)
   const keysSet = new Set(keys)
@@ -111,8 +110,6 @@ function bulkUpdate(
     .where(function () {
       this.whereRaw(whereConditions.join(' AND '))
     })
-
 }
-
 
 export default bulkUpdate

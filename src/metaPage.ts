@@ -2,7 +2,7 @@
  * UTILITIES
  */
 import {
-  isNumber,
+  isNumber
 } from '../utils/is'
 
 export interface IPageArguments {
@@ -11,7 +11,7 @@ export interface IPageArguments {
   isCount: (boolean | number)
 }
 
-function metaPage({
+function metaPage ({
   page,
   rows,
   isCount
@@ -26,6 +26,5 @@ function metaPage({
 
   return this.limit(rows).offset(rows * (page - 1))
 }
-
 
 export default metaPage

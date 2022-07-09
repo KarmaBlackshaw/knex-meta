@@ -12,7 +12,14 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  extends: ['standard', 'eslint:recommended'],
+  plugins: [
+    '@typescript-eslint'
+  ],
+  extends: [
+    'standard',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
   rules: {
     'no-await-in-loop': 'off',
     'no-console': 'off',
@@ -22,8 +29,10 @@ module.exports = {
     'default-case': 'off',
     'comma-dangle': ['error', 'never'],
     'prefer-const': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'arrow-parens': [2, 'as-needed'],
     'object-curly-spacing': ['error', 'always'],
+    'no-multiple-empty-lines': ['error', { max: 1 }],
     curly: [2, 'all'],
     indent: ['error', 2, {
       SwitchCase: 1,

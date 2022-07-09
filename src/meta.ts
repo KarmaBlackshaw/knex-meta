@@ -5,7 +5,7 @@ import { ISortArguments } from './metaSort'
 import { IPageArguments } from './metaPage'
 
 export interface IMetaArguments {
-  filterDictionary?: IFilterArguments["dictionary"],
+  filterDictionary?: IFilterArguments['dictionary'],
   filterBy?: IFilterArguments['filterBy'],
   q?: IFilterArguments['q'],
   sortDictionary?: ISortArguments['dictionary'],
@@ -20,7 +20,7 @@ export interface IMetaArguments {
   dateTo?: IDateArguments['dateTo'],
 }
 
-function meta({
+function meta ({
   page,
   rows,
   isCount,
