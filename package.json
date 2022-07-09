@@ -7,9 +7,13 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "vitest",
-    "build": "tsup ./index.ts --format cjs,esm --dts --clean"
+    "build": "tsup ./index.ts --format cjs,esm --dts --clean",
+    "watch": "npm run build -- --watch src"
   },
-  "keywords": [],
+  "keywords": [
+    "knex",
+    "extend knex"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -29,6 +33,8 @@
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
     "eslint": "^8.18.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.26.0",
