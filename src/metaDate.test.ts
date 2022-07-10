@@ -1,7 +1,6 @@
 import { expect, test } from 'vitest'
 
 import knex from '../connection'
-import moment from 'moment'
 
 test('Adds startOf day and endOf day if time is not present', () => {
   const dictionary = {
@@ -36,7 +35,7 @@ test('Sets "dateTo" to current date if empty', () => {
     .toString()
     .replace(/`/g, '')
 
-  const expected = `select * from users where birthdate >= '1998-07-29 00:00:00' and birthdate <= '${moment().format('YYYY-MM-DD HH:mm:ss')}'`
+  const expected = 'select * from users where birthdate >= \'1998-07-29 00:00:00\' and birthdate <= CURRENT_TIMESTAMP'
 
   expect(result).toBe(expected)
 })

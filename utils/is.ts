@@ -18,3 +18,7 @@ export function isObject (x: any): x is object {
   return typeof x === 'object' &&
     x?.constructor === Object
 }
+
+export function isNil (x: unknown): x is null | undefined {
+  return x === null || typeof x === 'undefined'
+}
