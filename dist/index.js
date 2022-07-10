@@ -26,10 +26,10 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // node_modules/lodash/isNil.js
 var require_isNil = __commonJS({
   "node_modules/lodash/isNil.js"(exports, module2) {
-    function isNil(value) {
+    function isNil2(value) {
       return value == null;
     }
-    module2.exports = isNil;
+    module2.exports = isNil2;
   }
 });
 
@@ -60,31 +60,37 @@ function isDate(x) {
 function isObject(x) {
   return typeof x === "object" && (x == null ? void 0 : x.constructor) === Object;
 }
+function isNil(x) {
+  return x === null || typeof x === "undefined";
+}
 
 // src/metaDate.ts
 function hasTime(momentDate) {
   return momentDate.format("HH:mm:ss").split(":").map(Number).reduce((acc, curr) => acc + curr) > 0;
 }
+var DATETIME_FORMAT = "YYYY-MM-DD HH:mm:ss";
 function metaDate({
   dateBy,
-  dateTo = new Date(),
+  dateTo,
   dateFrom,
   dictionary
-} = { dateTo: new Date() }) {
+}) {
   if (!dateBy || !dateFrom) {
     return this;
   }
-  if (!isDate(dateFrom) || !isDate(dateTo)) {
+  if (!isDate(dateFrom)) {
     return this;
   }
   if (isObject(dictionary) && !dictionary[dateBy]) {
     return this;
   }
   const parsedDateFrom = (0, import_moment.default)(new Date(dateFrom));
+  const dateFromTimestamp = hasTime(parsedDateFrom) ? parsedDateFrom.format(DATETIME_FORMAT) : parsedDateFrom.startOf("day").format(DATETIME_FORMAT);
+  if (isNil(dateTo)) {
+    return this.where(dateBy, ">=", dateFromTimestamp).where(dateBy, "<=", this.client.raw("CURRENT_TIMESTAMP"));
+  }
   const parsedDateTo = (0, import_moment.default)(new Date(dateTo));
-  const format = "YYYY-MM-DD HH:mm:ss";
-  const dateFromTimestamp = hasTime(parsedDateFrom) ? parsedDateFrom.format(format) : parsedDateFrom.startOf("day").format(format);
-  const dateToTimestamp = hasTime(parsedDateTo) ? parsedDateTo.format(format) : parsedDateTo.endOf("day").format(format);
+  const dateToTimestamp = hasTime(parsedDateTo) ? parsedDateTo.format(DATETIME_FORMAT) : parsedDateTo.endOf("day").format(DATETIME_FORMAT);
   return this.where(dateBy, ">=", dateFromTimestamp).where(dateBy, "<=", dateToTimestamp);
 }
 var metaDate_default = metaDate;
