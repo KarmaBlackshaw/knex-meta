@@ -8,6 +8,7 @@ import metaPage from './src/metaPage'
 import metaSort from './src/metaSort'
 import meta from './src/meta'
 import bulkUpdate from './src/bulkUpdate'
+import jsonObject from './src/jsonObject'
 
 const extensions = [
   metaDate,
@@ -15,7 +16,8 @@ const extensions = [
   metaPage,
   metaSort,
   meta,
-  bulkUpdate
+  bulkUpdate,
+  jsonObject
 ]
 
 extensions.forEach(extension => {
