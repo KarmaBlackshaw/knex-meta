@@ -9,8 +9,6 @@ import {
 
 export type TJsonObject = Record<string, any>
 
-const DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
-
 function jsonObject (data: TJsonObject): KnexOriginal {
   const pairs = []
 
