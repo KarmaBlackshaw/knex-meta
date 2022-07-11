@@ -337,6 +337,21 @@ function bulkUpdate(key, _payload = [], _options) {
 }
 var bulkUpdate_default = bulkUpdate;
 
+// src/jsonObject.ts
+function jsonObject(data) {
+  const pairs = [];
+  for (const key in data) {
+    const curr = data[key];
+    if (isObject(curr)) {
+      pairs.push(`"${key}"`, jsonObject(curr));
+    } else {
+      pairs.push(`"${key}"`, curr);
+    }
+  }
+  return this.client.raw(`JSON_OBJECT(${pairs.join(", ")})`);
+}
+var jsonObject_default = jsonObject;
+
 // index.ts
 var extensions = [
   metaDate_default,
@@ -344,7 +359,8 @@ var extensions = [
   metaPage_default,
   metaSort_default,
   meta_default,
-  bulkUpdate_default
+  bulkUpdate_default,
+  jsonObject_default
 ];
 extensions.forEach((extension) => {
   import_knex.knex.QueryBuilder.extend(extension.name, extension);
