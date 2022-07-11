@@ -73,6 +73,7 @@
 ## Usage
 
 ### Meta Date
+Simple date filter
 ```js
 const dictionary = {
   birthdate: 'users.birthdate'
@@ -86,44 +87,77 @@ const result = knex('users')
     dictionary
   })
 
-/** output
+```
+----
 
-SELECT
-  *
-FROM
-  `users`
-WHERE `birthdate` >= '1998-07-29 00:00:00'
-  AND `birthdate` <= '1998-07-29 23:59:59'
- */
+### Meta Page
+Simple implementation of limit offset
+```js
+const result = knex('users')
+  .metaPage({ page: 1, rows: 3 })
 
 ```
-
+----
 ### Meta Sort
+Simple sort
 ```js
 const dictionary = {
-  name: 'users.name'
+  name: 'users.name',
 }
 
 const result = knex('users')
   .metaSort({
     sort: 'asc',
     sortBy: 'name',
-    dictionary,
-    isCount: false
+    dictionary
   })
-
-/** output
-
-SELECT
-  *
-FROM
-  `users`
-ORDER BY `name` ASC
- */
-
 ```
 
+Multiple sort
+```js
+const dictionary = {
+  name: 'users.name',
+  age: 'users.age'
+}
+
+const result = knex('users')
+  .metaSort({
+    sort: ['asc', 'desc'],
+    sortBy: ['name', 'age'],
+    dictionary
+  })
+```
+----
 ### Meta Filter
+Basic filter
+```js
+const dictionary = {
+  name: 'users.name'
+}
+
+const result = knex('users')
+  .metaFilter({
+    filterBy: 'name',
+    q: 'john',
+    dictionary
+  })
+```
+
+Array filter dictionary
+```js
+const dictionary = {
+  name: ['users.fname', 'users.lname']
+}
+
+const result = knex('users')
+  .metaFilter({
+    filterBy: 'name',
+    q: 'john',
+    dictionary
+  })
+```
+
+Array `q` and array `filterBy` dictionary
 ```js
 const dictionary = {
   name: ['users.fname', 'users.lname'],
@@ -136,24 +170,38 @@ const result = knex('users')
     q: ['john', 'lahug'],
     dictionary
   })
-
-/** output
-
-SELECT
-  *
-FROM
-  `users`
-WHERE (
-    (
-      `users`.`fname` LIKE '%john%'
-      OR `users`.`lname` LIKE '%john%'
-    )
-    AND `users`.`address` LIKE '%lahug%'
-  )
- */
-
 ```
 
+Array `q` and string `filterBy` dictionary
+```js
+const dictionary = {
+  name: 'users.fname',
+  address: 'users.address'
+}
+
+const result = knex('users')
+  .metaFilter({
+    filterBy: 'name',
+    q: ['john', 'paul'],
+    dictionary
+  })
+```
+
+String `q` and array `filterBy` dictionary
+```js
+const dictionary = {
+  name: ['users.fname', 'users.lname'],
+  address: 'users.address'
+}
+
+const result = knex('users')
+  .metaFilter({
+    filterBy: ['name', 'address'],
+    q: 'john',
+    dictionary
+  })
+```
+----
 ### Meta
 ```js
 const dictionary = {
@@ -179,20 +227,31 @@ const result = knex('users')
     q: 'july',
     filterDictionary: dictionary
   })
+```
 
-/** output
+----
+### jsonObject
+Basic json object
+```js
+const result = knex('users')
+  .select({
+    id: 'users.id',
+    name: 'users.name'
+  })
+```
 
-SELECT
-  *
-FROM
-  `users`
-WHERE `birthdate` >= '1998-07-29 00:00:00'
-  AND `birthdate` <= '1998-07-29 23:59:59'
-  AND `users`.`birthdate` LIKE '%july%'
-ORDER BY `birthdate` ASC
-LIMIT 50 OFFSET 100
- */
-
+Nested json object
+```js
+const result = knex('users')
+  .join('barangay', 'barangay.id', 'users.brgy_id')
+  .select({
+    id: 'users.id',
+    name: 'users.name',
+    brgy: knex.jsonObject({
+      id: 'barangay.id',
+      name: 'barangay.name'
+    })
+  })
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
