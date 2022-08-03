@@ -11,7 +11,7 @@ test('Simple json object', () => {
     .select({
       users: knex.jsonObject({
         id: 'users.id'
-      }),
+      })
     })
     .toString()
 
@@ -30,7 +30,7 @@ test('Simple json object with two properties', () => {
       users: knex.jsonObject({
         id: 'users.id',
         name: 'users.name'
-      }),
+      })
     })
     .toString()
 
@@ -51,9 +51,9 @@ test('Nested json object', () => {
         name: 'users.name',
         parents: knex.jsonObject({
           id: 'parents.id',
-          name: 'parents.name',
+          name: 'parents.name'
         })
-      }),
+      })
     })
     .toString()
 

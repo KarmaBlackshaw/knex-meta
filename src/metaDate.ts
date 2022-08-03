@@ -27,7 +27,7 @@ export interface IDateArguments {
 
 const DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
-function metaDate ({
+export function metaDate ({
   dateBy,
   dateTo,
   dateFrom,
@@ -65,5 +65,3 @@ function metaDate ({
     .where(dateBy, '>=', dateFromTimestamp)
     .where(dateBy, '<=', dateToTimestamp)
 }
-
-export default metaDate

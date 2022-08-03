@@ -1,15 +1,15 @@
-import { Knex as KnexOriginal } from 'knex';
+import { Knex as KnexOriginal } from 'knex'
 
 /**
  * UTILITIES
  */
 import {
-  isObject,
+  isObject
 } from '../utils/is'
 
 export type TJsonObject = Record<string, any>
 
-function jsonObject (data: TJsonObject): KnexOriginal {
+export function jsonObject (data: TJsonObject): KnexOriginal {
   const pairs = []
 
   for (const key in data) {
@@ -24,5 +24,3 @@ function jsonObject (data: TJsonObject): KnexOriginal {
 
   return this.client.raw(`JSON_OBJECT(${pairs.join(', ')})`)
 }
-
-export default jsonObject

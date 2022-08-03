@@ -40,7 +40,7 @@ const quoter = (foo: any) => {
   console.warn(`${typeof foo} is not accounted.`)
 }
 
-function bulkUpdate (
+export function bulkUpdate (
   key: TBulkUpdateKey,
   _payload: TBulkUpdatePayload = [],
   _options?: IBulkUpdateOptions
@@ -111,5 +111,3 @@ function bulkUpdate (
       this.whereRaw(whereConditions.join(' AND '))
     })
 }
-
-export default bulkUpdate

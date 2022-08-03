@@ -20,7 +20,7 @@ export interface IMetaArguments {
   dateTo?: IDateArguments['dateTo'],
 }
 
-function meta ({
+export function meta ({
   page,
   rows,
   isCount,
@@ -41,5 +41,3 @@ function meta ({
     .metaFilter({ filterBy, q, dictionary: filterDictionary })
     .metaSort({ sortBy, sort, dictionary: sortDictionary, isCount })
 }
-
-export default meta

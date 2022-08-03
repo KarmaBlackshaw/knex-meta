@@ -11,7 +11,7 @@ export interface IPageArguments {
   isCount: (boolean | number)
 }
 
-function metaPage ({
+export function metaPage ({
   page,
   rows,
   isCount
@@ -26,5 +26,3 @@ function metaPage ({
 
   return this.limit(rows).offset(rows * (page - 1))
 }
-
-export default metaPage

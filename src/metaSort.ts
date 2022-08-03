@@ -18,7 +18,7 @@ export interface ISortArguments {
   isCount?: boolean
 }
 
-function metaSort ({
+export function metaSort ({
   sort,
   sortBy,
   dictionary = {},
@@ -75,5 +75,3 @@ function metaSort ({
     return this
   }
 }
-
-export default metaSort

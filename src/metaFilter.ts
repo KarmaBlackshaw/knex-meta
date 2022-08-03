@@ -13,7 +13,7 @@ import {
  * If dictionary key is array.
  * name: ['users.fname', 'users.lname']
  */
-function handleArrayDictionary(dictionaryProp: string[], q: string) {
+function handleArrayDictionary (dictionaryProp: string[], q: string) {
   return this.where(function () {
     dictionaryProp.forEach(filter => {
       this.orWhere(filter, 'like', `%${q}%`)
@@ -30,7 +30,7 @@ export interface IFilterArguments {
   dictionary?: Record<string, (string | string[])>
 }
 
-function metaFilter({
+function metaFilter ({
   filterBy,
   q,
   dictionary = {}
@@ -41,11 +41,6 @@ function metaFilter({
 
   const isArrayFilterBy = isArray(filterBy)
   const isArrayQ = isArray(q)
-
-
-
-
-
 
   /**
    * For array "filterBy" and "q"
