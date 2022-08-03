@@ -1,5 +1,4 @@
 const changelogCmd = `npx auto-changelog --commit-limit false --template ./templates/changelog.hbs`
-const buildCmd = 'npm run build'
 
 module.exports = {
   hooks: {
@@ -10,7 +9,7 @@ module.exports = {
     ]
   },
   git: {
-    "requireCleanWorkingDir": false,
+    requireCleanWorkingDir: true,
     requireBranch: 'master',
     commit: true,
     commitMessage: 'chore(release): ${version}',
