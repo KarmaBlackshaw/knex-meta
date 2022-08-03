@@ -25,14 +25,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm install
-      - run: npm run test
+        run: npm install
+        run: npm run test
 
       - name: Build
-      - run: npm run build
+        run: npm run build
 
       - name: Push build files
-      - run: |
-        git add .
-        git commit -m "chore(build)"
-        git push origin master
+        run: |
+          git add .
+          git commit -m "chore(build)"
+          git push origin master
