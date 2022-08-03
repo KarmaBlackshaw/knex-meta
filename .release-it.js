@@ -1,4 +1,4 @@
-const changelogCmd = `npx auto-changelog --stdout --commit-limit false -u --template ./config/changelog.hbs`
+const changelogCmd = `npx auto-changelog --stdout --commit-limit false -u --template ./templates/changelog.hbs`
 
 module.exports = {
   hooks: {
