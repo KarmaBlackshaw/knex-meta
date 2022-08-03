@@ -8,7 +8,6 @@
 
 Useful extensions for knex query builder
 
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
 
@@ -42,7 +41,6 @@ Useful extensions for knex query builder
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 ### Built With
@@ -52,7 +50,6 @@ Useful extensions for knex query builder
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 ### Meta Date
@@ -240,7 +237,6 @@ const result = knex('users')
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -256,7 +252,6 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
 ## Contact
 
 Ernie Jeash - irenesejah29@gmail.com
