@@ -7,14 +7,16 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "vitest",
-    "build": "tsup ./index.ts --format cjs,esm --dts --clean",
-    "build:watch": "npm run build -- --watch src"
+    "build": "tsup",
+    "build:watch": "npm run build -- --watch src",
+    "release": "release-it",
+    "release-it": "^15.2.0"
   },
   "keywords": [
     "knex",
     "extend knex"
   ],
-  "author": "",
+  "author": "Ernie Jeash Villahermosa",
   "license": "ISC",
   "dependencies": {
     "@types/lodash": "^4.14.182",
@@ -22,7 +24,8 @@
     "knex": "^2.1.0",
     "moment": "^2.29.3",
     "mysql": "^2.18.1",
-    "tsup": "^6.1.3"
+    "tsup": "^6.1.3",
+    "unbuild": "^0.7.6"
   },
   "exports": {
     ".": {
@@ -35,11 +38,12 @@
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
-    "eslint": "^8.18.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0",
+    "eslint": "7.32.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.3.1",
+    "eslint-plugin-standard": "4.0.1",
     "jest": "^28.1.2",
     "nodemon": "^2.0.18",
     "ts-node": "^10.8.2",
