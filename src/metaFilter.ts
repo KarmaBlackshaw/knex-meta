@@ -30,7 +30,7 @@ export interface IFilterArguments {
   dictionary?: Record<string, (string | string[])>
 }
 
-function metaFilter ({
+export function metaFilter ({
   filterBy,
   q,
   dictionary = {}
@@ -122,5 +122,3 @@ function metaFilter ({
 
   return this
 }
-
-export default metaFilter
