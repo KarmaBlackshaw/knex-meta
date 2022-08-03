@@ -1,4 +1,4 @@
-import { Knex as KnexOriginal } from 'knex';
+import { Knex as KnexOriginal } from 'knex'
 import { IDateArguments } from './metaDate'
 import { IFilterArguments } from './metaFilter'
 import { ISortArguments } from './metaSort'
