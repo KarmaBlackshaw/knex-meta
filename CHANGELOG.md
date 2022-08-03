@@ -15,7 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(release): 1.1.4 [`40ff643`](https://github.com/KarmaBlackshaw/knex-meta/commit/40ff643d702d7619a60fec309ffaeed8c69bac39)
 - refactor: change changelog template [`6174069`](https://github.com/KarmaBlackshaw/knex-meta/commit/61740690579790bbbf4179d706f59abcfb272f07)
 
-## 1.1.3 - 2022-08-03
+## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.1...1.1.3) - 2022-08-03
+
+
+
+
+
+## 1.0.1 - 2022-08-03
 
 
 
@@ -33,11 +39,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - lint eslint [`add84da`](https://github.com/KarmaBlackshaw/knex-meta/commit/add84da368f0ce7be01c887e5bd001fdb2666382)
 - add jsonObject [`c528bb0`](https://github.com/KarmaBlackshaw/knex-meta/commit/c528bb064483bb0f63edf5bf7fc6606f2f44a585)
 - ref: move knex to config and set main file [`d096015`](https://github.com/KarmaBlackshaw/knex-meta/commit/d0960156ceb440b97ef192f56f9247a21ed480e4)
+- chore(release): 1.1.4 [`40ff643`](https://github.com/KarmaBlackshaw/knex-meta/commit/40ff643d702d7619a60fec309ffaeed8c69bac39)
 - remove dist folder [`76263cc`](https://github.com/KarmaBlackshaw/knex-meta/commit/76263cc425e6dba3d1ee7d17b09ab1903a0f1259)
 - add release it [`7f429f3`](https://github.com/KarmaBlackshaw/knex-meta/commit/7f429f373fdc315c3eb5d57d4fd811d5c657768f)
 - update export method for src [`2192e16`](https://github.com/KarmaBlackshaw/knex-meta/commit/2192e16c2df4ec21183d243173013187106aa09e)
 - rename files [`1162d24`](https://github.com/KarmaBlackshaw/knex-meta/commit/1162d249edc326392d4c6869eaa5fab5daf11c9d)
 - build [`b990096`](https://github.com/KarmaBlackshaw/knex-meta/commit/b990096ee036ec2ecef7a4d6add39ac9a0f46964)
+- refactor: change changelog template [`6174069`](https://github.com/KarmaBlackshaw/knex-meta/commit/61740690579790bbbf4179d706f59abcfb272f07)
 - ref: metaDate change to current timestamp [`545949d`](https://github.com/KarmaBlackshaw/knex-meta/commit/545949d9705f04136edb01635e99a52e14a8a7bd)
 - updateb build file [`60f9170`](https://github.com/KarmaBlackshaw/knex-meta/commit/60f91706b567706d96e128514bdfcb937276a956)
 - update utils [`a9f38b6`](https://github.com/KarmaBlackshaw/knex-meta/commit/a9f38b620011e9ecc53fd539271f2f4ad768ba8c)
@@ -46,9 +54,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add bulkupdate [`ab8be1f`](https://github.com/KarmaBlackshaw/knex-meta/commit/ab8be1f5d0c86b13e587573b43fbc3ab79de0886)
 - ref: ignore `Pick&lt;&gt;` and use brackets for interface picking [`1ad4ca2`](https://github.com/KarmaBlackshaw/knex-meta/commit/1ad4ca236e247a449cb4efa1e38558ab9cf0a04f)
 - remove node 12 from workflow [`e195dc8`](https://github.com/KarmaBlackshaw/knex-meta/commit/e195dc89249c89e76fcb88998a659c3bb028b7fc)
+- refactor: reset version for npm publish [`568cc24`](https://github.com/KarmaBlackshaw/knex-meta/commit/568cc2488a574fa8e1e935ea035f413062decdbf)
 - fix(test) [`e2b769d`](https://github.com/KarmaBlackshaw/knex-meta/commit/e2b769d00efc771fe87fe0a4088fdc00b521b82b)
 - add types for new query builder methods [`85fa5a0`](https://github.com/KarmaBlackshaw/knex-meta/commit/85fa5a0972508bd50c439c875f75924172d4c173)
 - add bundler for esm and cjs [`1f72228`](https://github.com/KarmaBlackshaw/knex-meta/commit/1f72228d69fbf14a24731690b33ebc045aecc76c)
+- chore(release): 1.0.1 [`99c94e7`](https://github.com/KarmaBlackshaw/knex-meta/commit/99c94e7f8f2f98fc47f119cbcd0a39f97cc4b1d4)
 - ref: add prefix for each interface [`7f445dc`](https://github.com/KarmaBlackshaw/knex-meta/commit/7f445dc074abb5519fbad496dee27d93ecc9bf7e)
 - add changelog template [`b077c98`](https://github.com/KarmaBlackshaw/knex-meta/commit/b077c982f4e9c7521493604823aac88bcb0fd6cd)
 - lint eslint [`031fdf9`](https://github.com/KarmaBlackshaw/knex-meta/commit/031fdf983b0c778d5d4ff4d5ac30a671227fd07e)

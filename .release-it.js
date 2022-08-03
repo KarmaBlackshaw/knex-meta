@@ -1,15 +1,16 @@
 const changelogCmd = `npx auto-changelog --commit-limit false --template ./templates/changelog.hbs`
+const buildCmd = 'npm run build'
 
 module.exports = {
   hooks: {
-    'after:bump': [changelogCmd],
-    'after:git-release': [
-      'git add CHANGELOG.md',
-      'git push origin master',
-      'echo Successfully released ${name} v${version} to ${repo.repository}.'
+    'after:bump': [
+      changelogCmd,
+      'npm run build',
+      'git add .'
     ]
   },
   git: {
+    "requireCleanWorkingDir": false,
     requireBranch: 'master',
     commit: true,
     commitMessage: 'chore(release): ${version}',
