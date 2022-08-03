@@ -28,11 +28,9 @@ jobs:
       - run: npm install
       - run: npm run test
 
-      - name: Build
-      - run: npm run build
-
-      - name: Push
+      - name: Build & Push
         uses: s0/git-publish-subdir-action@develop
+      - run: npm run build
         env:
           REPO: self
           BRANCH: master # The branch name where you want to push the assets
