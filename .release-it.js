@@ -26,6 +26,6 @@ module.exports = {
     releaseName: '${version}'
   },
   npm: {
-    publish: false
+    publish: true
   }
 }
