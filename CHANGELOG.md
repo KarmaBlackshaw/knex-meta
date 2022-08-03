@@ -15,11 +15,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(release): 1.1.4 [`40ff643`](https://github.com/KarmaBlackshaw/knex-meta/commit/40ff643d702d7619a60fec309ffaeed8c69bac39)
 - refactor: change changelog template [`6174069`](https://github.com/KarmaBlackshaw/knex-meta/commit/61740690579790bbbf4179d706f59abcfb272f07)
 
-## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.1...1.1.3) - 2022-08-03
+## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.3...1.1.3) - 2022-08-03
 
 
 
 
+
+## [1.0.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.1...1.0.3) - 2022-08-03
+
+
+
+
+### Commits
+
+- remove package-lock.json [`421ecc3`](https://github.com/KarmaBlackshaw/knex-meta/commit/421ecc3193d371e73793ca5afcf5d701a5c2be17)
+- chore(release): 1.0.2 [`627f831`](https://github.com/KarmaBlackshaw/knex-meta/commit/627f831a58cfa24b982ca67ac176bd7894252d2d)
+- include dist [`6cf6c7e`](https://github.com/KarmaBlackshaw/knex-meta/commit/6cf6c7ec03b0c604314fe33f1923a7eece73da93)
+- test [`8f9cada`](https://github.com/KarmaBlackshaw/knex-meta/commit/8f9cadac4b22f6f28c9cbb53bd430981aed48e46)
+- Create main.yml [`e392350`](https://github.com/KarmaBlackshaw/knex-meta/commit/e39235040d66025265c15295fd5a25cc4d6ebe1f)
+- Update node.js.yml [`8e2889b`](https://github.com/KarmaBlackshaw/knex-meta/commit/8e2889b767bf57d8d5b96578cedf13ba443f1471)
+- test: npm run build on github workflow [`0295fe2`](https://github.com/KarmaBlackshaw/knex-meta/commit/0295fe2fd4dd4b1952eed6f6c9354564a8a0138e)
+- test: npm run build on github workflow [`d698805`](https://github.com/KarmaBlackshaw/knex-meta/commit/d6988056401e14f246255b0c1416913ce391b8ce)
+- add playground package json [`6f9f991`](https://github.com/KarmaBlackshaw/knex-meta/commit/6f9f9914e0d4acd2279165825e8021b73ee525ce)
+- Update node.js.yml [`94ff20b`](https://github.com/KarmaBlackshaw/knex-meta/commit/94ff20b650aba22f17f96a82e325e96b067f3ebb)
+- test: npm run build on github workflow [`94b125e`](https://github.com/KarmaBlackshaw/knex-meta/commit/94b125e8e221f2541e09741d95f21cfb171f65de)
+- test [`97ad36c`](https://github.com/KarmaBlackshaw/knex-meta/commit/97ad36c274440757da74ae97bd11577b6d900679)
+- Update node.js.yml [`a37dd80`](https://github.com/KarmaBlackshaw/knex-meta/commit/a37dd80b92e6c0fcd7066e163b3abf9e10c442ef)
+- test: npm run build on github workflow [`a08f05a`](https://github.com/KarmaBlackshaw/knex-meta/commit/a08f05aac30a83cbc722301db8dcc7f4516a58c3)
+- refactor: set requireCleanWorkingDir tot true [`555f12c`](https://github.com/KarmaBlackshaw/knex-meta/commit/555f12cb60592480ba0e790843ab83d9fb1c36fa)
+- chore(release): 1.0.3 [`ab64b57`](https://github.com/KarmaBlackshaw/knex-meta/commit/ab64b57f894742098ffb08dc4de073b29521e1bc)
+- Update node.js.yml [`43d3a53`](https://github.com/KarmaBlackshaw/knex-meta/commit/43d3a53f90d55096df927eb0d470330ea569ccb8)
 
 ## 1.0.1 - 2022-08-03
 
