@@ -1,29 +1,12 @@
-<div id="top"></div>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+# [knex-meta](https://github.com/KarmaBlackshaw/knex-meta)
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=karmablackshaw.knex-meta)
 [![GitHub Karmablackshaw](https://img.shields.io/github/last-commit/karmablackshaw/knex-meta?label=Last+Commit)](https://github.com/karmablackshaw)
 [![GitHub Karmablackshaw](https://img.shields.io/github/commit-activity/m/karmablackshaw/knex-meta?color=orange&label=Average+Commits)](https://github.com/karmablackshaw)
 [![GitHub Karmablackshaw](https://img.shields.io/github/last-commit/karmablackshaw/knex-meta?label=Last+Commit)](https://github.com/karmablackshaw)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-
+Useful extensions for knex query builder
 
 <!-- PROJECT LOGO -->
 <br />
@@ -32,7 +15,7 @@
 <h3 align="center">KNEX-META</h3>
 
   <p align="center">
-    Personal extensions for knex query builder
+    Useful extensions for knex query builder
     <br />
     <a href="https://github.com/KarmaBlackshaw/knex-meta"><strong>Explore the docs »</strong></a>
     <br />
