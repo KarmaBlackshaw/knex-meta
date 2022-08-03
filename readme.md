@@ -1,4 +1,4 @@
-# [knex-meta](https://github.com/KarmaBlackshaw/knex-meta)
+# [knex.js](https://knex.github.io/documentation/)
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=karmablackshaw.knex-meta)
 [![GitHub Karmablackshaw](https://img.shields.io/github/last-commit/karmablackshaw/knex-meta?label=Last+Commit)](https://github.com/karmablackshaw)
@@ -25,7 +25,6 @@ Useful extensions for knex query builder
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -190,22 +189,12 @@ const dictionary = {
 
 const result = knex('users')
   .meta({
-    dateBy: 'birthdate',
-    dateFrom: '07-29-1998',
-    dateTo: '07-29-1998',
-    dateDictionary: dictionary,
-
-    page: 3,
-    rows: 50,
-    isCount: false,
-
-    sort: 'asc',
-    sortBy: 'birthdate',
-    sortDictionary: dictionary,
-
-    filterBy: 'birthdate',
-    q: 'july',
-    filterDictionary: dictionary
+    ...{ dateBy, dateFrom, dateTo, dateDictionary },
+    ...{ sortBy, sort, sortDictionary },
+    ...{ dateBy, dateFrom, dateTo, dateDictionary },
+    ...{ page, rows },
+    ...{ filterBy, q, filterDictionary },
+    isCount
   })
 ```
 
