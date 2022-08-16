@@ -9,6 +9,7 @@ import { metaSort } from './src/metaSort'
 import { meta } from './src/meta'
 import { bulkUpdate } from './src/bulkUpdate'
 import { jsonObject } from './src/jsonObject'
+import { metaUpdate } from './src/metaUpdate'
 
 const extensions = [
   metaDate,
@@ -17,7 +18,8 @@ const extensions = [
   metaSort,
   meta,
   bulkUpdate,
-  jsonObject
+  jsonObject,
+  metaUpdate
 ]
 
 extensions.forEach(extension => {

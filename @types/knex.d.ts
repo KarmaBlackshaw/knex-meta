@@ -5,6 +5,7 @@ import { ISortArguments } from './metaSort'
 import { IPageArguments } from './metaPage'
 import { IMetaArguments } from './meta'
 import { TJsonObject } from './jsonObject'
+import { IUpdateArguments } from './metaUpdate'
 import { TBulkUpdateKey, TBulkUpdatePayload, IBulkUpdateOptions } from './bulkUpdate'
 
 declare module 'knex' {
@@ -23,6 +24,8 @@ declare module 'knex' {
       bulkUpdate<TRecord, TResult>(TBulkUpdateKey, TBulkUpdatePayload, IBulkUpdateOptions?): KnexOriginal.QueryBuilder<TRecord, TResult>;
 
       jsonObject<TRecord, TResult>(TJsonObject): KnexOriginal.QueryBuilder<TRecord, TResult>;
+
+      metaUpdate<TRecord, TResult>(IUpdateArguments): KnexOriginal.QueryBuilder<TRecord, TResult>;
     }
   }
 }
