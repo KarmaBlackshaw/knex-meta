@@ -223,6 +223,57 @@ const result = knex('users')
   })
 ```
 
+----
+### metaUpdate
+```js
+  const dictionary = {
+    name: 'users.name'
+  }
+
+  const payload = {
+    name: 'Jeash'
+  }
+
+  const result = knex('users')
+    .where('users.id', 1)
+    .metaUpdate(payload, dictionary)
+```
+
+----
+### metaInsert
+Object insert
+```js
+const fillables = [
+    'name'
+  ]
+
+  const payload = {
+    name: 'Jeash'
+  }
+
+  const result = knex('users')
+    .metaInsert(payload, fillables)
+```
+
+Bulk insert
+```js
+  const fillables = [
+    'name'
+  ]
+
+  const payload = [
+    {
+      name: 'Jeash'
+    },
+    {
+      name: 'Ernie'
+    }
+  ]
+
+  const result = knex('users')
+    .metaInsert(payload, fillables)
+```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
