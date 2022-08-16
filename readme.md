@@ -15,8 +15,6 @@ Useful extensions for knex query builder
 * [Typescript](https://www.typescriptlang.org/)
 * [Vitest](https://vitest.dev/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Usage
 
 ### Meta Date
@@ -242,8 +240,6 @@ Bulk insert
     .metaInsert(payload, fillables)
 ```
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Contributing
 
@@ -258,12 +254,8 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Contact
 
 Ernie Jeash - irenesejah29@gmail.com
 
 Project Link: [https://github.com/KarmaBlackshaw/knex-meta](https://github.com/KarmaBlackshaw/knex-meta)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
