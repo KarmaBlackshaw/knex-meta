@@ -1,6 +1,6 @@
 import {
   isObject
-} from "./chunk-Q2BL4KY6.mjs";
+} from "./chunk-PCDTXPNN.mjs";
 
 // src/jsonObject.ts
 function jsonObject(data) {

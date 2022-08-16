@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunk22YCQZ2Sjs = require('./chunk-22YCQZ2S.js');
+var _chunkIOVEVJI5js = require('./chunk-IOVEVJI5.js');
 
 // src/metaPage.ts
 function metaPage({
@@ -11,7 +11,7 @@ function metaPage({
   if (isCount) {
     return this;
   }
-  if (!_chunk22YCQZ2Sjs.isNumber.call(void 0, page) || !_chunk22YCQZ2Sjs.isNumber.call(void 0, rows)) {
+  if (!_chunkIOVEVJI5js.isNumber.call(void 0, page) || !_chunkIOVEVJI5js.isNumber.call(void 0, rows)) {
     return this;
   }
   return this.limit(rows).offset(rows * (page - 1));

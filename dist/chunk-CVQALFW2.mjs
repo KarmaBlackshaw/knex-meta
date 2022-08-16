@@ -1,7 +1,7 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
-
-
-var _chunk22YCQZ2Sjs = require('./chunk-22YCQZ2S.js');
+import {
+  isArray,
+  isString
+} from "./chunk-PCDTXPNN.mjs";
 
 // src/metaFilter.ts
 function handleArrayDictionary(dictionaryProp, q) {
@@ -19,8 +19,8 @@ function metaFilter({
   if (!filterBy || !q) {
     return this;
   }
-  const isArrayFilterBy = _chunk22YCQZ2Sjs.isArray.call(void 0, filterBy);
-  const isArrayQ = _chunk22YCQZ2Sjs.isArray.call(void 0, q);
+  const isArrayFilterBy = isArray(filterBy);
+  const isArrayQ = isArray(q);
   if (isArrayFilterBy && isArrayQ) {
     return this.where(function() {
       q.forEach((currQ, currQIndex) => {
@@ -28,7 +28,7 @@ function metaFilter({
         if (!currQ || !currFilter) {
           return;
         }
-        if (_chunk22YCQZ2Sjs.isArray.call(void 0, currFilter)) {
+        if (isArray(currFilter)) {
           return handleArrayDictionary.apply(this, [
             currFilter,
             currQ
@@ -38,14 +38,14 @@ function metaFilter({
       });
     });
   }
-  if (isArrayFilterBy && _chunk22YCQZ2Sjs.isString.call(void 0, q)) {
+  if (isArrayFilterBy && isString(q)) {
     return this.where(function() {
       filterBy.forEach((currFilter) => {
         const dictionaryFilterValue = dictionary[currFilter];
         if (!dictionaryFilterValue) {
           return;
         }
-        if (_chunk22YCQZ2Sjs.isArray.call(void 0, dictionaryFilterValue)) {
+        if (isArray(dictionaryFilterValue)) {
           return handleArrayDictionary.apply(this, [
             dictionaryFilterValue,
             q
@@ -55,16 +55,16 @@ function metaFilter({
       });
     });
   }
-  if (isArrayQ && _chunk22YCQZ2Sjs.isString.call(void 0, filterBy) && dictionary[filterBy]) {
+  if (isArrayQ && isString(filterBy) && dictionary[filterBy]) {
     return this.where(function() {
       q.forEach((currQ) => {
         this.orWhere(dictionary[filterBy], "like", `%${currQ}%`);
       });
     });
   }
-  if (_chunk22YCQZ2Sjs.isString.call(void 0, filterBy) && _chunk22YCQZ2Sjs.isString.call(void 0, q)) {
+  if (isString(filterBy) && isString(q)) {
     const filterDictionary = dictionary[filterBy];
-    const isArrayDictionary = _chunk22YCQZ2Sjs.isArray.call(void 0, filterDictionary);
+    const isArrayDictionary = isArray(filterDictionary);
     if (isArrayDictionary) {
       return handleArrayDictionary.apply(this, [
         filterDictionary,
@@ -72,12 +72,12 @@ function metaFilter({
       ]);
     }
   }
-  if (_chunk22YCQZ2Sjs.isString.call(void 0, filterBy) && dictionary[filterBy]) {
+  if (isString(filterBy) && dictionary[filterBy]) {
     return this.where(dictionary[filterBy], "like", `%${q}%`);
   }
   return this;
 }
 
-
-
-exports.metaFilter = metaFilter;
+export {
+  metaFilter
+};

@@ -1,13 +1,13 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
-
-var _chunk22YCQZ2Sjs = require('./chunk-22YCQZ2S.js');
-
-
-
-var _chunkV2VUO6WCjs = require('./chunk-V2VUO6WC.js');
+import {
+  toArray
+} from "./chunk-XYXRENBZ.mjs";
+import {
+  __commonJS,
+  __toESM
+} from "./chunk-ICSNCPDD.mjs";
 
 // node_modules/lodash/isNil.js
-var require_isNil = _chunkV2VUO6WCjs.__commonJS.call(void 0, {
+var require_isNil = __commonJS({
   "node_modules/lodash/isNil.js"(exports, module) {
     function isNil(value) {
       return value == null;
@@ -17,14 +17,7 @@ var require_isNil = _chunkV2VUO6WCjs.__commonJS.call(void 0, {
 });
 
 // src/bulkUpdate.ts
-var import_isNil = _chunkV2VUO6WCjs.__toESM.call(void 0, require_isNil());
-
-// utils/array.ts
-function toArray(foo) {
-  return _chunk22YCQZ2Sjs.isArray.call(void 0, foo) ? foo : [foo];
-}
-
-// src/bulkUpdate.ts
+var import_isNil = __toESM(require_isNil());
 var quoter = (foo) => {
   if (typeof foo === "number") {
     return foo;
@@ -78,6 +71,6 @@ function bulkUpdate(key, _payload = [], _options) {
   });
 }
 
-
-
-exports.bulkUpdate = bulkUpdate;
+export {
+  bulkUpdate
+};

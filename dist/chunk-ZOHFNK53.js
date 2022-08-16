@@ -1,13 +1,13 @@
-import {
-  isArray
-} from "./chunk-Q2BL4KY6.mjs";
-import {
-  __commonJS,
-  __toESM
-} from "./chunk-ICSNCPDD.mjs";
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});
+
+var _chunk25PH37HGjs = require('./chunk-25PH37HG.js');
+
+
+
+var _chunkV2VUO6WCjs = require('./chunk-V2VUO6WC.js');
 
 // node_modules/lodash/isNil.js
-var require_isNil = __commonJS({
+var require_isNil = _chunkV2VUO6WCjs.__commonJS.call(void 0, {
   "node_modules/lodash/isNil.js"(exports, module) {
     function isNil(value) {
       return value == null;
@@ -17,14 +17,7 @@ var require_isNil = __commonJS({
 });
 
 // src/bulkUpdate.ts
-var import_isNil = __toESM(require_isNil());
-
-// utils/array.ts
-function toArray(foo) {
-  return isArray(foo) ? foo : [foo];
-}
-
-// src/bulkUpdate.ts
+var import_isNil = _chunkV2VUO6WCjs.__toESM.call(void 0, require_isNil());
 var quoter = (foo) => {
   if (typeof foo === "number") {
     return foo;
@@ -38,7 +31,7 @@ var quoter = (foo) => {
   console.warn(`${typeof foo} is not accounted.`);
 };
 function bulkUpdate(key, _payload = [], _options) {
-  const keys = toArray(key);
+  const keys = _chunk25PH37HGjs.toArray.call(void 0, key);
   const keysSet = new Set(keys);
   const payload = JSON.parse(JSON.stringify(_payload));
   const options = Object.assign({
@@ -78,6 +71,6 @@ function bulkUpdate(key, _payload = [], _options) {
   });
 }
 
-export {
-  bulkUpdate
-};
+
+
+exports.bulkUpdate = bulkUpdate;

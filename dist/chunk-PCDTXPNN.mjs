@@ -17,6 +17,18 @@ function isObject(x) {
 function isNil(x) {
   return x === null || typeof x === "undefined";
 }
+function isEmpty(x) {
+  if (!x) {
+    return true;
+  }
+  if (isArray(x)) {
+    return x.length === 0;
+  }
+  if (isObject(x)) {
+    return Object.values(x).length === 0;
+  }
+  throw new Error("uncaught type");
+}
 
 export {
   isNumber,
@@ -24,5 +36,6 @@ export {
   isArray,
   isDate,
   isObject,
-  isNil
+  isNil,
+  isEmpty
 };

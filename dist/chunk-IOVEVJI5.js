@@ -17,6 +17,18 @@ function isObject(x) {
 function isNil(x) {
   return x === null || typeof x === "undefined";
 }
+function isEmpty(x) {
+  if (!x) {
+    return true;
+  }
+  if (isArray(x)) {
+    return x.length === 0;
+  }
+  if (isObject(x)) {
+    return Object.values(x).length === 0;
+  }
+  throw new Error("uncaught type");
+}
 
 
 
@@ -25,4 +37,5 @@ function isNil(x) {
 
 
 
-exports.isNumber = isNumber; exports.isString = isString; exports.isArray = isArray; exports.isDate = isDate; exports.isObject = isObject; exports.isNil = isNil;
+
+exports.isNumber = isNumber; exports.isString = isString; exports.isArray = isArray; exports.isDate = isDate; exports.isObject = isObject; exports.isNil = isNil; exports.isEmpty = isEmpty;

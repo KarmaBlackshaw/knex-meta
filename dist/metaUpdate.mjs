@@ -1,8 +1,8 @@
 import {
-  jsonObject
-} from "./chunk-ORQ4CCXV.mjs";
+  metaUpdate
+} from "./chunk-ZCT4KZ2F.mjs";
 import "./chunk-PCDTXPNN.mjs";
 import "./chunk-ICSNCPDD.mjs";
 export {
-  jsonObject
+  metaUpdate
 };

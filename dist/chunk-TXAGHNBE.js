@@ -2,7 +2,7 @@
 
 
 
-var _chunk22YCQZ2Sjs = require('./chunk-22YCQZ2S.js');
+var _chunkIOVEVJI5js = require('./chunk-IOVEVJI5.js');
 
 // src/metaDate.ts
 var _moment = require('moment'); var _moment2 = _interopRequireDefault(_moment);
@@ -19,15 +19,15 @@ function metaDate({
   if (!dateBy || !dateFrom) {
     return this;
   }
-  if (!_chunk22YCQZ2Sjs.isDate.call(void 0, dateFrom)) {
+  if (!_chunkIOVEVJI5js.isDate.call(void 0, dateFrom)) {
     return this;
   }
-  if (_chunk22YCQZ2Sjs.isObject.call(void 0, dictionary) && !dictionary[dateBy]) {
+  if (_chunkIOVEVJI5js.isObject.call(void 0, dictionary) && !dictionary[dateBy]) {
     return this;
   }
   const parsedDateFrom = _moment2.default.call(void 0, new Date(dateFrom));
   const dateFromTimestamp = hasTime(parsedDateFrom) ? parsedDateFrom.format(DATETIME_FORMAT) : parsedDateFrom.startOf("day").format(DATETIME_FORMAT);
-  if (_chunk22YCQZ2Sjs.isNil.call(void 0, dateTo)) {
+  if (_chunkIOVEVJI5js.isNil.call(void 0, dateTo)) {
     return this.where(dateBy, ">=", dateFromTimestamp).where(dateBy, "<=", this.client.raw("CURRENT_TIMESTAMP"));
   }
   const parsedDateTo = _moment2.default.call(void 0, new Date(dateTo));
