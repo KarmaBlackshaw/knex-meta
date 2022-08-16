@@ -22,3 +22,19 @@ export function isObject (x: any): x is object {
 export function isNil (x: unknown): x is null | undefined {
   return x === null || typeof x === 'undefined'
 }
+
+export function isEmpty (x: unknown): x is null | undefined {
+  if (!x) {
+    return true
+  }
+
+  if (isArray(x)) {
+    return x.length === 0
+  }
+
+  if (isObject(x)) {
+    return Object.values(x).length === 0
+  }
+
+  throw new Error('uncaught type')
+}
