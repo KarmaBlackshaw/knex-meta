@@ -1,6 +1,6 @@
 {
   "name": "@jeash/knex-meta",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "<div id=\"top\"></div>\r <!--\r *** Thanks for checking out the Best-README-Template. If you have a suggestion\r *** that would make this better, please fork the repo and create a pull request\r *** or simply open an issue with the tag \"enhancement\".\r *** Don't forget to give the project a star!\r *** Thanks again! Now go create something AMAZING! :D\r -->",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

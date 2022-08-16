@@ -15,11 +15,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(release): 1.1.4 [`40ff643`](https://github.com/KarmaBlackshaw/knex-meta/commit/40ff643d702d7619a60fec309ffaeed8c69bac39)
 - refactor: change changelog template [`6174069`](https://github.com/KarmaBlackshaw/knex-meta/commit/61740690579790bbbf4179d706f59abcfb272f07)
 
-## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.5...1.1.3) - 2022-08-03
+## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.6...1.1.3) - 2022-08-03
 
 
 
 
+
+## [1.0.6](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.5...1.0.6) - 2022-08-16
+
+
+
+
+### Commits
+
+- add package-lock [`6ddeb4c`](https://github.com/KarmaBlackshaw/knex-meta/commit/6ddeb4cf92be73c6e3e9ea16a1b239be9cc7bd97)
+- chore(release): 1.0.6 [`3f3c508`](https://github.com/KarmaBlackshaw/knex-meta/commit/3f3c5084bcbaba1669982e0b67f3c5a1c4f14d4c)
+- feat: metaInsert [`051646f`](https://github.com/KarmaBlackshaw/knex-meta/commit/051646f563b11d0b663df0164a75d2e4768cde74)
+- feat: metaUpdate [`504c109`](https://github.com/KarmaBlackshaw/knex-meta/commit/504c109122455156f9960c9fc276e7dd33ecbc04)
+- refactor: clean tsconfig [`f849445`](https://github.com/KarmaBlackshaw/knex-meta/commit/f849445d604260a79389f5f0b59d1e4f6b1e1dd9)
+- patch: update  readme [`bd45f45`](https://github.com/KarmaBlackshaw/knex-meta/commit/bd45f454335b32b172d2bbe01b9aefe41a8e7661)
+- remove unused workflow [`400850e`](https://github.com/KarmaBlackshaw/knex-meta/commit/400850e935381b2d1ae1021c9ff45fa5ae5a8330)
+- update docs [`55a8bb7`](https://github.com/KarmaBlackshaw/knex-meta/commit/55a8bb7f4f03b8e66a58ea134c2b707b5a67e73a)
+- add isEmpty in utils [`32c9a05`](https://github.com/KarmaBlackshaw/knex-meta/commit/32c9a056ba8b217b5c30211a3a8bc518c5dacbf6)
+- remove playground [`e44be73`](https://github.com/KarmaBlackshaw/knex-meta/commit/e44be7315eb290de54d6a20de9b483698b432f6f)
 
 ## [1.0.5](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.4...1.0.5) - 2022-08-03
 
