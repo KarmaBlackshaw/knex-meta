@@ -6,7 +6,7 @@
     "paths": {
       "@utils/*": ["./utils/*"]
     },
-    "typeRoots": ["node_modules/@types", "@types"],
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

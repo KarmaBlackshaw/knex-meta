@@ -1,5 +1,5 @@
 export default {
-  entry: ['src/*.ts', '!src/*.test.ts'],
+  entry: ['src/**/*.ts', '!src/**/*.test.ts'],
   format: ['esm', 'cjs'],
   dts: false,
   splitting: true,

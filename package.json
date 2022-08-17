@@ -1,11 +1,12 @@
 {
   "name": "@jeash/knex-meta",
   "version": "1.0.7",
-  "description": "<div id=\"top\"></div>\r <!--\r *** Thanks for checking out the Best-README-Template. If you have a suggestion\r *** that would make this better, please fork the repo and create a pull request\r *** or simply open an issue with the tag \"enhancement\".\r *** Don't forget to give the project a star!\r *** Thanks again! Now go create something AMAZING! :D\r -->",
+  "description": "Utility extensions for knex query builder",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
+    "dev": "nodemon -r tsconfig-paths/register index.ts",
     "test": "vitest",
     "build": "tsup",
     "build:watch": "npm run build -- --watch src",
@@ -47,11 +48,11 @@
     "eslint-plugin-standard": "4.0.1",
     "jest": "^28.1.2",
     "nodemon": "^2.0.18",
+    "release-it": "^15.2.0",
     "ts-node": "^10.8.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vitest": "^0.17.0",
-    "release-it": "^15.2.0"
+    "vitest": "^0.17.0"
   },
   "repository": {
     "type": "git",

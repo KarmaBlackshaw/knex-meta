@@ -29,14 +29,32 @@ import {
 import "./chunk-QFJUJ4KH.mjs";
 import "./chunk-GRXPJ7I5.mjs";
 import "./chunk-ICSNCPDD.mjs";
-export {
-  bulkUpdate,
-  jsonObject,
-  meta,
+
+// src/connection.ts
+import { knex } from "knex";
+var extensions = [
   metaDate,
   metaFilter,
-  metaInsert,
   metaPage,
   metaSort,
-  metaUpdate
+  meta,
+  bulkUpdate,
+  jsonObject,
+  metaUpdate,
+  metaInsert
+];
+extensions.forEach((extension) => {
+  knex.QueryBuilder.extend(extension.name, extension);
+});
+var connection_default = knex({
+  client: "mysql",
+  connection: {
+    host: "10.0.10.43",
+    user: "pmchan",
+    password: "pm@1004@chan@tT@9415042",
+    database: "inplay_sports"
+  }
+});
+export {
+  connection_default as default
 };

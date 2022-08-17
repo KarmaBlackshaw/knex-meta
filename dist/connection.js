@@ -30,13 +30,31 @@ require('./chunk-VKDJXQUC.js');
 require('./chunk-6YPE5F7U.js');
 require('./chunk-V2VUO6WC.js');
 
+// src/connection.ts
+var _knex = require('knex');
+var extensions = [
+  _chunkW2GS2UI3js.metaDate,
+  _chunkCLWHHB5Ijs.metaFilter,
+  _chunkARB7AYYIjs.metaPage,
+  _chunkRYE4XEQEjs.metaSort,
+  _chunkSZF7J4BUjs.meta,
+  _chunk6AZZI27Njs.bulkUpdate,
+  _chunk6CERQZMTjs.jsonObject,
+  _chunk4L4OTXTAjs.metaUpdate,
+  _chunkUE2OKVPOjs.metaInsert
+];
+extensions.forEach((extension) => {
+  _knex.knex.QueryBuilder.extend(extension.name, extension);
+});
+var connection_default = _knex.knex.call(void 0, {
+  client: "mysql",
+  connection: {
+    host: "10.0.10.43",
+    user: "pmchan",
+    password: "pm@1004@chan@tT@9415042",
+    database: "inplay_sports"
+  }
+});
 
 
-
-
-
-
-
-
-
-exports.bulkUpdate = _chunk6AZZI27Njs.bulkUpdate; exports.jsonObject = _chunk6CERQZMTjs.jsonObject; exports.meta = _chunkSZF7J4BUjs.meta; exports.metaDate = _chunkW2GS2UI3js.metaDate; exports.metaFilter = _chunkCLWHHB5Ijs.metaFilter; exports.metaInsert = _chunkUE2OKVPOjs.metaInsert; exports.metaPage = _chunkARB7AYYIjs.metaPage; exports.metaSort = _chunkRYE4XEQEjs.metaSort; exports.metaUpdate = _chunk4L4OTXTAjs.metaUpdate;
+exports.default = connection_default;
