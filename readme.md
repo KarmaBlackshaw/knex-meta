@@ -17,6 +17,26 @@ Useful extensions for knex query builder
 
 ## Usage
 
+### Extend
+const knex = require('knex')
+const knexMeta = require('@jeash/knex-meta')
+
+const extensions = [
+  knexMeta.metaDate,
+  knexMeta.metaFilter,
+  knexMeta.metaPage,
+  knexMeta.metaSort,
+  knexMeta.meta,
+  knexMeta.bulkUpdate,
+  knexMeta.jsonObject,
+  knexMeta.metaUpdate,
+  knexMeta.metaInsert
+]
+
+extensions.forEach(extension => {
+  knex.QueryBuilder.extend(extension.name, extension)
+})
+
 ### Meta Date
 Simple date filter
 ```js
