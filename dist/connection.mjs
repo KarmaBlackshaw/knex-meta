@@ -1,4 +1,7 @@
 import {
+  metaInsert
+} from "./chunk-RF3W556C.mjs";
+import {
   metaPage
 } from "./chunk-WKLMP7EO.mjs";
 import {
@@ -11,6 +14,7 @@ import "./chunk-UVT5OIO7.mjs";
 import {
   bulkUpdate
 } from "./chunk-4OLMO2AO.mjs";
+import "./chunk-QFJUJ4KH.mjs";
 import {
   jsonObject
 } from "./chunk-CTIIIQYB.mjs";
@@ -24,9 +28,8 @@ import {
   metaFilter
 } from "./chunk-R5XBWYPM.mjs";
 import {
-  metaInsert
-} from "./chunk-RF3W556C.mjs";
-import "./chunk-QFJUJ4KH.mjs";
+  metaFind
+} from "./chunk-ZJRGD4PJ.mjs";
 import "./chunk-GRXPJ7I5.mjs";
 import "./chunk-ICSNCPDD.mjs";
 
@@ -41,7 +44,8 @@ var extensions = [
   bulkUpdate,
   jsonObject,
   metaUpdate,
-  metaInsert
+  metaInsert,
+  metaFind
 ];
 extensions.forEach((extension) => {
   knex.QueryBuilder.extend(extension.name, extension);

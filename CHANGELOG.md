@@ -15,11 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(release): 1.1.4 [`40ff643`](https://github.com/KarmaBlackshaw/knex-meta/commit/40ff643d702d7619a60fec309ffaeed8c69bac39)
 - refactor: change changelog template [`6174069`](https://github.com/KarmaBlackshaw/knex-meta/commit/61740690579790bbbf4179d706f59abcfb272f07)
 
-## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.1...1.1.3) - 2022-08-03
+## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.2...1.1.3) - 2022-08-03
 
 
 
 
+
+## [1.1.2](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.1...1.1.2) - 2022-08-22
+
+
+
+
+### Commits
+
+- chore(release): 1.1.2 [`b403cba`](https://github.com/KarmaBlackshaw/knex-meta/commit/b403cbaae8492ea9586986b4db899610e7569a04)
+- refactor: readme [`63bf3a2`](https://github.com/KarmaBlackshaw/knex-meta/commit/63bf3a213dd93fc8a71ded61a6d3bda6e6fc4db7)
 
 ## [1.1.1](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.0...1.1.1) - 2022-08-22
 
