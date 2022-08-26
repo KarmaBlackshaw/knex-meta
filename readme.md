@@ -263,6 +263,24 @@ const result = knex('users')
 ```
 
 
+----
+### metaFind
+```js
+const dictionary = {
+  name: 'users.name',
+  status: 'users.status'
+}
+
+const conditions = {
+  name: 'Jeash',
+  status: 'banned'
+}
+
+const result = knex('users')
+  .metaFind(conditions, dictionary)
+```
+
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
