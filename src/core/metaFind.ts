@@ -33,5 +33,5 @@ export function metaFind (conditions: TConditions, dictionary: TDictionary) {
     return this.where('1 = 0')
   }
 
-  return this
+  return this.first()
 }
