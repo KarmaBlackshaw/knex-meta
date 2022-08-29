@@ -16,7 +16,7 @@ test('Should perform simple sort', () => {
     })
     .toString()
 
-  const expected = 'select * from `users` order by `name` asc'
+  const expected = 'select * from `users` order by `users`.`name` asc'
 
   expect(result).toBe(expected)
 })
@@ -186,7 +186,7 @@ test('Should perform array sort', () => {
     })
     .toString()
 
-  const expected = 'select * from `users` order by `name` asc, `place` desc'
+  const expected = 'select * from `users` order by `users`.`name` asc, `users`.`place` desc'
 
   expect(result).toBe(expected)
 })

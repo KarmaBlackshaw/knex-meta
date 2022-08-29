@@ -55,7 +55,7 @@ export function metaSort ({
         continue
       }
 
-      this.orderBy(currSortBy, sortDirection)
+      this.orderBy(dictionary[currSortBy], sortDirection)
     }
 
     return this
@@ -70,7 +70,7 @@ export function metaSort ({
       return this
     }
 
-    this.orderBy(sortBy, sort)
+    this.orderBy(dictionary[sortBy], sort)
 
     return this
   }
