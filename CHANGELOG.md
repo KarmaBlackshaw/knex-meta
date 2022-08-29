@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.0...1.2.1) - 2022-08-26
+
+
+
+
+### Commits
+
+- chore(release): 1.2.1 [`4e3befd`](https://github.com/KarmaBlackshaw/knex-meta/commit/4e3befd068bf5aa9b4022fa29baeb3f75b42135b)
+- refactor: add limit one for metaFind [`a711fb7`](https://github.com/KarmaBlackshaw/knex-meta/commit/a711fb781474ad1db41533353bb7382884297c65)
+
 ## [1.2.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.4...1.2.0) - 2022-08-26
 
 

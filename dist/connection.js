@@ -6,7 +6,7 @@ var _chunkUE2OKVPOjs = require('./chunk-UE2OKVPO.js');
 var _chunkARB7AYYIjs = require('./chunk-ARB7AYYI.js');
 
 
-var _chunkRYE4XEQEjs = require('./chunk-RYE4XEQE.js');
+var _chunkR6LVYMVGjs = require('./chunk-R6LVYMVG.js');
 
 
 var _chunk4L4OTXTAjs = require('./chunk-4L4OTXTA.js');
@@ -39,7 +39,7 @@ var extensions = [
   _chunkW2GS2UI3js.metaDate,
   _chunkCLWHHB5Ijs.metaFilter,
   _chunkARB7AYYIjs.metaPage,
-  _chunkRYE4XEQEjs.metaSort,
+  _chunkR6LVYMVGjs.metaSort,
   _chunkSZF7J4BUjs.meta,
   _chunk6AZZI27Njs.bulkUpdate,
   _chunk6CERQZMTjs.jsonObject,
