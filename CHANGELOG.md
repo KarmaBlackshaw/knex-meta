@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.1...1.2.2) - 2022-08-29
+
+
+
+
+### Commits
+
+- chore(release): 1.2.2 [`a0c3b68`](https://github.com/KarmaBlackshaw/knex-meta/commit/a0c3b6812217a8e0613efd5f2d27c22c8acd1e74)
+- fix: metaSort bug [`d660a61`](https://github.com/KarmaBlackshaw/knex-meta/commit/d660a616d85efee595719299639beea6b0b1ee7f)
+
 ## [1.2.1](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.0...1.2.1) - 2022-08-26
 
 

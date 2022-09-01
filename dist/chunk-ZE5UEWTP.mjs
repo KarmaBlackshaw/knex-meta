@@ -1,4 +1,8 @@
 import {
+  isQuoteWrapped,
+  trimQuotes
+} from "./chunk-AMSJFKOM.mjs";
+import {
   isArray,
   isString
 } from "./chunk-GRXPJ7I5.mjs";
@@ -7,9 +11,12 @@ import {
 function handleArrayDictionary(dictionaryProp, q) {
   return this.where(function() {
     dictionaryProp.forEach((filter) => {
-      this.orWhere(filter, "like", `%${q}%`);
+      this.orWhere(...whereString(filter, q));
     });
   });
+}
+function whereString(filterBy, q) {
+  return isQuoteWrapped(q) ? [filterBy, "like", trimQuotes(q)] : [filterBy, "like", `%${q}%`];
 }
 function metaFilter({
   filterBy,
@@ -34,7 +41,7 @@ function metaFilter({
             currQ
           ]);
         }
-        this.where(currFilter, "like", `%${currQ}%`);
+        this.where(...whereString(currFilter, currQ));
       });
     });
   }
@@ -51,14 +58,14 @@ function metaFilter({
             q
           ]);
         }
-        this.orWhere(dictionary[currFilter], "like", `%${q}%`);
+        this.orWhere(...whereString(dictionary[currFilter], q));
       });
     });
   }
   if (isArrayQ && isString(filterBy) && dictionary[filterBy]) {
     return this.where(function() {
       q.forEach((currQ) => {
-        this.orWhere(dictionary[filterBy], "like", `%${currQ}%`);
+        this.orWhere(...whereString(dictionary[filterBy], currQ));
       });
     });
   }
@@ -73,7 +80,7 @@ function metaFilter({
     }
   }
   if (isString(filterBy) && dictionary[filterBy]) {
-    return this.where(dictionary[filterBy], "like", `%${q}%`);
+    return this.where(...whereString(dictionary[filterBy], q));
   }
   return this;
 }

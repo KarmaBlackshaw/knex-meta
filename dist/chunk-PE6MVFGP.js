@@ -1,15 +1,22 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
 
+var _chunkHOFJ5C5Hjs = require('./chunk-HOFJ5C5H.js');
+
+
+
 var _chunk6YPE5F7Ujs = require('./chunk-6YPE5F7U.js');
 
 // src/core/metaFilter.ts
 function handleArrayDictionary(dictionaryProp, q) {
   return this.where(function() {
     dictionaryProp.forEach((filter) => {
-      this.orWhere(filter, "like", `%${q}%`);
+      this.orWhere(...whereString(filter, q));
     });
   });
+}
+function whereString(filterBy, q) {
+  return _chunkHOFJ5C5Hjs.isQuoteWrapped.call(void 0, q) ? [filterBy, "like", _chunkHOFJ5C5Hjs.trimQuotes.call(void 0, q)] : [filterBy, "like", `%${q}%`];
 }
 function metaFilter({
   filterBy,
@@ -34,7 +41,7 @@ function metaFilter({
             currQ
           ]);
         }
-        this.where(currFilter, "like", `%${currQ}%`);
+        this.where(...whereString(currFilter, currQ));
       });
     });
   }
@@ -51,14 +58,14 @@ function metaFilter({
             q
           ]);
         }
-        this.orWhere(dictionary[currFilter], "like", `%${q}%`);
+        this.orWhere(...whereString(dictionary[currFilter], q));
       });
     });
   }
   if (isArrayQ && _chunk6YPE5F7Ujs.isString.call(void 0, filterBy) && dictionary[filterBy]) {
     return this.where(function() {
       q.forEach((currQ) => {
-        this.orWhere(dictionary[filterBy], "like", `%${currQ}%`);
+        this.orWhere(...whereString(dictionary[filterBy], currQ));
       });
     });
   }
@@ -73,7 +80,7 @@ function metaFilter({
     }
   }
   if (_chunk6YPE5F7Ujs.isString.call(void 0, filterBy) && dictionary[filterBy]) {
-    return this.where(dictionary[filterBy], "like", `%${q}%`);
+    return this.where(...whereString(dictionary[filterBy], q));
   }
   return this;
 }
