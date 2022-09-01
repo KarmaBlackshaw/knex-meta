@@ -6,9 +6,15 @@ import {
   isString
 } from '../utils/is'
 
+import {
+  isQuoteWrapped,
+  trimQuotes
+} from '../utils/string'
+
 /**
  * HELPERS
  */
+
 /**
  * If dictionary key is array.
  * name: ['users.fname', 'users.lname']
@@ -16,9 +22,15 @@ import {
 function handleArrayDictionary (dictionaryProp: string[], q: string) {
   return this.where(function () {
     dictionaryProp.forEach(filter => {
-      this.orWhere(filter, 'like', `%${q}%`)
+      this.orWhere(...whereString(filter, q))
     })
   })
+}
+
+function whereString (filterBy, q) {
+  return isQuoteWrapped(q)
+    ? [filterBy, 'like', trimQuotes(q)]
+    : [filterBy, 'like', `%${q}%`]
 }
 
 /**
@@ -61,7 +73,7 @@ export function metaFilter ({
           ])
         }
 
-        this.where(currFilter, 'like', `%${currQ}%`)
+        this.where(...whereString(currFilter, currQ))
       })
     })
   }
@@ -85,7 +97,7 @@ export function metaFilter ({
           ])
         }
 
-        this.orWhere(dictionary[currFilter], 'like', `%${q}%`)
+        this.orWhere(...whereString(dictionary[currFilter], q))
       })
     })
   }
@@ -96,7 +108,7 @@ export function metaFilter ({
   if (isArrayQ && isString(filterBy) && dictionary[filterBy]) {
     return this.where(function () {
       q.forEach(currQ => {
-        this.orWhere(dictionary[filterBy], 'like', `%${currQ}%`)
+        this.orWhere(...whereString(dictionary[filterBy], currQ))
       })
     })
   }
@@ -117,7 +129,7 @@ export function metaFilter ({
   }
 
   if (isString(filterBy) && dictionary[filterBy]) {
-    return this.where(dictionary[filterBy], 'like', `%${q}%`)
+    return this.where(...whereString(dictionary[filterBy], q))
   }
 
   return this

@@ -128,3 +128,22 @@ test('If array "q" and string "filterBy"', () => {
 
   expect(result).toBe(expected)
 })
+
+test('Exact match should work properly', () => {
+  const dictionary = {
+    name: 'users.fname',
+    address: 'users.address'
+  }
+
+  const result = knex('users')
+    .metaFilter({
+      filterBy: 'name',
+      q: ['"john"', 'paul'],
+      dictionary
+    })
+    .toString()
+
+  const expected = "select * from `users` where (`users`.`fname` like 'john' or `users`.`fname` like '%paul%')"
+
+  expect(result).toBe(expected)
+})
