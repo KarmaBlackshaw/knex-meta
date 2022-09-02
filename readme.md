@@ -168,6 +168,21 @@ const result = knex('users')
     dictionary
   })
 ```
+
+For exact match, wrap `q` with double quotes
+```js
+const dictionary = {
+  name: ['users.fname', 'users.lname'],
+  address: 'users.address'
+}
+
+const result = knex('users')
+  .metaFilter({
+    filterBy: ['name', 'address'],
+    q: '"john"',
+    dictionary
+  })
+```
 ----
 ### Meta
 ```js
@@ -179,7 +194,6 @@ const result = knex('users')
   .meta({
     ...{ dateBy, dateFrom, dateTo, dateDictionary },
     ...{ sortBy, sort, sortDictionary },
-    ...{ dateBy, dateFrom, dateTo, dateDictionary },
     ...{ page, rows },
     ...{ filterBy, q, filterDictionary },
     isCount
