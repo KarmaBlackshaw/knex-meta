@@ -186,16 +186,16 @@ const result = knex('users')
 ----
 ### Meta
 ```js
-const dictionary = {
-  birthdate: 'users.birthdate'
-}
+const filterDictionary = {}
+const sortDictionary = {}
+const dateDictionary = {}
 
 const result = knex('users')
   .meta({
-    ...{ dateBy, dateFrom, dateTo, dateDictionary },
-    ...{ sortBy, sort, sortDictionary },
-    ...{ page, rows },
     ...{ filterBy, q, filterDictionary },
+    ...{ sortBy, sort, sortDictionary },
+    ...{ dateBy, dateFrom, dateTo, dateDictionary },
+    ...{ page, rows },
     isCount
   })
 ```
