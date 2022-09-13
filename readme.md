@@ -217,7 +217,7 @@ const dateDictionary = {}
 
 const result = knex('users')
   .meta({
-    ...{ filterBy, q, filterDictionary },
+    ...{ filterBy, q, filterDictionary, searchItems },
     ...{ sortBy, sort, sortDictionary },
     ...{ dateBy, dateFrom, dateTo, dateDictionary },
     ...{ page, rows },
