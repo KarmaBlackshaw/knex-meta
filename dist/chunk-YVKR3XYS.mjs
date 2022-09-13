@@ -1,11 +1,11 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
-
-
-var _chunk5YPKGKLPjs = require('./chunk-5YPKGKLP.js');
-
-
-
-var _chunk6YPE5F7Ujs = require('./chunk-6YPE5F7U.js');
+import {
+  isEmpty,
+  size
+} from "./chunk-FHW35CUF.mjs";
+import {
+  isArray,
+  isString
+} from "./chunk-GRXPJ7I5.mjs";
 
 // src/core/metaSort.ts
 function metaSort({
@@ -20,12 +20,12 @@ function metaSort({
   if (!sort || !sortBy) {
     return this;
   }
-  if (_chunk5YPKGKLPjs.isEmpty.call(void 0, dictionary)) {
+  if (isEmpty(dictionary)) {
     return this;
   }
   const sortDirections = /* @__PURE__ */ new Set(["asc", "desc"]);
-  if (_chunk6YPE5F7Ujs.isArray.call(void 0, sortBy) && _chunk6YPE5F7Ujs.isArray.call(void 0, sort)) {
-    if (_chunk5YPKGKLPjs.size.call(void 0, sortBy) !== _chunk5YPKGKLPjs.size.call(void 0, sort)) {
+  if (isArray(sortBy) && isArray(sort)) {
+    if (size(sortBy) !== size(sort)) {
       return this;
     }
     for (let i = 0; i < sortBy.length; i++) {
@@ -41,7 +41,7 @@ function metaSort({
     }
     return this;
   }
-  if (_chunk6YPE5F7Ujs.isString.call(void 0, sortBy) && _chunk6YPE5F7Ujs.isString.call(void 0, sort)) {
+  if (isString(sortBy) && isString(sort)) {
     if (!sortDirections.has(sort)) {
       return this;
     }
@@ -53,6 +53,6 @@ function metaSort({
   }
 }
 
-
-
-exports.metaSort = metaSort;
+export {
+  metaSort
+};

@@ -22,8 +22,21 @@ function size(val) {
   }
   return 0;
 }
+function omitBy(obj, cb) {
+  const returnObj = {};
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      const value = obj[key];
+      if (cb(value, key)) {
+        returnObj[key] = value;
+      }
+    }
+  }
+  return returnObj;
+}
 
 export {
   isEmpty,
-  size
+  size,
+  omitBy
 };
