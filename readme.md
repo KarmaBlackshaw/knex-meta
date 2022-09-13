@@ -183,6 +183,31 @@ const result = knex('users')
     dictionary
   })
 ```
+
+Search multiple items using `searchItems`
+```js
+const dictionary = {
+  name: ['users.fname', 'users.lname'],
+  address: 'users.address'
+}
+
+const searchItems = [
+  {
+    name: 'John',
+    address: 'Cebu'
+  },
+  {
+    name: 'Michael',
+    address: 'Palo'
+  }
+]
+
+const result = knex('users')
+  .metaFilter({
+    searchItems,
+    dictionary
+  })
+```
 ----
 ### Meta
 ```js
