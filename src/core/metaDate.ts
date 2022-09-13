@@ -18,7 +18,7 @@ function hasTime (momentDate: Moment) {
     .reduce((acc: number, curr: number) => acc + curr) > 0
 }
 
-interface IDateArguments {
+export interface IDateArguments {
   dateBy?: string,
   dateTo?: string,
   dateFrom?: string,

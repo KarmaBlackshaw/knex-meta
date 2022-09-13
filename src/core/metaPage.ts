@@ -5,7 +5,7 @@ import {
   isNumber
 } from '../utils/is'
 
-interface IPageArguments {
+export interface IPageArguments {
   page?: number,
   rows?: number,
   isCount: (boolean | number)

@@ -36,7 +36,7 @@ function whereString (filterBy, q) {
 /**
  * TYPES
  */
-interface IFilterArguments {
+export interface IFilterArguments {
   filterBy?: string | string[],
   q?: string | string[],
   dictionary?: Record<string, (string | string[])>

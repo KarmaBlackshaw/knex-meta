@@ -11,7 +11,7 @@ import {
   size
 } from '../utils/object'
 
-interface ISortArguments {
+export interface ISortArguments {
   sort?: string,
   sortBy?: string,
   dictionary?: Record<string, string>,
