@@ -147,3 +147,34 @@ test('Exact match should work properly', () => {
 
   expect(result).toBe(expected)
 })
+
+test('Search Items should work', () => {
+  const dictionary = {
+    name: 'users.fname',
+    address: 'users.address'
+  }
+
+  const searchItems = [
+    {
+      name: 'John',
+      address: 'Cebu',
+      asdf: 'asdf'
+    },
+    {
+      name: 'Johnny',
+      address: 'Palo'
+    }
+
+  ]
+
+  const result = knex('users')
+    .metaFilter({
+      searchItems,
+      dictionary
+    })
+    .toString()
+
+  const expected = "select * from `users` where ((`users`.`fname` like '%John%' and `users`.`address` like '%Cebu%') or (`users`.`fname` like '%Johnny%' and `users`.`address` like '%Palo%'))"
+
+  expect(result).toBe(expected)
+})

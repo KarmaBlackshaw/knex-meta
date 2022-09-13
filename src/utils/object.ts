@@ -26,3 +26,22 @@ export function size (val: any): number {
 
   return 0
 }
+
+export function omitBy (
+  obj: Record<string, any>,
+  cb: (_value: any, _key: string) => boolean
+) {
+  const returnObj = {}
+
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      const value = obj[key]
+
+      if (cb(value, key)) {
+        returnObj[key] = value
+      }
+    }
+  }
+
+  return returnObj
+}
