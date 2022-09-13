@@ -47,7 +47,7 @@ test('Sort meta functions correctly', () => {
     })
     .toString()
 
-  const expected = 'select * from `users` order by `birthdate` asc'
+  const expected = 'select * from `users` order by `users`.`birthdate` asc'
 
   expect(result).toBe(expected)
 })
@@ -96,7 +96,7 @@ test('All meta functions correctly', () => {
     })
     .toString()
 
-  const expected = "select * from `users` where `birthdate` >= '1998-07-29 00:00:00' and `birthdate` <= '1998-07-29 23:59:59' and `users`.`birthdate` like '%july%' order by `birthdate` asc limit 50 offset 100"
+  const expected = "select * from `users` where `birthdate` >= '1998-07-29 00:00:00' and `birthdate` <= '1998-07-29 23:59:59' and `users`.`birthdate` like '%july%' order by `users`.`birthdate` asc limit 50 offset 100"
 
   expect(result).toBe(expected)
 })
