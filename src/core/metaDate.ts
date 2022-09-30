@@ -52,8 +52,8 @@ export function metaDate ({
 
   if (isNil(dateTo)) {
     return this
-      .where(dateBy, '>=', dateFromTimestamp)
-      .where(dateBy, '<=', this.client.raw('CURRENT_TIMESTAMP'))
+      .where(dictionary[dateBy], '>=', dateFromTimestamp)
+      .where(dictionary[dateBy], '<=', this.client.raw('CURRENT_TIMESTAMP'))
   }
 
   const parsedDateTo = moment(new Date(dateTo))
@@ -62,6 +62,6 @@ export function metaDate ({
     : parsedDateTo.endOf('day').format(DATETIME_FORMAT)
 
   return this
-    .where(dateBy, '>=', dateFromTimestamp)
-    .where(dateBy, '<=', dateToTimestamp)
+    .where(dictionary[dateBy], '>=', dateFromTimestamp)
+    .where(dictionary[dateBy], '<=', dateToTimestamp)
 }

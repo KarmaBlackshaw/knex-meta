@@ -16,7 +16,7 @@ test('Adds startOf day and endOf day if time is not present', () => {
     })
     .toString()
 
-  const expected = "select * from `users` where `birthdate` >= '1998-07-29 00:00:00' and `birthdate` <= '1998-07-29 23:59:59'"
+  const expected = "select * from `users` where `users`.`birthdate` >= '1998-07-29 00:00:00' and `users`.`birthdate` <= '1998-07-29 23:59:59'"
 
   expect(result).toBe(expected)
 })
@@ -35,7 +35,7 @@ test('Sets "dateTo" to current date if empty', () => {
     .toString()
     .replace(/`/g, '')
 
-  const expected = 'select * from users where birthdate >= \'1998-07-29 00:00:00\' and birthdate <= CURRENT_TIMESTAMP'
+  const expected = 'select * from users where users.birthdate >= \'1998-07-29 00:00:00\' and users.birthdate <= CURRENT_TIMESTAMP'
 
   expect(result).toBe(expected)
 })
@@ -72,7 +72,7 @@ test('Works correctly with time', () => {
     })
     .toString()
 
-  const expected = "select * from `users` where `birthdate` >= '1998-07-29 11:22:30' and `birthdate` <= '1998-07-29 10:22:30'"
+  const expected = "select * from `users` where `users`.`birthdate` >= '1998-07-29 11:22:30' and `users`.`birthdate` <= '1998-07-29 10:22:30'"
 
   expect(result).toBe(expected)
 })
