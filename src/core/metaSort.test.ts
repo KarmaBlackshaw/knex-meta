@@ -210,3 +210,22 @@ test('Should ignore if "sort" and "sortBy" data size is not the same', () => {
 
   expect(result).toBe(expected)
 })
+
+test('Should ignore if "sort" and "sortBy" data size is not the same', () => {
+  const dictionary = {
+    name: ['users.name', 'users.created_at']
+  }
+
+  const result = knex('users')
+    .metaSort({
+      sort: 'desc',
+      sortBy: 'name',
+      dictionary,
+      isCount: false
+    })
+    .toString()
+
+  const expected = 'select * from `users` order by `users`.`name` desc, `users`.`created_at` desc'
+
+  expect(result).toBe(expected)
+})

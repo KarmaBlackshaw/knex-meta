@@ -1,15 +1,4 @@
-/**
- * UTILITIES
- */
-import {
-  isArray,
-  isString
-} from '../utils/is'
-
-import {
-  isEmpty,
-  size
-} from '../utils/object'
+import _ from 'lodash'
 
 export interface ISortArguments {
   sort?: string,
@@ -32,46 +21,34 @@ export function metaSort ({
     return this
   }
 
-  if (isEmpty(dictionary)) {
+  if (_.isEmpty(dictionary)) {
+    return this
+  }
+
+  const sortArray = _.castArray(sort)
+  const sortByArray = _.castArray(sortBy)
+
+  if (sortArray.length !== sortByArray.length) {
     return this
   }
 
   const sortDirections = new Set(['asc', 'desc'])
-
-  if (isArray(sortBy) && isArray(sort)) {
-    if (size(sortBy) !== size(sort)) {
-      return this
+  sortByArray.forEach((currSortByKey, currSortByIndex) => {
+    if (!dictionary[currSortByKey]) {
+      return
     }
 
-    for (let i = 0; i < sortBy.length; i++) {
-      const currSortBy = sortBy[i]
-      const sortDirection = sort[i]
-
-      if (!sortDirections.has(sortDirection)) {
-        continue
-      }
-
-      if (!dictionary[currSortBy]) {
-        continue
-      }
-
-      this.orderBy(dictionary[currSortBy], sortDirection)
+    const currSort = sortArray[currSortByIndex]
+    if (!sortDirections.has(currSort)) {
+      return
     }
 
-    return this
-  }
+    const currSortBy = _.castArray(dictionary[currSortByKey])
 
-  if (isString(sortBy) && isString(sort)) {
-    if (!sortDirections.has(sort)) {
-      return this
-    }
+    currSortBy.forEach(sortCol => {
+      this.orderBy(sortCol, currSort)
+    })
+  })
 
-    if (!dictionary[sortBy]) {
-      return this
-    }
-
-    this.orderBy(dictionary[sortBy], sort)
-
-    return this
-  }
+  return this
 }
