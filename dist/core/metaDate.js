@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunkW2GS2UI3js = require('../chunk-W2GS2UI3.js');
+var _chunkY6K6Z7TJjs = require('../chunk-Y6K6Z7TJ.js');
 require('../chunk-6YPE5F7U.js');
 
 
-exports.metaDate = _chunkW2GS2UI3js.metaDate;
+exports.metaDate = _chunkY6K6Z7TJjs.metaDate;

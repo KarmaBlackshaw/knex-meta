@@ -28,11 +28,11 @@ function metaDate({
   const parsedDateFrom = _moment2.default.call(void 0, new Date(dateFrom));
   const dateFromTimestamp = hasTime(parsedDateFrom) ? parsedDateFrom.format(DATETIME_FORMAT) : parsedDateFrom.startOf("day").format(DATETIME_FORMAT);
   if (_chunk6YPE5F7Ujs.isNil.call(void 0, dateTo)) {
-    return this.where(dateBy, ">=", dateFromTimestamp).where(dateBy, "<=", this.client.raw("CURRENT_TIMESTAMP"));
+    return this.where(dictionary[dateBy], ">=", dateFromTimestamp).where(dictionary[dateBy], "<=", this.client.raw("CURRENT_TIMESTAMP"));
   }
   const parsedDateTo = _moment2.default.call(void 0, new Date(dateTo));
   const dateToTimestamp = hasTime(parsedDateTo) ? parsedDateTo.format(DATETIME_FORMAT) : parsedDateTo.endOf("day").format(DATETIME_FORMAT);
-  return this.where(dateBy, ">=", dateFromTimestamp).where(dateBy, "<=", dateToTimestamp);
+  return this.where(dictionary[dateBy], ">=", dateFromTimestamp).where(dictionary[dateBy], "<=", dateToTimestamp);
 }
 
 

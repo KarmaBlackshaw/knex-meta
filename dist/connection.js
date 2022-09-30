@@ -22,7 +22,7 @@ var _chunk6CERQZMTjs = require('./chunk-6CERQZMT.js');
 var _chunkSZF7J4BUjs = require('./chunk-SZF7J4BU.js');
 
 
-var _chunkW2GS2UI3js = require('./chunk-W2GS2UI3.js');
+var _chunkY6K6Z7TJjs = require('./chunk-Y6K6Z7TJ.js');
 
 
 var _chunkE4C6CE6Vjs = require('./chunk-E4C6CE6V.js');
@@ -35,7 +35,7 @@ require('./chunk-6YPE5F7U.js');
 // src/connection.ts
 var _knex = require('knex');
 var extensions = [
-  _chunkW2GS2UI3js.metaDate,
+  _chunkY6K6Z7TJjs.metaDate,
   _chunkE4C6CE6Vjs.metaFilter,
   _chunkARB7AYYIjs.metaPage,
   _chunkN3L4R74Sjs.metaSort,
