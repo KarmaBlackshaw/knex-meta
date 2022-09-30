@@ -7,7 +7,6 @@
 
 
 var _chunk6YPE5F7Ujs = require('../chunk-6YPE5F7U.js');
-require('../chunk-V2VUO6WC.js');
 
 
 

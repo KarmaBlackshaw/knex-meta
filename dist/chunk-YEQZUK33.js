@@ -1,23 +1,9 @@
-import {
-  toArray
-} from "./chunk-QFJUJ4KH.mjs";
-import {
-  __commonJS,
-  __toESM
-} from "./chunk-ICSNCPDD.mjs";
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// node_modules/lodash/isNil.js
-var require_isNil = __commonJS({
-  "node_modules/lodash/isNil.js"(exports, module) {
-    function isNil(value) {
-      return value == null;
-    }
-    module.exports = isNil;
-  }
-});
+var _chunkVKDJXQUCjs = require('./chunk-VKDJXQUC.js');
 
 // src/core/bulkUpdate.ts
-var import_isNil = __toESM(require_isNil());
+var _isNil2 = require('lodash/isNil'); var _isNil3 = _interopRequireDefault(_isNil2);
 var quoter = (foo) => {
   if (typeof foo === "number") {
     return foo;
@@ -31,7 +17,7 @@ var quoter = (foo) => {
   console.warn(`${typeof foo} is not accounted.`);
 };
 function bulkUpdate(key, _payload = [], _options) {
-  const keys = toArray(key);
+  const keys = _chunkVKDJXQUCjs.toArray.call(void 0, key);
   const keysSet = new Set(keys);
   const payload = JSON.parse(JSON.stringify(_payload));
   const options = Object.assign({
@@ -48,7 +34,7 @@ function bulkUpdate(key, _payload = [], _options) {
   const whereConditions = [];
   const setQueries = {};
   payload.forEach((currPayload) => {
-    const condition = keys.filter((key2) => !(0, import_isNil.default)(currPayload[key2])).map((key2) => `${aliasMaker(key2)} = ${quoter(currPayload[key2])}`).join(" AND ");
+    const condition = keys.filter((key2) => !_isNil3.default.call(void 0, currPayload[key2])).map((key2) => `${aliasMaker(key2)} = ${quoter(currPayload[key2])}`).join(" AND ");
     whereConditions.push(`(${condition})`);
     for (const key2 in currPayload) {
       const updateValue = currPayload[key2];
@@ -71,6 +57,6 @@ function bulkUpdate(key, _payload = [], _options) {
   });
 }
 
-export {
-  bulkUpdate
-};
+
+
+exports.bulkUpdate = bulkUpdate;

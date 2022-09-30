@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.6](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.5...1.2.6) - 2022-09-13
+
+
+
+
+### Commits
+
+- chore(release): 1.2.6 [`ba12f00`](https://github.com/KarmaBlackshaw/knex-meta/commit/ba12f002469dc4f162ff9f540881a3402151eed6)
+- chore: add new meta filter parameter [`c5b2e2f`](https://github.com/KarmaBlackshaw/knex-meta/commit/c5b2e2f3a6dc207717bf35ecc7dfed7fb6dbc7af)
+- chore: update readme [`eebc6da`](https://github.com/KarmaBlackshaw/knex-meta/commit/eebc6da8238bde941e751fa03f808940834b31f5)
+- chore: export interface [`c1eabbb`](https://github.com/KarmaBlackshaw/knex-meta/commit/c1eabbb204aa2c3f791d9c55e56310c6ffc73075)
+- fix: update meta tests [`6eda90c`](https://github.com/KarmaBlackshaw/knex-meta/commit/6eda90cfbe4a09395b1cd125bd343ba480c014b0)
+- chore: update readme [`0cc8627`](https://github.com/KarmaBlackshaw/knex-meta/commit/0cc86279b8d13e67b12c3483023b179690946b89)
+
 ## [1.2.5](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.4...1.2.5) - 2022-09-02
 
 
