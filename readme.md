@@ -15,6 +15,11 @@ Useful extensions for knex query builder
 * [Typescript](https://www.typescriptlang.org/)
 * [Vitest](https://vitest.dev/)
 
+## Installation
+```bash
+npm i @jeash/knex-meta
+```
+
 ## Usage
 
 ### Extend
