@@ -108,6 +108,6 @@ export function bulkUpdate (
   return this
     .update(updateQuery)
     .where(function () {
-      this.whereRaw(whereConditions.join(' AND '))
+      this.whereRaw(whereConditions.join(' OR '))
     })
 }

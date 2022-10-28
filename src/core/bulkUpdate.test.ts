@@ -60,7 +60,7 @@ test('Multiple data', () => {
     .bulkUpdate('id', updateData)
     .toString()
 
-  const expected = "update `users` set `name` = (CASE WHEN id = 1 THEN 'John' WHEN id = 2 THEN 'Mark' END), `age` = (CASE WHEN id = 1 THEN 30 WHEN id = 2 THEN 25 END), `address` = (CASE WHEN id = 1 THEN 'Cebu' WHEN id = 2 THEN 'Manila' END) where ((id = 1) AND (id = 2))"
+  const expected = "update `users` set `name` = (CASE WHEN id = 1 THEN 'John' WHEN id = 2 THEN 'Mark' END), `age` = (CASE WHEN id = 1 THEN 30 WHEN id = 2 THEN 25 END), `address` = (CASE WHEN id = 1 THEN 'Cebu' WHEN id = 2 THEN 'Manila' END) where ((id = 1) OR (id = 2))"
 
   expect(result).toBe(expected)
 })
@@ -85,7 +85,7 @@ test('Multiple data with multiple keys', () => {
     .bulkUpdate(['id', 'name'], updateData)
     .toString()
 
-  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') AND (id = 2 AND name = 'Mark'))"
+  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') OR (id = 2 AND name = 'Mark'))"
 
   expect(result).toBe(expected)
 })
@@ -110,7 +110,7 @@ test('Multiple data with multiple keys', () => {
     .bulkUpdate(['id', 'name'], updateData)
     .toString()
 
-  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') AND (id = 2 AND name = 'Mark'))"
+  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') OR (id = 2 AND name = 'Mark'))"
 
   expect(result).toBe(expected)
 })
@@ -142,7 +142,7 @@ test('Works with alias', () => {
     .bulkUpdate(['id', 'name'], updateData, updateOptions)
     .toString()
 
-  const expected = "update `users` set `users`.`age` = (CASE WHEN id = 1 AND users.name = 'John' THEN 30 WHEN id = 2 AND users.name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND users.name = 'John' THEN 'Cebu' WHEN id = 2 AND users.name = 'Mark' THEN 'Manila' END) where ((id = 1 AND users.name = 'John') AND (id = 2 AND users.name = 'Mark'))"
+  const expected = "update `users` set `users`.`age` = (CASE WHEN id = 1 AND users.name = 'John' THEN 30 WHEN id = 2 AND users.name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND users.name = 'John' THEN 'Cebu' WHEN id = 2 AND users.name = 'Mark' THEN 'Manila' END) where ((id = 1 AND users.name = 'John') OR (id = 2 AND users.name = 'Mark'))"
 
   expect(result).toBe(expected)
 })
@@ -173,7 +173,7 @@ test('Works with else', () => {
     .bulkUpdate(['id', 'name'], updateData, updateOptions)
     .toString()
 
-  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 ELSE users.age END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') AND (id = 2 AND name = 'Mark'))"
+  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 ELSE users.age END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') OR (id = 2 AND name = 'Mark'))"
 
   expect(result).toBe(expected)
 })
