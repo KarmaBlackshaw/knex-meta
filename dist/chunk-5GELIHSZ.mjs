@@ -53,7 +53,7 @@ function bulkUpdate(key, _payload = [], _options) {
     updateQuery[aliasMaker(key2)] = this.client.raw(`(CASE ${values} ${elseMaker(key2)} END)`.replace(/\s+/g, " "));
   }
   return this.update(updateQuery).where(function() {
-    this.whereRaw(whereConditions.join(" AND "));
+    this.whereRaw(whereConditions.join(" OR "));
   });
 }
 

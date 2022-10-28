@@ -12,7 +12,7 @@ var _chunkN3L4R74Sjs = require('./chunk-N3L4R74S.js');
 var _chunk4L4OTXTAjs = require('./chunk-4L4OTXTA.js');
 
 
-var _chunkYEQZUK33js = require('./chunk-YEQZUK33.js');
+var _chunkU4YCN3EJjs = require('./chunk-U4YCN3EJ.js');
 require('./chunk-VKDJXQUC.js');
 
 
@@ -40,7 +40,7 @@ var extensions = [
   _chunkARB7AYYIjs.metaPage,
   _chunkN3L4R74Sjs.metaSort,
   _chunkSZF7J4BUjs.meta,
-  _chunkYEQZUK33js.bulkUpdate,
+  _chunkU4YCN3EJjs.bulkUpdate,
   _chunk6CERQZMTjs.jsonObject,
   _chunk4L4OTXTAjs.metaUpdate,
   _chunkXJ266SM4js.metaInsert,
