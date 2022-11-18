@@ -17,7 +17,7 @@ test('Should perform simple find', () => {
     .metaFind(condition, dictionary)
     .toString()
 
-  const expected = "select * from `users` where `users`.`name` like 'Jeash' and `users`.`status` like 'banned' limit 1"
+  const expected = "select * from `users` where `users`.`name` = 'Jeash' and `users`.`status` = 'banned' limit 1"
 
   expect(result).toBe(expected)
 })
@@ -36,7 +36,7 @@ test('Should ignore items not in dictionary', () => {
     .metaFind(condition, dictionary)
     .toString()
 
-  const expected = "select * from `users` where `users`.`name` like 'Jeash' limit 1"
+  const expected = "select * from `users` where `users`.`name` = 'Jeash' limit 1"
 
   expect(result).toBe(expected)
 })

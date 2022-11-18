@@ -25,7 +25,7 @@ export function metaFind (conditions: TConditions, dictionary: TDictionary) {
 
     if (dictionary[key] && !isNil(curr)) {
       hasCondition = true
-      this.where(dictionary[key], 'LIKE', curr)
+      this.where(dictionary[key], '=', curr)
     }
   }
 
