@@ -1,6 +1,5 @@
 // libs
 import moment from 'moment'
-import _ from 'lodash'
 
 /**
  * UTILITIES
@@ -10,14 +9,18 @@ import {
   isObject
 } from '../utils/is'
 
+import {
+  toArray
+} from '../utils/array'
+
 const hasTime = (dateString: string) => {
   return !/^\d{4}-\d{2}-\d{2}$/.test(dateString.trim())
 }
 
 export interface IDateArguments {
-  dateBy?: string,
-  dateTo?: string,
-  dateFrom?: string,
+  dateBy?: string | string[],
+  dateTo?: string | string[],
+  dateFrom?: string | string[],
   dictionary?: Record<string, string>
 }
 
@@ -33,41 +36,43 @@ export function metaDate ({
     return this
   }
 
-  if (!isDate(dateFrom)) {
+  if (!isObject(dictionary)) {
     return this
   }
 
-  if (isObject(dictionary) && !dictionary[dateBy]) {
-    return this
-  }
+  const dateByArr = toArray(dateBy)
+  const dateToArr = toArray(dateTo)
+  const dateFromArr = toArray(dateFrom)
 
-  const parsedDateFrom = moment(dateFrom, DATETIME_FORMAT)
+  dateByArr.forEach((currDateBy, index) => {
+    if (!dictionary[currDateBy]) {
+      return this
+    }
 
-  if (!parsedDateFrom.isValid()) {
-    return this
-  }
+    console.log(currDateBy)
 
-  const dateFromTimestamp = hasTime(dateFrom)
-    ? dateFrom
-    : `${dateFrom} 00:00:00`
+    const currdateTo = dateToArr[index]
+    const currdateFrom = dateFromArr[index]
 
-  if (_.isNil(dateTo)) {
-    return this
-      .where(dictionary[dateBy], '>=', dateFromTimestamp)
-      .where(dictionary[dateBy], '<=', this.client.raw('CURRENT_TIMESTAMP'))
-  }
+    const parsedDateFrom = moment(dateFrom, DATETIME_FORMAT)
+    const parsedDateTo = moment(dateTo, DATETIME_FORMAT)
 
-  const parsedDateTo = moment(dateTo, DATETIME_FORMAT)
+    if (!parsedDateFrom.isValid() || !parsedDateTo.isValid()) {
+      return this
+    }
 
-  if (!parsedDateTo.isValid()) {
-    return this
-  }
+    const dateFromTimestamp = hasTime(currdateFrom)
+      ? currdateFrom
+      : `${currdateFrom} 00:00:00`
 
-  const dateToTimestamp = hasTime(dateTo)
-    ? dateTo
-    : `${dateTo} 23:59:59`
+    const dateToTimestamp = hasTime(currdateTo)
+      ? currdateTo
+      : `${currdateTo} 23:59:59`
+
+    this
+      .where(dictionary[currDateBy], '>=', dateFromTimestamp)
+      .where(dictionary[currDateBy], '<=', dateToTimestamp)
+  })
 
   return this
-    .where(dictionary[dateBy], '>=', dateFromTimestamp)
-    .where(dictionary[dateBy], '<=', dateToTimestamp)
 }
