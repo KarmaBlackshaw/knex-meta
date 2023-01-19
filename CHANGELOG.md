@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.11](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.10...1.2.11) - 2023-01-19
+
+### Commits
+
+- chore(release): 1.2.11 [`8ddb422`](https://github.com/KarmaBlackshaw/knex-meta/commit/8ddb42299467ff49d0f3d297d04561a8ad27dce0)
+- refactor: metaDate to not change timezone [`d967c99`](https://github.com/KarmaBlackshaw/knex-meta/commit/d967c99799a468fc1b804b777713086af0e7ea54)
+
 ## [1.2.10](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.9...1.2.10) - 2022-11-18
 
 ### Commits
