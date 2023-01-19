@@ -1,21 +1,17 @@
 // libs
-import moment, { Moment } from 'moment'
+import moment from 'moment'
+import _ from 'lodash'
 
 /**
  * UTILITIES
  */
 import {
   isDate,
-  isObject,
-  isNil
+  isObject
 } from '../utils/is'
 
-function hasTime (momentDate: Moment) {
-  return momentDate
-    .format('HH:mm:ss')
-    .split(':')
-    .map(Number)
-    .reduce((acc: number, curr: number) => acc + curr) > 0
+const hasTime = (dateString: string) => {
+  return !/^\d{4}-\d{2}-\d{2}$/.test(dateString.trim())
 }
 
 export interface IDateArguments {
@@ -45,21 +41,31 @@ export function metaDate ({
     return this
   }
 
-  const parsedDateFrom = moment(new Date(dateFrom))
-  const dateFromTimestamp = hasTime(parsedDateFrom)
-    ? parsedDateFrom.format(DATETIME_FORMAT)
-    : parsedDateFrom.startOf('day').format(DATETIME_FORMAT)
+  const parsedDateFrom = moment(dateFrom, DATETIME_FORMAT)
 
-  if (isNil(dateTo)) {
+  if (!parsedDateFrom.isValid()) {
+    return this
+  }
+
+  const dateFromTimestamp = hasTime(dateFrom)
+    ? dateFrom
+    : `${dateFrom} 00:00:00`
+
+  if (_.isNil(dateTo)) {
     return this
       .where(dictionary[dateBy], '>=', dateFromTimestamp)
       .where(dictionary[dateBy], '<=', this.client.raw('CURRENT_TIMESTAMP'))
   }
 
-  const parsedDateTo = moment(new Date(dateTo))
-  const dateToTimestamp = hasTime(parsedDateTo)
-    ? parsedDateTo.format(DATETIME_FORMAT)
-    : parsedDateTo.endOf('day').format(DATETIME_FORMAT)
+  const parsedDateTo = moment(dateTo, DATETIME_FORMAT)
+
+  if (!parsedDateTo.isValid()) {
+    return this
+  }
+
+  const dateToTimestamp = hasTime(dateTo)
+    ? dateTo
+    : `${dateTo} 23:59:59`
 
   return this
     .where(dictionary[dateBy], '>=', dateFromTimestamp)

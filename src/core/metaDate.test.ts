@@ -10,8 +10,8 @@ test('Adds startOf day and endOf day if time is not present', () => {
   const result = knex('users')
     .metaDate({
       dateBy: 'birthdate',
-      dateFrom: '07-29-1998',
-      dateTo: '07-29-1998',
+      dateFrom: '1998-07-29',
+      dateTo: '1998-07-29',
       dictionary
     })
     .toString()
@@ -29,7 +29,7 @@ test('Sets "dateTo" to current date if empty', () => {
   const result = knex('users')
     .metaDate({
       dateBy: 'birthdate',
-      dateFrom: '07-29-1998',
+      dateFrom: '1998-07-29',
       dictionary
     })
     .toString()
@@ -48,7 +48,7 @@ test('Ignores if dateFrom is empty', () => {
   const result = knex('users')
     .metaDate({
       dateBy: 'birthdate',
-      dateTo: '07-29-1998',
+      dateTo: '1998-07-29',
       dictionary
     })
     .toString()
@@ -66,8 +66,8 @@ test('Works correctly with time', () => {
   const result = knex('users')
     .metaDate({
       dateBy: 'birthdate',
-      dateTo: '07-29-1998 10:22:30',
-      dateFrom: '07-29-1998 11:22:30',
+      dateTo: '1998-07-29 10:22:30',
+      dateFrom: '1998-07-29 11:22:30',
       dictionary
     })
     .toString()
