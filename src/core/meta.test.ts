@@ -10,8 +10,8 @@ test('Date meta functions correctly', () => {
   const result = knex('users')
     .meta({
       dateBy: 'birthdate',
-      dateFrom: '07-29-1998',
-      dateTo: '07-29-1998',
+      dateFrom: '1998-07-29',
+      dateTo: '1998-07-29',
       dateDictionary: dictionary
     })
     .toString()
@@ -78,8 +78,8 @@ test('All meta functions correctly', () => {
   const result = knex('users')
     .meta({
       dateBy: 'birthdate',
-      dateFrom: '07-29-1998',
-      dateTo: '07-29-1998',
+      dateFrom: '1998-07-29',
+      dateTo: '1998-07-29',
       dateDictionary: dictionary,
 
       page: 3,

@@ -20,6 +20,8 @@ declare module 'knex' {
       metaUpdate<TRecord, TResult>(): KnexOriginal.QueryBuilder<TRecord, TResult>;
 
       metaInsert<TRecord, TResult>(): KnexOriginal.QueryBuilder<TRecord, TResult>;
+
+      metaQuery<TRecord, TResult>(): KnexOriginal.QueryBuilder<TRecord, TResult>;
     }
   }
 }
