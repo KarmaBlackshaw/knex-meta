@@ -386,7 +386,7 @@ test('`should` && `must` should work properly (3)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` && `must` should work properly (3)', () => {
+test('`should` && `must` should work properly (4)', () => {
   const query = {
     filter: {
       must: [
@@ -414,9 +414,35 @@ test('`should` && `must` should work properly (3)', () => {
             }
           ]
         }
-      ] as FilterConditions[]
+      ],
+      should: [
+        {
+          field: 'login_id',
+          operator: 'like',
+          value: '%nnn%'
+        },
+        {
+          field: 'point',
+          operator: '>',
+          value: 2000
+        },
+        {
+          must: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ]
     }
-  }
+  } as Query
 
   const fields = {
     login_id: {
@@ -433,9 +459,191 @@ test('`should` && `must` should work properly (3)', () => {
     .metaQuery(query, fields)
     .toString()
 
-  const expected = "select * from `users` where ((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000) and (((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000))))"
+  const expected = "select * from `users` where ((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000) and (((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000)))) and ((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000) or (((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000))))"
 
-  console.log(result)
+  expect(result).toBe(expected)
+})
 
-  // expect(result).toBe(expected)
+test('should sort properly', () => {
+  const query = {
+    filter: {
+      must: [
+        {
+          field: 'login_id',
+          operator: 'like',
+          value: '%nnn%'
+        },
+        {
+          field: 'point',
+          operator: '>',
+          value: 2000
+        },
+        {
+          should: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ],
+      should: [
+        {
+          field: 'login_id',
+          operator: 'like',
+          value: '%nnn%'
+        },
+        {
+          field: 'point',
+          operator: '>',
+          value: 2000
+        },
+        {
+          must: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ]
+    },
+    sort: [
+      {
+        field: 'login_id',
+        direction: 'desc'
+      },
+      {
+        field: 'point',
+        direction: 'desc'
+      }
+    ]
+  } as Query
+
+  const fields = {
+    login_id: {
+      column: 'users.login_id',
+      filterable: true,
+      sortable: true
+    },
+    point: {
+      column: 'users.point',
+      filterable: true,
+      sortable: true
+    }
+  }
+
+  const result = knex('users')
+    .metaQuery(query, fields)
+    .toString()
+
+  const expected = "select * from `users` where ((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000) and (((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000)))) and ((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000) or (((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000)))) order by `users`.`login_id` desc, `users`.`point` desc"
+
+  expect(result).toBe(expected)
+})
+
+test('should paginate properly', () => {
+  const query = {
+    filter: {
+      must: [
+        {
+          field: 'login_id',
+          operator: 'like',
+          value: '%nnn%'
+        },
+        {
+          field: 'point',
+          operator: '>',
+          value: 2000
+        },
+        {
+          should: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ],
+      should: [
+        {
+          field: 'login_id',
+          operator: 'like',
+          value: '%nnn%'
+        },
+        {
+          field: 'point',
+          operator: '>',
+          value: 2000
+        },
+        {
+          must: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ]
+    },
+    sort: [
+      {
+        field: 'login_id',
+        direction: 'desc'
+      },
+      {
+        field: 'point',
+        direction: 'desc'
+      }
+    ],
+    pagination: {
+      rows: 50,
+      page: 2
+    }
+  } as Query
+
+  const fields = {
+    login_id: {
+      column: 'users.login_id',
+      filterable: true,
+      sortable: true
+    },
+    point: {
+      column: 'users.point',
+      filterable: true,
+      sortable: true
+    }
+  }
+
+  const result = knex('users')
+    .metaQuery(query, fields)
+    .toString()
+
+  const expected = "select * from `users` where ((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000) and (((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000)))) and ((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000) or (((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000)))) order by `users`.`login_id` desc, `users`.`point` desc limit 50 offset 50"
+
+  expect(result).toBe(expected)
 })

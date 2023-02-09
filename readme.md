@@ -12,22 +12,37 @@ Useful extensions for knex query builder
 
 ### Built With
 
-* [Typescript](https://www.typescriptlang.org/)
-* [Vitest](https://vitest.dev/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Vitest](https://vitest.dev/)
 
 ## Installation
+
 ```bash
 npm i @jeash/knex-meta
 ```
 
+## Methods
+
+- [Meta Query](#meta-query)
+- [Meta Date](#meta-date)
+- [Meta Filter](#meta-filter)
+- [Meta Page](#meta-page)
+- [Meta Sort](#meta-sort)
+- [Meta](#meta)
+- [Meta Update](#meta-update)
+- [Meta Insert](#meta-insert)
+- [Json Object](#json-object)
+
 ## Usage
 
 ### Extend
+
 ```js
-const knex = require('knex')
-const knexMeta = require('@jeash/knex-meta')
+const knex = require("knex")
+const knexMeta = require("@jeash/knex-meta")
 
 const extensions = [
+  knexMeta.metaQuery,
   knexMeta.metaDate,
   knexMeta.metaFilter,
   knexMeta.metaPage,
@@ -36,294 +51,434 @@ const extensions = [
   knexMeta.bulkUpdate,
   knexMeta.jsonObject,
   knexMeta.metaUpdate,
-  knexMeta.metaInsert
+  knexMeta.metaInsert,
 ]
 
-extensions.forEach(extension => {
+extensions.forEach((extension) => {
   knex.QueryBuilder.extend(extension.name, extension)
 })
 ```
 
-### Meta Date
+### Meta Query
+
 Simple date filter
+
 ```js
-const dictionary = {
-  birthdate: 'users.birthdate'
+const fields = {
+  login_id: {
+    column: "users.login_id",
+    filterable: true,
+    sortable: true,
+  },
+  point: {
+    column: "users.point",
+    filterable: true,
+    sortable: true,
+  },
 }
 
-const result = knex('users')
-  .metaDate({
-    dateBy: 'birthdate',
-    dateFrom: '07-29-1998',
-    dateTo: '07-29-1998',
-    dictionary
-  })
+const query = {
+  filter: {
+    must: [
+      {
+        field: "login_id",
+        operator: "like",
+        value: "%nnn%",
+      },
+      {
+        field: "point",
+        operator: ">",
+        value: 2000,
+      },
+      {
+        should: [
+          {
+            field: "login_id",
+            operator: "like",
+            value: "%nnn%",
+          },
+          {
+            field: "point",
+            operator: ">",
+            value: 2000,
+          },
+        ],
+      },
+    ],
+    should: [
+      {
+        field: "login_id",
+        operator: "like",
+        value: "%nnn%",
+      },
+      {
+        field: "point",
+        operator: ">",
+        value: 2000,
+      },
+      {
+        must: [
+          {
+            field: "login_id",
+            operator: "like",
+            value: "%nnn%",
+          },
+          {
+            field: "point",
+            operator: ">",
+            value: 2000,
+          },
+        ],
+      },
+    ],
+  },
+  sort: [
+    {
+      field: "login_id",
+      direction: "desc",
+    },
+    {
+      field: "point",
+      direction: "desc",
+    },
+  ],
+  pagination: {
+    rows: 50,
+    page: 2,
+  },
+}
 
+const result = knex("users").metaQuery(query, fields)
 ```
-----
+
+---
+
+### Meta Date
+
+Simple date filter
+
+```js
+const dictionary = {
+  birthdate: "users.birthdate",
+}
+
+const result = knex("users").metaDate({
+  dateBy: "birthdate",
+  dateFrom: "07-29-1998",
+  dateTo: "07-29-1998",
+  dictionary,
+})
+```
+
+---
 
 ### Meta Page
-Simple implementation of limit offset
-```js
-const result = knex('users')
-  .metaPage({ page: 1, rows: 3 })
 
+Simple implementation of limit offset
+
+```js
+const result = knex("users").metaPage({ page: 1, rows: 3 })
 ```
-----
+
+---
+
 ### Meta Sort
+
 Simple sort
+
 ```js
 const dictionary = {
-  name: 'users.name',
+  name: "users.name",
 }
 
-const result = knex('users')
-  .metaSort({
-    sort: 'asc',
-    sortBy: 'name',
-    dictionary
-  })
+const result = knex("users").metaSort({
+  sort: "asc",
+  sortBy: "name",
+  dictionary,
+})
 ```
 
 Multiple sort
+
 ```js
 const dictionary = {
-  name: 'users.name',
-  age: 'users.age'
+  name: "users.name",
+  age: "users.age",
 }
 
-const result = knex('users')
-  .metaSort({
-    sort: ['asc', 'desc'],
-    sortBy: ['name', 'age'],
-    dictionary
-  })
+const result = knex("users").metaSort({
+  sort: ["asc", "desc"],
+  sortBy: ["name", "age"],
+  dictionary,
+})
 ```
-----
-### Meta Filter
+
+---
+
+## Meta Filter
+
 Basic filter
+
 ```js
 const dictionary = {
-  name: 'users.name'
+  name: "users.name",
 }
 
-const result = knex('users')
-  .metaFilter({
-    filterBy: 'name',
-    q: 'john',
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  filterBy: "name",
+  q: "john",
+  dictionary,
+})
 ```
 
 Array filter dictionary
+
 ```js
 const dictionary = {
-  name: ['users.fname', 'users.lname']
+  name: ["users.fname", "users.lname"],
 }
 
-const result = knex('users')
-  .metaFilter({
-    filterBy: 'name',
-    q: 'john',
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  filterBy: "name",
+  q: "john",
+  dictionary,
+})
 ```
 
 Array `q` and array `filterBy` dictionary
+
 ```js
 const dictionary = {
-  name: ['users.fname', 'users.lname'],
-  address: 'users.address'
+  name: ["users.fname", "users.lname"],
+  address: "users.address",
 }
 
-const result = knex('users')
-  .metaFilter({
-    filterBy: ['name', 'address'],
-    q: ['john', 'lahug'],
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  filterBy: ["name", "address"],
+  q: ["john", "lahug"],
+  dictionary,
+})
 ```
 
 Array `q` and string `filterBy` dictionary
+
 ```js
 const dictionary = {
-  name: 'users.fname',
-  address: 'users.address'
+  name: "users.fname",
+  address: "users.address",
 }
 
-const result = knex('users')
-  .metaFilter({
-    filterBy: 'name',
-    q: ['john', 'paul'],
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  filterBy: "name",
+  q: ["john", "paul"],
+  dictionary,
+})
 ```
 
 String `q` and array `filterBy` dictionary
+
 ```js
 const dictionary = {
-  name: ['users.fname', 'users.lname'],
-  address: 'users.address'
+  name: ["users.fname", "users.lname"],
+  address: "users.address",
 }
 
-const result = knex('users')
-  .metaFilter({
-    filterBy: ['name', 'address'],
-    q: 'john',
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  filterBy: ["name", "address"],
+  q: "john",
+  dictionary,
+})
 ```
 
 For exact match, wrap `q` with double quotes
+
 ```js
 const dictionary = {
-  name: ['users.fname', 'users.lname'],
-  address: 'users.address'
+  name: ["users.fname", "users.lname"],
+  address: "users.address",
 }
 
-const result = knex('users')
-  .metaFilter({
-    filterBy: ['name', 'address'],
-    q: '"john"',
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  filterBy: ["name", "address"],
+  q: '"john"',
+  dictionary,
+})
 ```
 
 Search multiple items using `searchItems`
+
 ```js
 const dictionary = {
-  name: ['users.fname', 'users.lname'],
-  address: 'users.address'
+  name: ["users.fname", "users.lname"],
+  address: "users.address",
 }
 
 const searchItems = [
   {
-    name: 'John',
-    address: 'Cebu'
+    name: "John",
+    address: "Cebu",
   },
   {
-    name: 'Michael',
-    address: 'Palo'
-  }
+    name: "Michael",
+    address: "Palo",
+  },
 ]
 
-const result = knex('users')
-  .metaFilter({
-    searchItems,
-    dictionary
-  })
+const result = knex("users").metaFilter({
+  searchItems,
+  dictionary,
+})
 ```
-----
+
+---
+
 ### Meta
+
 ```js
 const filterDictionary = {}
 const sortDictionary = {}
 const dateDictionary = {}
 
-const result = knex('users')
-  .meta({
-    ...{ filterBy, q, filterDictionary, searchItems },
-    ...{ sortBy, sort, sortDictionary },
-    ...{ dateBy, dateFrom, dateTo, dateDictionary },
-    ...{ page, rows },
-    isCount
-  })
+const result = knex("users").meta({
+  ...{ filterBy, q, filterDictionary, searchItems },
+  ...{ sortBy, sort, sortDictionary },
+  ...{ dateBy, dateFrom, dateTo, dateDictionary },
+  ...{ page, rows },
+  isCount,
+})
 ```
 
-----
-### jsonObject
+---
+
+### Json Object
+
 Basic json object
+
 ```js
-const result = knex('users')
-  .select({
-    id: 'users.id',
-    name: 'users.name'
-  })
+const result = knex("users").select({
+  id: "users.id",
+  name: "users.name",
+})
 ```
 
 Nested json object
+
 ```js
-const result = knex('users')
-  .join('barangay', 'barangay.id', 'users.brgy_id')
+const result = knex("users")
+  .join("barangay", "barangay.id", "users.brgy_id")
   .select({
-    id: 'users.id',
-    name: 'users.name',
+    id: "users.id",
+    name: "users.name",
     brgy: knex.jsonObject({
-      id: 'barangay.id',
-      name: 'barangay.name'
-    })
+      id: "barangay.id",
+      name: "barangay.name",
+    }),
   })
 ```
 
-----
-### metaUpdate
+---
+
+### Meta Update
+
 ```js
 const dictionary = {
-  name: 'users.name'
+  name: "users.name",
 }
 
 const payload = {
-  name: 'Jeash'
+  name: "Jeash",
 }
 
-const result = knex('users')
-  .where('users.id', 1)
+const result = knex("users")
+  .where("users.id", 1)
   .metaUpdate(payload, dictionary)
 ```
 
-----
-### metaInsert
+---
+
+### Meta Insert
+
 Object insert
+
 ```js
-const fillables = [
-  'name'
-]
+const fillables = ["name"]
 
 const payload = {
-  name: 'Jeash'
+  name: "Jeash",
 }
 
-const result = knex('users')
-  .metaInsert(payload, fillables)
+const result = knex("users").metaInsert(payload, fillables)
 ```
 
 Bulk insert
+
 ```js
-const fillables = [
-  'name'
-]
+const fillables = ["name"]
 
 const payload = [
   {
-    name: 'Jeash'
+    name: "Jeash",
   },
   {
-    name: 'Ernie'
-  }
+    name: "Ernie",
+  },
 ]
 
-const result = knex('users')
-  .metaInsert(payload, fillables)
+const result = knex("users").metaInsert(payload, fillables)
 ```
 
+---
 
-----
-### metaFind
+### Bulk Update
+
+```js
+const updateData = [
+  {
+    id: 1,
+    name: "John",
+    age: 30,
+    address: "Cebu",
+  },
+  {
+    id: 2,
+    name: "Mark",
+    age: 25,
+    address: "Manila",
+  },
+]
+
+const updateOptions = {
+  alias: {
+    name: "users.name",
+    age: "users.age",
+  },
+}
+
+const conditionKeys = ["id", "name"]
+const result = knex("users").bulkUpdate(
+  conditionKeys,
+  updateData,
+  updateOptions
+)
+```
+
+---
+
+### Meta Find
+
 ```js
 const dictionary = {
-  name: 'users.name',
-  status: 'users.status'
+  name: "users.name",
+  status: "users.status",
 }
 
 const conditions = {
-  name: 'Jeash',
-  status: 'banned'
+  name: "Jeash",
+  status: "banned",
 }
 
-const result = knex('users')
-  .metaFind(conditions, dictionary)
+const result = knex("users").metaFind(conditions, dictionary)
 ```
-
 
 ## Contributing
 

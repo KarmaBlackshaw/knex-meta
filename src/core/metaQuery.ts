@@ -16,7 +16,7 @@ interface SortCondition {
 
 interface Pagination {
   rows: number;
-  offset: number;
+  page: number;
 }
 
 export interface Query {
@@ -150,13 +150,13 @@ function makeSort (
 function makePagination (
   pagination: Pagination
 ): Knex.QueryBuilder {
-  if (!pagination || !pagination.rows || !pagination.offset) {
+  if (!pagination || !pagination.rows || !pagination.page) {
     return this
   }
 
   return this
     .limit(pagination.rows)
-    .offset(pagination.offset)
+    .offset(pagination.rows * (pagination.page - 1))
 }
 
 export function metaQuery (
