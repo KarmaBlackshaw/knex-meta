@@ -1,12 +1,12 @@
 import {
-  metaQuery
-} from "./chunk-GWY5WSTS.mjs";
-import {
   metaInsert
 } from "./chunk-FEWOXX5B.mjs";
 import {
   metaPage
 } from "./chunk-WKLMP7EO.mjs";
+import {
+  metaQuery
+} from "./chunk-GWY5WSTS.mjs";
 import {
   metaSort
 } from "./chunk-Z5C5A5UL.mjs";

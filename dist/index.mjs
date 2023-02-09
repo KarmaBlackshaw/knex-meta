@@ -5,6 +5,9 @@ import {
   metaPage
 } from "./chunk-WKLMP7EO.mjs";
 import {
+  metaQuery
+} from "./chunk-GWY5WSTS.mjs";
+import {
   metaSort
 } from "./chunk-Z5C5A5UL.mjs";
 import {
@@ -40,6 +43,7 @@ export {
   metaFind,
   metaInsert,
   metaPage,
+  metaQuery,
   metaSort,
   metaUpdate
 };
