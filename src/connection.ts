@@ -1,5 +1,4 @@
 import { knex } from 'knex'
-
 import { metaDate } from './core/metaDate'
 import { metaFilter } from './core/metaFilter'
 import { metaPage } from './core/metaPage'
@@ -10,6 +9,7 @@ import { jsonObject } from './core/jsonObject'
 import { metaUpdate } from './core/metaUpdate'
 import { metaInsert } from './core/metaInsert'
 import { metaFind } from './core/metaFind'
+import { metaQuery } from './core/metaQuery'
 
 const extensions = [
   metaDate,
@@ -21,7 +21,8 @@ const extensions = [
   jsonObject,
   metaUpdate,
   metaInsert,
-  metaFind
+  metaFind,
+  metaQuery
 ]
 
 extensions.forEach(extension => {
