@@ -88,9 +88,15 @@ function makePagination(pagination) {
   return this.limit(pagination.rows).offset(pagination.rows * (pagination.page - 1));
 }
 function metaQuery(query, fields) {
-  makeWhere.call(this, query.filter, fields);
-  makeSort.call(this, query.sort, fields);
-  makePagination.call(this, query.pagination);
+  if (query && query.filter) {
+    makeWhere.call(this, query.filter, fields);
+  }
+  if (query && query.sort) {
+    makeSort.call(this, query.sort, fields);
+  }
+  if (query && query.pagination) {
+    makePagination.call(this, query.pagination);
+  }
   return this;
 }
 
