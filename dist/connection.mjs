@@ -1,4 +1,7 @@
 import {
+  metaQuery
+} from "./chunk-GWY5WSTS.mjs";
+import {
   metaInsert
 } from "./chunk-FEWOXX5B.mjs";
 import {
@@ -21,7 +24,7 @@ import {
 } from "./chunk-ZIC3VHGY.mjs";
 import {
   metaDate
-} from "./chunk-OFTKYER6.mjs";
+} from "./chunk-HU3DB3OI.mjs";
 import "./chunk-QFJUJ4KH.mjs";
 import {
   metaFilter
@@ -44,7 +47,8 @@ var extensions = [
   jsonObject,
   metaUpdate,
   metaInsert,
-  metaFind
+  metaFind,
+  metaQuery
 ];
 extensions.forEach((extension) => {
   knex.QueryBuilder.extend(extension.name, extension);

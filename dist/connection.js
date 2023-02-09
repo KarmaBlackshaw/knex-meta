@@ -1,5 +1,8 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
+var _chunkCBVZVBPLjs = require('./chunk-CBVZVBPL.js');
+
+
 var _chunkXJ266SM4js = require('./chunk-XJ266SM4.js');
 
 
@@ -21,7 +24,7 @@ var _chunk6CERQZMTjs = require('./chunk-6CERQZMT.js');
 var _chunkSZF7J4BUjs = require('./chunk-SZF7J4BU.js');
 
 
-var _chunkUMZYGAJWjs = require('./chunk-UMZYGAJW.js');
+var _chunkYPIBG37Zjs = require('./chunk-YPIBG37Z.js');
 require('./chunk-VKDJXQUC.js');
 
 
@@ -35,7 +38,7 @@ require('./chunk-6YPE5F7U.js');
 // src/connection.ts
 var _knex = require('knex');
 var extensions = [
-  _chunkUMZYGAJWjs.metaDate,
+  _chunkYPIBG37Zjs.metaDate,
   _chunkE4C6CE6Vjs.metaFilter,
   _chunkARB7AYYIjs.metaPage,
   _chunkN3L4R74Sjs.metaSort,
@@ -44,7 +47,8 @@ var extensions = [
   _chunk6CERQZMTjs.jsonObject,
   _chunk4L4OTXTAjs.metaUpdate,
   _chunkXJ266SM4js.metaInsert,
-  _chunkYRBIPXPCjs.metaFind
+  _chunkYRBIPXPCjs.metaFind,
+  _chunkCBVZVBPLjs.metaQuery
 ];
 extensions.forEach((extension) => {
   _knex.knex.QueryBuilder.extend(extension.name, extension);

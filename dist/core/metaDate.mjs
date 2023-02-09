@@ -1,6 +1,6 @@
 import {
   metaDate
-} from "../chunk-OFTKYER6.mjs";
+} from "../chunk-HU3DB3OI.mjs";
 import "../chunk-QFJUJ4KH.mjs";
 import "../chunk-GRXPJ7I5.mjs";
 export {

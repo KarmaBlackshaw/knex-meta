@@ -30,7 +30,6 @@ function metaDate({
     if (!dictionary[currDateBy]) {
       return this;
     }
-    console.log(currDateBy);
     const currdateTo = dateToArr[index];
     const currdateFrom = dateFromArr[index];
     const parsedDateFrom = _moment2.default.call(void 0, dateFrom, DATETIME_FORMAT);
