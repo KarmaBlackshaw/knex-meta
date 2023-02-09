@@ -1,7 +1,7 @@
 import { Knex } from 'knex'
 
-interface FilterCondition {
-  field: string;
+export interface FilterCondition {
+  field?: string;
   operator?: string;
   value?: any;
   must?: FilterCondition[];
@@ -43,7 +43,7 @@ function processWhere (
   conditions: FilterCondition[],
   whereMethod: 'andWhere' | 'orWhere' | 'whereNot',
   fields: FieldsMap
-) {
+): Knex.QueryBuilder {
   this.where(function () {
     conditions.forEach(c => {
       this[whereMethod](function () {
@@ -99,9 +99,14 @@ function processWhere (
       })
     })
   })
+
+  return this
 }
 
-function makeWhere (filters: FilterCondition, fields: FieldsMap) {
+function makeWhere (
+  filters: FilterCondition,
+  fields: FieldsMap
+): Knex.QueryBuilder {
   if (filters && filters.must) {
     processWhere.call(this, filters.must, 'andWhere', fields)
   }
@@ -117,7 +122,10 @@ function makeWhere (filters: FilterCondition, fields: FieldsMap) {
   return this
 }
 
-function makeSort (sort: SortCondition[], fields: FieldsMap): Knex.QueryBuilder {
+function makeSort (
+  sort: SortCondition[],
+  fields: FieldsMap
+): Knex.QueryBuilder {
   if (!sort || !sort.length) {
     return this
   }
@@ -139,7 +147,9 @@ function makeSort (sort: SortCondition[], fields: FieldsMap): Knex.QueryBuilder 
   return this
 }
 
-function makePagination (pagination: Pagination): Knex.QueryBuilder {
+function makePagination (
+  pagination: Pagination
+): Knex.QueryBuilder {
   if (!pagination || !pagination.rows || !pagination.offset) {
     return this
   }
@@ -149,7 +159,10 @@ function makePagination (pagination: Pagination): Knex.QueryBuilder {
     .offset(pagination.offset)
 }
 
-export function metaQuery (query: Query, fields: FieldsMap): Knex.QueryBuilder {
+export function metaQuery (
+  query: Query,
+  fields: FieldsMap
+): Knex.QueryBuilder {
   makeWhere.call(this, query.filter, fields)
   makeSort.call(this, query.sort, fields)
   makePagination.call(this, query.pagination)
