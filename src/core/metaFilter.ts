@@ -12,10 +12,6 @@ import {
   trimQuotes
 } from '../utils/string'
 
-import {
-  omitBy
-} from '../utils/object'
-
 /**
  * HELPERS
  */

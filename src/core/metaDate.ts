@@ -5,7 +5,6 @@ import moment from 'moment'
  * UTILITIES
  */
 import {
-  isDate,
   isObject
 } from '../utils/is'
 

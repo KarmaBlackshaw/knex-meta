@@ -4,9 +4,9 @@ export interface FilterCondition {
   field?: string;
   operator?: string;
   value?: any;
-  must?: FilterCondition[];
-  should?: FilterCondition[];
-  mustNot?: FilterCondition[];
+  $and?: FilterCondition[];
+  $or?: FilterCondition[];
+  $not?: FilterCondition[];
 }
 
 interface SortCondition {
@@ -21,9 +21,9 @@ interface Pagination {
 
 export interface Query {
   filter?: {
-    must?: FilterCondition[];
-    should?: FilterCondition[];
-    mustNot?: FilterCondition[];
+    $and?: FilterCondition[];
+    $or?: FilterCondition[];
+    $not?: FilterCondition[];
   };
   sort?: SortCondition[];
   pagination?: Pagination
@@ -47,7 +47,7 @@ function processWhere (
   this.where(function () {
     conditions.forEach(c => {
       this[whereMethod](function () {
-        if (c.must || c.should || c.mustNot) {
+        if (c.$and || c.$or || c.$not) {
           return makeWhere.call(this, c, fields)
         }
 
@@ -107,16 +107,16 @@ function makeWhere (
   filters: FilterCondition,
   fields: FieldsMap
 ): Knex.QueryBuilder {
-  if (filters && filters.must) {
-    processWhere.call(this, filters.must, 'andWhere', fields)
+  if (filters && filters.$and) {
+    processWhere.call(this, filters.$and, 'andWhere', fields)
   }
 
-  if (filters && filters.should) {
-    processWhere.call(this, filters.should, 'orWhere', fields)
+  if (filters && filters.$or) {
+    processWhere.call(this, filters.$or, 'orWhere', fields)
   }
 
-  if (filters && filters.mustNot) {
-    processWhere.call(this, filters.mustNot, 'whereNot', fields)
+  if (filters && filters.$not) {
+    processWhere.call(this, filters.$not, 'whereNot', fields)
   }
 
   return this

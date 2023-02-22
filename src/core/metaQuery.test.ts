@@ -6,10 +6,10 @@ import knex from '../connection'
 
 import { Query } from './metaQuery'
 
-test('`must` should work properly (1)', () => {
+test('`$and` should work properly (1)', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -44,10 +44,10 @@ test('`must` should work properly (1)', () => {
   expect(result).toBe(expected)
 })
 
-test('`must` should work properly (2)', () => {
+test('`$and` should work properly (2)', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -82,10 +82,10 @@ test('`must` should work properly (2)', () => {
   expect(result).toBe(expected)
 })
 
-test('`must` should work properly (3)', () => {
+test('`$and` should work properly (3)', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -120,10 +120,10 @@ test('`must` should work properly (3)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` should work properly (1)', () => {
+test('`$or` should work properly (1)', () => {
   const query = {
     filter: {
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -158,10 +158,10 @@ test('`should` should work properly (1)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` should work properly (2)', () => {
+test('`$or` should work properly (2)', () => {
   const query = {
     filter: {
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -196,10 +196,10 @@ test('`should` should work properly (2)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` should work properly (3)', () => {
+test('`$or` should work properly (3)', () => {
   const query = {
     filter: {
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -234,10 +234,10 @@ test('`should` should work properly (3)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` && `must` should work properly (1)', () => {
+test('`$or` && `$and` should work properly (1)', () => {
   const query = {
     filter: {
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -249,7 +249,7 @@ test('`should` && `must` should work properly (1)', () => {
           value: 2000
         }
       ],
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -284,10 +284,10 @@ test('`should` && `must` should work properly (1)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` && `must` should work properly (2)', () => {
+test('`$or` && `$and` should work properly (2)', () => {
   const query = {
     filter: {
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -299,7 +299,7 @@ test('`should` && `must` should work properly (2)', () => {
           value: 2000
         }
       ],
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -334,10 +334,10 @@ test('`should` && `must` should work properly (2)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` && `must` should work properly (3)', () => {
+test('`$or` && `$and` should work properly (3)', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -349,7 +349,7 @@ test('`should` && `must` should work properly (3)', () => {
           value: 2000
         },
         {
-          should: [
+          $or: [
             {
               field: 'login_id',
               operator: 'like',
@@ -386,10 +386,10 @@ test('`should` && `must` should work properly (3)', () => {
   expect(result).toBe(expected)
 })
 
-test('`should` && `must` should work properly (4)', () => {
+test('`$or` && `$and` $or work properly (4)', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -401,7 +401,7 @@ test('`should` && `must` should work properly (4)', () => {
           value: 2000
         },
         {
-          should: [
+          $or: [
             {
               field: 'login_id',
               operator: 'like',
@@ -415,7 +415,7 @@ test('`should` && `must` should work properly (4)', () => {
           ]
         }
       ],
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -427,7 +427,7 @@ test('`should` && `must` should work properly (4)', () => {
           value: 2000
         },
         {
-          must: [
+          $and: [
             {
               field: 'login_id',
               operator: 'like',
@@ -464,10 +464,10 @@ test('`should` && `must` should work properly (4)', () => {
   expect(result).toBe(expected)
 })
 
-test('should sort properly', () => {
+test('$or sort properly', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -479,7 +479,7 @@ test('should sort properly', () => {
           value: 2000
         },
         {
-          should: [
+          $or: [
             {
               field: 'login_id',
               operator: 'like',
@@ -493,7 +493,7 @@ test('should sort properly', () => {
           ]
         }
       ],
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -505,7 +505,7 @@ test('should sort properly', () => {
           value: 2000
         },
         {
-          must: [
+          $and: [
             {
               field: 'login_id',
               operator: 'like',
@@ -554,10 +554,10 @@ test('should sort properly', () => {
   expect(result).toBe(expected)
 })
 
-test('should paginate properly', () => {
+test('$or paginate properly', () => {
   const query = {
     filter: {
-      must: [
+      $and: [
         {
           field: 'login_id',
           operator: 'like',
@@ -569,7 +569,7 @@ test('should paginate properly', () => {
           value: 2000
         },
         {
-          should: [
+          $or: [
             {
               field: 'login_id',
               operator: 'like',
@@ -583,7 +583,7 @@ test('should paginate properly', () => {
           ]
         }
       ],
-      should: [
+      $or: [
         {
           field: 'login_id',
           operator: 'like',
@@ -595,7 +595,7 @@ test('should paginate properly', () => {
           value: 2000
         },
         {
-          must: [
+          $and: [
             {
               field: 'login_id',
               operator: 'like',
@@ -644,6 +644,182 @@ test('should paginate properly', () => {
     .toString()
 
   const expected = "select * from `users` where ((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000) and (((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000)))) and ((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000) or (((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000)))) order by `users`.`login_id` desc, `users`.`point` desc limit 50 offset 50"
+
+  expect(result).toBe(expected)
+})
+
+test('`$not` should work properly (1)', () => {
+  const query = {
+    filter: {
+      $not: [
+        {
+          field: 'login_id',
+          operator: 'like',
+          value: '%nnn%'
+        },
+        {
+          field: 'point',
+          operator: '>',
+          value: 2000
+        }
+      ]
+    }
+  }
+
+  const fields = {
+    login_id: {
+      column: 'users.login_id',
+      filterable: true
+    },
+    point: {
+      column: 'users.point',
+      filterable: true
+    }
+  }
+
+  const result = knex('users')
+    .metaQuery(query, fields)
+    .toString()
+
+  const expected = "select * from `users` where (not (`users`.`login_id` like '%nnn%') and not (`users`.`point` > 2000))"
+
+  expect(result).toBe(expected)
+})
+
+test('`$not` should work properly (2)', () => {
+  const query = {
+    filter: {
+      $not: [
+        {
+          $and: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ]
+    }
+  }
+
+  const fields = {
+    login_id: {
+      column: 'users.login_id',
+      filterable: true
+    },
+    point: {
+      column: 'users.point',
+      filterable: true
+    }
+  }
+
+  const result = knex('users')
+    .metaQuery(query, fields)
+    .toString()
+
+  const expected = "select * from `users` where (not (((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000))))"
+
+  expect(result).toBe(expected)
+})
+
+test('`$not` should work properly (3)', () => {
+  const query = {
+    filter: {
+      $not: [
+        {
+          $or: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ]
+    }
+  }
+
+  const fields = {
+    login_id: {
+      column: 'users.login_id',
+      filterable: true
+    },
+    point: {
+      column: 'users.point',
+      filterable: true
+    }
+  }
+
+  const result = knex('users')
+    .metaQuery(query, fields)
+    .toString()
+
+  const expected = "select * from `users` where (not (((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000))))"
+
+  expect(result).toBe(expected)
+})
+
+test('`$not` should work properly (4)', () => {
+  const query = {
+    filter: {
+      $not: [
+        {
+          $or: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ],
+          $and: [
+            {
+              field: 'login_id',
+              operator: 'like',
+              value: '%nnn%'
+            },
+            {
+              field: 'point',
+              operator: '>',
+              value: 2000
+            }
+          ]
+        }
+      ]
+    }
+  }
+
+  const fields = {
+    login_id: {
+      column: 'users.login_id',
+      filterable: true
+    },
+    point: {
+      column: 'users.point',
+      filterable: true
+    }
+  }
+
+  const result = knex('users')
+    .metaQuery(query, fields)
+    .toString()
+
+  const expected = "select * from `users` where (not (((`users`.`login_id` like '%nnn%') and (`users`.`point` > 2000)) and ((`users`.`login_id` like '%nnn%') or (`users`.`point` > 2000))))"
 
   expect(result).toBe(expected)
 })
