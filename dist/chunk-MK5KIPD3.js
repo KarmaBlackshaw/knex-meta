@@ -1,9 +1,9 @@
-// src/core/metaQuery.ts
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});// src/core/metaQuery.ts
 function processWhere(conditions, whereMethod, fields) {
   this.where(function() {
     conditions.forEach((c) => {
       this[whereMethod](function() {
-        if (c.must || c.should || c.mustNot) {
+        if (c.$and || c.$or || c.$not) {
           return makeWhere.call(this, c, fields);
         }
         const field = fields[c.field];
@@ -54,14 +54,14 @@ function processWhere(conditions, whereMethod, fields) {
   return this;
 }
 function makeWhere(filters, fields) {
-  if (filters && filters.must) {
-    processWhere.call(this, filters.must, "andWhere", fields);
+  if (filters && filters.$and) {
+    processWhere.call(this, filters.$and, "andWhere", fields);
   }
-  if (filters && filters.should) {
-    processWhere.call(this, filters.should, "orWhere", fields);
+  if (filters && filters.$or) {
+    processWhere.call(this, filters.$or, "orWhere", fields);
   }
-  if (filters && filters.mustNot) {
-    processWhere.call(this, filters.mustNot, "whereNot", fields);
+  if (filters && filters.$not) {
+    processWhere.call(this, filters.$not, "whereNot", fields);
   }
   return this;
 }
@@ -100,6 +100,6 @@ function metaQuery(query, fields) {
   return this;
 }
 
-export {
-  metaQuery
-};
+
+
+exports.metaQuery = metaQuery;

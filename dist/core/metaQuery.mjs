@@ -1,6 +1,6 @@
 import {
   metaQuery
-} from "../chunk-NWAO7EZB.mjs";
+} from "../chunk-6V2GVL53.mjs";
 export {
   metaQuery
 };

@@ -6,7 +6,7 @@ var _chunkXJ266SM4js = require('./chunk-XJ266SM4.js');
 var _chunkARB7AYYIjs = require('./chunk-ARB7AYYI.js');
 
 
-var _chunkO2KUGGNLjs = require('./chunk-O2KUGGNL.js');
+var _chunkMK5KIPD3js = require('./chunk-MK5KIPD3.js');
 
 
 var _chunkN3L4R74Sjs = require('./chunk-N3L4R74S.js');
@@ -48,7 +48,7 @@ var extensions = [
   _chunk4L4OTXTAjs.metaUpdate,
   _chunkXJ266SM4js.metaInsert,
   _chunkYRBIPXPCjs.metaFind,
-  _chunkO2KUGGNLjs.metaQuery
+  _chunkMK5KIPD3js.metaQuery
 ];
 extensions.forEach((extension) => {
   _knex.knex.QueryBuilder.extend(extension.name, extension);
