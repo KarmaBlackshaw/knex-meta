@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import knex from '../connection'
+import knex from '../../connection'
 
 test('Should perform simple insert', () => {
   const fillables = [

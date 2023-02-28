@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import knex from '../connection'
+import knex from '../../connection'
 
 test('Adds startOf day and endOf day if time is not present', () => {
   const dictionary = {

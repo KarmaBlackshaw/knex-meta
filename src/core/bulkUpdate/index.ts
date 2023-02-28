@@ -1,29 +1,16 @@
-import _isNil from 'lodash/isNil'
+// libs
+import _ from 'lodash'
 
-/**
- * UTILITIES
- */
-import {
-  toArray
-} from '../utils/array'
-
-/**
- * TYPES
- */
+// types
 type dynamicObject = Record<string, any>
-
 type TBulkUpdateKey = string | string[]
-
 type TBulkUpdatePayload = dynamicObject[]
-
 interface IBulkUpdateOptions {
   alias?: dynamicObject,
   else?: dynamicObject
 }
 
-/**
- * HELPERS
- */
+// helpers
 const quoter = (foo: any) => {
   if (typeof foo === 'number') {
     return foo
@@ -45,7 +32,7 @@ export function bulkUpdate (
   _payload: TBulkUpdatePayload = [],
   _options?: IBulkUpdateOptions
 ) {
-  const keys: string[] = toArray(key)
+  const keys: string[] = _.castArray(key)
   const keysSet = new Set(keys)
 
   const payload = JSON.parse(JSON.stringify(_payload))
@@ -75,7 +62,7 @@ export function bulkUpdate (
 
   payload.forEach((currPayload: dynamicObject) => {
     const condition = keys
-      .filter((key: string) => !_isNil(currPayload[key]))
+      .filter((key: string) => !_.isNil(currPayload[key]))
       .map(key => `${aliasMaker(key)} = ${quoter(currPayload[key])}`)
       .join(' AND ')
 

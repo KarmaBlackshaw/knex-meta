@@ -1,9 +1,7 @@
 /**
  * UTILITIES
  */
-import {
-  isEmpty
-} from '../utils/is'
+import _ from 'lodash'
 
 type TPayload = Record<string, any>
 type TDictionary = Record<string, string>
@@ -32,7 +30,7 @@ export function metaUpdate (payload: TPayload, dictionary: TDictionary) {
     updateData[currDictionary] = updateValue
   }
 
-  if (isEmpty(updateData)) {
+  if (_.isEmpty(updateData)) {
     return this
   }
 

@@ -4,13 +4,7 @@ import moment from 'moment'
 /**
  * UTILITIES
  */
-import {
-  isObject
-} from '../utils/is'
-
-import {
-  toArray
-} from '../utils/array'
+import _ from 'lodash'
 
 const hasTime = (dateString: string) => {
   return !/^\d{4}-\d{2}-\d{2}$/.test(dateString.trim())
@@ -35,13 +29,13 @@ export function metaDate ({
     return this
   }
 
-  if (!isObject(dictionary)) {
+  if (!_.isPlainObject(dictionary)) {
     return this
   }
 
-  const dateByArr = toArray(dateBy)
-  const dateToArr = toArray(dateTo)
-  const dateFromArr = toArray(dateFrom)
+  const dateByArr = _.castArray(dateBy)
+  const dateToArr = _.castArray(dateTo)
+  const dateFromArr = _.castArray(dateFrom)
 
   dateByArr.forEach((currDateBy, index) => {
     if (!dictionary[currDateBy]) {

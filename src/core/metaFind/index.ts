@@ -1,9 +1,7 @@
 /**
  * UTILITIES
  */
-import {
-  isNil
-} from '../utils/is'
+import _ from 'lodash'
 
 type TConditions = Record<string, any>
 type TDictionary = Record<string, string>
@@ -23,7 +21,7 @@ export function metaFind (conditions: TConditions, dictionary: TDictionary) {
   for (const key in conditions) {
     const curr = conditions[key]
 
-    if (dictionary[key] && !isNil(curr)) {
+    if (dictionary[key] && !_.isNil(curr)) {
       hasCondition = true
       this.where(dictionary[key], '=', curr)
     }

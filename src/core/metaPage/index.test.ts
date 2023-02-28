@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import knex from '../connection'
+import knex from '../../connection'
 
 test('Test 1', () => {
   const result = knex('users')

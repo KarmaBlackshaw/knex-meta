@@ -4,7 +4,7 @@
   "description": "Utility extensions for knex query builder",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./@types/knex.d.ts",
   "scripts": {
     "dev": "nodemon -r tsconfig-paths/register index.ts",
     "test": "vitest",
@@ -24,6 +24,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.182",
     "bluebird": "^3.7.2",
+    "dotenv": "^16.0.3",
     "knex": "^2.1.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",

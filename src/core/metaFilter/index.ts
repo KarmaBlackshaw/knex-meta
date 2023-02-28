@@ -1,16 +1,12 @@
 /**
  * UTILITIES
  */
-import {
-  isArray,
-  isString,
-  isEmpty
-} from '../utils/is'
+import _ from 'lodash'
 
 import {
   isQuoteWrapped,
   trimQuotes
-} from '../utils/string'
+} from '../../utils/string'
 
 /**
  * HELPERS
@@ -51,8 +47,8 @@ export function metaFilter ({
   searchItems
 }: IFilterArguments = {}) {
   if (filterBy && q) {
-    const isArrayFilterBy = isArray(filterBy)
-    const isArrayQ = isArray(q)
+    const isArrayFilterBy = _.isArray(filterBy)
+    const isArrayQ = _.isArray(q)
 
     /**
    * For array "filterBy" and "q"
@@ -66,7 +62,7 @@ export function metaFilter ({
             return
           }
 
-          if (isArray(currFilter)) {
+          if (_.isArray(currFilter)) {
             return searchArrayDictionary.apply(this, [
               currFilter,
               currQ
@@ -81,7 +77,7 @@ export function metaFilter ({
     /**
    * For array "filterBy"
    */
-    if (isArrayFilterBy && isString(q)) {
+    if (isArrayFilterBy && _.isString(q)) {
       return this.where(function () {
         filterBy.forEach(currFilter => {
           const dictionaryFilterValue = dictionary[currFilter]
@@ -90,7 +86,7 @@ export function metaFilter ({
             return
           }
 
-          if (isArray(dictionaryFilterValue)) {
+          if (_.isArray(dictionaryFilterValue)) {
             return searchArrayDictionary.apply(this, [
               dictionaryFilterValue,
               q
@@ -105,7 +101,7 @@ export function metaFilter ({
     /**
    * For array "q"
    */
-    if (isArrayQ && isString(filterBy) && dictionary[filterBy]) {
+    if (isArrayQ && _.isString(filterBy) && dictionary[filterBy]) {
       return this.where(function () {
         q.forEach(currQ => {
           this.orWhere(...whereString(dictionary[filterBy], currQ))
@@ -116,9 +112,9 @@ export function metaFilter ({
     /**
    * For string "filterBy" and "q"
    */
-    if (isString(filterBy) && isString(q)) {
+    if (_.isString(filterBy) && _.isString(q)) {
       const filterDictionary = dictionary[filterBy]
-      const isArrayDictionary = isArray<string>(filterDictionary)
+      const isArrayDictionary = _.isArray<string>(filterDictionary)
 
       if (isArrayDictionary) {
         return searchArrayDictionary.apply(this, [
@@ -128,12 +124,12 @@ export function metaFilter ({
       }
     }
 
-    if (isString(filterBy) && dictionary[filterBy]) {
+    if (_.isString(filterBy) && dictionary[filterBy]) {
       return this.where(...whereString(dictionary[filterBy], q))
     }
   }
 
-  if (!isEmpty(searchItems)) {
+  if (!_.isEmpty(searchItems)) {
     this.where(function () {
       searchItems.forEach(_search => {
         this.orWhere(function () {

@@ -2,9 +2,7 @@
 
 import { expect, test } from 'vitest'
 
-import knex from '../connection'
-
-import { Query } from './metaQuery'
+import knex from '../../connection'
 
 test('`$and` should work properly (1)', () => {
   const query = {

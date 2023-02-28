@@ -1,9 +1,7 @@
 /**
  * UTILITIES
  */
-import {
-  isNumber
-} from '../utils/is'
+import _ from 'lodash'
 
 export interface IPageArguments {
   page?: number,
@@ -20,7 +18,7 @@ export function metaPage ({
     return this
   }
 
-  if (!isNumber(page) || !isNumber(rows)) {
+  if (!_.isNumber(page) || !_.isNumber(rows)) {
     return this
   }
 
