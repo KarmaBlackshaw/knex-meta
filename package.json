@@ -10,7 +10,10 @@
     "test": "vitest",
     "build": "tsup",
     "build:watch": "npm run build -- --watch src",
-    "release": "release-it"
+    "release": "release-it",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "publishConfig": {
     "access": "public"
@@ -54,7 +57,9 @@
     "ts-node": "^10.8.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
-    "vitest": "^0.17.0"
+    "vitepress": "^1.0.0-alpha.49",
+    "vitest": "^0.17.0",
+    "vue": "^3.2.47"
   },
   "repository": {
     "type": "git",
