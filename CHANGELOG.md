@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.2...1.3.3) - 2023-02-23
+
+### Commits
+
+- chore: change query for metaQuery =&gt; $and, $or, $not [`c10a1b2`](https://github.com/KarmaBlackshaw/knex-meta/commit/c10a1b253b8d1d63eb7c243cb744f1c9de814084)
+- chore(release): 1.3.3 [`d935d04`](https://github.com/KarmaBlackshaw/knex-meta/commit/d935d044197e5321a68f8c9bbbcc91426ac7c6b2)
+
 ## [1.3.2](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.1...1.3.2) - 2023-02-09
 
 ### Commits
