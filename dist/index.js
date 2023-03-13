@@ -1,23 +1,18 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunkEZUCZHGVjs = require('./chunk-EZUCZHGV.js');
-
-// src/index.ts
-var _fastglob = require('fast-glob'); var _fastglob2 = _interopRequireDefault(_fastglob);
-var _path = require('path'); var _path2 = _interopRequireDefault(_path);
-var src_default = (knex, options) => {
-  const paths = _fastglob2.default.sync("./core/**/index.{ts,js}", Object.assign({
-    cwd: __dirname
-  }, options));
-  for (let i = 0; i < paths.length; i++) {
-    const fnPath = paths[i];
-    const method = fnPath.replace(/^\.\/core\/(.+?)\/.*$/, "$1");
-    const methodModule = _chunkEZUCZHGVjs.__require.call(void 0, _path2.default.join(__dirname, fnPath));
-    const fn = methodModule[method];
-    knex.QueryBuilder.extend(fn.name, fn);
-  }
-  return knex;
-};
+var _chunkP6YHSNT2js = require('./chunk-P6YHSNT2.js');
+require('./chunk-JYGDWYMG.js');
+require('./chunk-DSEC33GR.js');
+require('./chunk-ZUPV344C.js');
+require('./chunk-YQRW52RD.js');
+require('./chunk-TVNAFHMW.js');
+require('./chunk-YQDP6FDP.js');
+require('./chunk-HR2DTKKH.js');
+require('./chunk-A6NHQ7T2.js');
+require('./chunk-2FBTMJI2.js');
+require('./chunk-GF7ILZJM.js');
+require('./chunk-TODQZENS.js');
+require('./chunk-HOFJ5C5H.js');
 
 
-exports.default = src_default;
+exports.default = _chunkP6YHSNT2js.src_default;

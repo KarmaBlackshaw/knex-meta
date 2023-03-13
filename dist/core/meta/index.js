@@ -1,23 +1,6 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});require('../../chunk-EZUCZHGV.js');
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-// src/core/meta/index.ts
-function meta({
-  page,
-  rows,
-  isCount,
-  filterBy,
-  filterDictionary,
-  q,
-  sortBy,
-  sort,
-  sortDictionary,
-  dateBy,
-  dateTo,
-  dateFrom,
-  dateDictionary
-} = {}) {
-  return this.metaPage({ page, rows, isCount }).metaDate({ dateBy, dateFrom, dateTo, dictionary: dateDictionary }).metaFilter({ filterBy, q, dictionary: filterDictionary }).metaSort({ sortBy, sort, dictionary: sortDictionary, isCount });
-}
+var _chunkGF7ILZJMjs = require('../../chunk-GF7ILZJM.js');
 
 
-exports.meta = meta;
+exports.meta = _chunkGF7ILZJMjs.meta;

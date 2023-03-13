@@ -1,8 +1,7 @@
 import { knex as Knex } from 'knex'
-import KnexMeta from './index'
-const knex = KnexMeta(Knex, {
-  cwd: __dirname
-})
+import knexMeta from './index'
+
+const knex = knexMeta(Knex)
 
 export default knex({
   client: 'mysql',
