@@ -23,7 +23,7 @@ export default knex => {
   knex.QueryBuilder.extend(metaPage.name, metaPage)
   knex.QueryBuilder.extend(metaQuery.name, metaQuery)
   knex.QueryBuilder.extend(metaSort.name, metaSort)
-  kndex.QueryBuilder.extend(metaUpdate.name, metaUpdate)
+  knex.QueryBuilder.extend(metaUpdate.name, metaUpdate)
 
   return knex
 }

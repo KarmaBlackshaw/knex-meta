@@ -13,7 +13,8 @@
     "release": "release-it",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "prepare": "npx simple-git-hooks"
   },
   "publishConfig": {
     "access": "public"
