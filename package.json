@@ -14,7 +14,8 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "prepare": "npx simple-git-hooks"
+    "prepare": "npx simple-git-hooks",
+    "write-src-index": "ts-node scripts/writeSrcIndex.ts && eslint ./src/index.ts --fix"
   },
   "publishConfig": {
     "access": "public"

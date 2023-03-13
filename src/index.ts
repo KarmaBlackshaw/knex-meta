@@ -5,8 +5,8 @@ import { jsonObject } from './core/jsonObject'
 import { meta } from './core/meta'
 import { metaFilter } from './core/metaFilter'
 import { metaDate } from './core/metaDate'
-import { metaFind } from './core/metaFind'
 import { metaInsert } from './core/metaInsert'
+import { metaFind } from './core/metaFind'
 import { metaPage } from './core/metaPage'
 import { metaQuery } from './core/metaQuery'
 import { metaSort } from './core/metaSort'
@@ -18,8 +18,8 @@ export default knex => {
   knex.QueryBuilder.extend(meta.name, meta)
   knex.QueryBuilder.extend(metaFilter.name, metaFilter)
   knex.QueryBuilder.extend(metaDate.name, metaDate)
-  knex.QueryBuilder.extend(metaFind.name, metaFind)
   knex.QueryBuilder.extend(metaInsert.name, metaInsert)
+  knex.QueryBuilder.extend(metaFind.name, metaFind)
   knex.QueryBuilder.extend(metaPage.name, metaPage)
   knex.QueryBuilder.extend(metaQuery.name, metaQuery)
   knex.QueryBuilder.extend(metaSort.name, metaSort)

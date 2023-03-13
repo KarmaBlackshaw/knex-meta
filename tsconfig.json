@@ -12,6 +12,7 @@
     "strict": false,
     "noImplicitThis": false,
     "skipLibCheck": true,
+    "moduleResolution": "node",
     "declaration": true
   },
   "exclude": ["src/**/*.test.ts", "node_modules", "dist"]
