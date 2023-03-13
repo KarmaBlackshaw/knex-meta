@@ -1,49 +1,23 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _chunkXJ266SM4js = require('./chunk-XJ266SM4.js');
+var _chunkEZUCZHGVjs = require('./chunk-EZUCZHGV.js');
 
-
-var _chunkARB7AYYIjs = require('./chunk-ARB7AYYI.js');
-
-
-var _chunkMK5KIPD3js = require('./chunk-MK5KIPD3.js');
-
-
-var _chunkN3L4R74Sjs = require('./chunk-N3L4R74S.js');
-
-
-var _chunk4L4OTXTAjs = require('./chunk-4L4OTXTA.js');
-
-
-var _chunkU4YCN3EJjs = require('./chunk-U4YCN3EJ.js');
-
-
-var _chunk6CERQZMTjs = require('./chunk-6CERQZMT.js');
-
-
-var _chunkSZF7J4BUjs = require('./chunk-SZF7J4BU.js');
+// src/index.ts
+var _fastglob = require('fast-glob'); var _fastglob2 = _interopRequireDefault(_fastglob);
+var _path = require('path'); var _path2 = _interopRequireDefault(_path);
+var src_default = (knex, options) => {
+  const paths = _fastglob2.default.sync("./core/**/index.{ts,js}", Object.assign({
+    cwd: __dirname
+  }, options));
+  for (let i = 0; i < paths.length; i++) {
+    const fnPath = paths[i];
+    const method = fnPath.replace(/^\.\/core\/(.+?)\/.*$/, "$1");
+    const methodModule = _chunkEZUCZHGVjs.__require.call(void 0, _path2.default.join(__dirname, fnPath));
+    const fn = methodModule[method];
+    knex.QueryBuilder.extend(fn.name, fn);
+  }
+  return knex;
+};
 
 
-var _chunkYPIBG37Zjs = require('./chunk-YPIBG37Z.js');
-require('./chunk-VKDJXQUC.js');
-
-
-var _chunkE4C6CE6Vjs = require('./chunk-E4C6CE6V.js');
-require('./chunk-HOFJ5C5H.js');
-
-
-var _chunkYRBIPXPCjs = require('./chunk-YRBIPXPC.js');
-require('./chunk-6YPE5F7U.js');
-
-
-
-
-
-
-
-
-
-
-
-
-exports.bulkUpdate = _chunkU4YCN3EJjs.bulkUpdate; exports.jsonObject = _chunk6CERQZMTjs.jsonObject; exports.meta = _chunkSZF7J4BUjs.meta; exports.metaDate = _chunkYPIBG37Zjs.metaDate; exports.metaFilter = _chunkE4C6CE6Vjs.metaFilter; exports.metaFind = _chunkYRBIPXPCjs.metaFind; exports.metaInsert = _chunkXJ266SM4js.metaInsert; exports.metaPage = _chunkARB7AYYIjs.metaPage; exports.metaQuery = _chunkMK5KIPD3js.metaQuery; exports.metaSort = _chunkN3L4R74Sjs.metaSort; exports.metaUpdate = _chunk4L4OTXTAjs.metaUpdate;
+exports.default = src_default;

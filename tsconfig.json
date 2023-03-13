@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
+    "lib": ["es6"],
+    "types": ["node"],
     "target": "es2017",
     "module": "commonjs",
     "baseUrl": ".",
-    "paths": {
-      "@utils/*": ["./utils/*"]
-    },
     "typeRoots": ["./node_modules/@types", "./@types"],
-    "outDir": "./dist",
+    "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "noImplicitThis": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "declaration": true
   },
   "exclude": ["src/**/*.test.ts", "node_modules", "dist"]
 }

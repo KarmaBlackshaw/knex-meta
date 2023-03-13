@@ -2,6 +2,7 @@
 
 
 var _chunkHOFJ5C5Hjs = require('../chunk-HOFJ5C5H.js');
+require('../chunk-EZUCZHGV.js');
 
 
 

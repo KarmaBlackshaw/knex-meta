@@ -1,7 +1,7 @@
 export default {
   entry: ['src/**/*.ts', '!src/**/*.test.ts'],
-  format: ['esm', 'cjs'],
-  dts: false,
+  format: ['cjs'],
+  dts: true,
   splitting: true,
   clean: true,
   platform: 'node'

@@ -1,8 +1,8 @@
 // libs
-import { IDateArguments } from './metaDate'
-import { IFilterArguments } from './metaFilter'
-import { ISortArguments } from './metaSort'
-import { IPageArguments } from './metaPage'
+import { IDateArguments } from '../metaDate'
+import { IFilterArguments } from '../metaFilter'
+import { ISortArguments } from '../metaSort'
+import { IPageArguments } from '../metaPage'
 
 interface IMetaArguments {
   filterDictionary?: IFilterArguments['dictionary'],
