@@ -1,5 +1,3 @@
-// <reference path="../../@types/meta.d.ts" />
-
 import { expect, test } from 'vitest'
 
 import knex from '../../connection'
@@ -362,7 +360,7 @@ test('`$or` && `$and` should work properly (3)', () => {
         }
       ]
     }
-  } as Query
+  }
 
   const fields = {
     login_id: {
@@ -440,7 +438,7 @@ test('`$or` && `$and` $or work properly (4)', () => {
         }
       ]
     }
-  } as Query
+  }
 
   const fields = {
     login_id: {
@@ -528,7 +526,7 @@ test('$or sort properly', () => {
         direction: 'desc'
       }
     ]
-  } as Query
+  }
 
   const fields = {
     login_id: {
@@ -622,7 +620,7 @@ test('$or paginate properly', () => {
       rows: 50,
       page: 2
     }
-  } as Query
+  }
 
   const fields = {
     login_id: {

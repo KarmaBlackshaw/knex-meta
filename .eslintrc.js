@@ -49,6 +49,7 @@ module.exports = {
         argsIgnorePattern: 'next|_.+',
         varsIgnorePattern: '_'
       }
-    ]
+    ],
+    '@typescript-eslint/ban-ts-comment': 'off'
   }
 }
