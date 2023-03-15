@@ -4,6 +4,7 @@ module.exports = {
   hooks: {
     'after:bump': [
       changelogCmd,
+      'npm run write-utility-doc',
       'npm run write-src-index',
       'npm run build',
       'git add .'

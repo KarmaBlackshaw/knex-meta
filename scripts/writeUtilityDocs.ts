@@ -1,9 +1,12 @@
-import fs from 'fs'
+import fsExtra from 'fs-extra'
+import Promise from 'bluebird'
 import { format } from 'sql-formatter'
 import * as recast from 'recast'
 import fg from 'fast-glob'
 import path from 'path'
 import _ from 'lodash'
+
+const fs = Promise.promisifyAll(fsExtra)
 
 const formatSql = str => format(str, {
   keywordCase: 'upper',
@@ -17,13 +20,21 @@ async function run () {
     cwd: path.join(ROOT, 'src/core')
   })
 
-  directories.forEach(directory => {
-    const markdownDir = path.join(ROOT, 'src/core', directory)
-    const fileContent = fs.readFileSync(markdownDir, 'utf8')
+  for (let i = 0; i < directories.length; i++) {
+    const directory = directories[i]
+
+    const testDir = path.join(ROOT, 'src/core', directory)
+    const fileContent = await fs.readFileAsync(testDir, 'utf8')
 
     const ast = recast.parse(fileContent)
 
-    const fnName = directory.replace('/index.ts', '')
+    const fnName = directory.replace('/index.test.ts', '')
+
+    const markdownDir = path.join(ROOT, 'src/core', fnName, 'index.md')
+    const isMarkdownExists = await fs.pathExistsAsync(markdownDir)
+    const markdown = isMarkdownExists
+      ? await fs.readFileAsync(markdownDir, 'utf8')
+      : null
 
     const markdowns = []
     recast.visit(ast, {
@@ -70,11 +81,17 @@ async function run () {
       }
     })
 
-    let markdownContent = []
+    let markdownContent = [
+      '<!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->',
+      `# ${fnName}`,
+      markdown ? '--------' : undefined,
+      markdown,
+      '--------',
+      '### Demo'
+    ]
 
     markdowns.forEach(curr => {
       markdownContent.push(`## ${curr.title}`)
-      markdownContent.push('\n')
       markdownContent.push('::: code-group')
       markdownContent.push('```js [Syntax]')
       markdownContent.push(curr.code)
@@ -89,7 +106,7 @@ async function run () {
       path.join(ROOT, `docs/utility/${fnName}.md`),
       markdownContent.join('\n')
     )
-  })
+  }
 }
 
 run()
