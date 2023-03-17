@@ -90,31 +90,6 @@ test('Multiple data with multiple keys', () => {
   expect(result).toBe(expected)
 })
 
-test('Multiple data with multiple keys', () => {
-  const updateData = [
-    {
-      id: 1,
-      name: 'John',
-      age: 30,
-      address: 'Cebu'
-    },
-    {
-      id: 2,
-      name: 'Mark',
-      age: 25,
-      address: 'Manila'
-    }
-  ]
-
-  const result = knex('users')
-    .bulkUpdate(['id', 'name'], updateData)
-    .toString()
-
-  const expected = "update `users` set `age` = (CASE WHEN id = 1 AND name = 'John' THEN 30 WHEN id = 2 AND name = 'Mark' THEN 25 END), `address` = (CASE WHEN id = 1 AND name = 'John' THEN 'Cebu' WHEN id = 2 AND name = 'Mark' THEN 'Manila' END) where ((id = 1 AND name = 'John') OR (id = 2 AND name = 'Mark'))"
-
-  expect(result).toBe(expected)
-})
-
 test('Works with alias', () => {
   const updateData = [
     {
