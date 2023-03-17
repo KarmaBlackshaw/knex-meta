@@ -1,7 +1,9 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # meta
-
-
+--------
+::: warning
+This will no longer receive updates in favor of [`metaQuery`](/utility/metaQuery)
+:::
 --------
 ### Demo
 ## Date meta functions correctly

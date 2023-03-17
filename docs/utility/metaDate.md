@@ -1,7 +1,9 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # metaDate
-
-
+--------
+::: warning
+This will no longer receive updates in favor of [`metaQuery`](/utility/metaQuery)
+:::
 --------
 ### Demo
 ## Adds startOf day and endOf day if time is not present

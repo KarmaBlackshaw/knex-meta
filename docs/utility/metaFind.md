@@ -1,7 +1,9 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # metaFind
-
-
+--------
+::: warning
+This will no longer receive updates in favor of [`metaQuery`](/utility/metaQuery)
+:::
 --------
 ### Demo
 ## Should perform simple find

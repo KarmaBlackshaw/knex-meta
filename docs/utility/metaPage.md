@@ -1,7 +1,9 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # metaPage
-
-
+--------
+::: warning
+This will no longer receive updates in favor of [`metaQuery`](/utility/metaQuery)
+:::
 --------
 ### Demo
 ## Test 1
