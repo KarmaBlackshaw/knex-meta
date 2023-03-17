@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.3...2.0.0) - 2023-03-13
+
+### Commits
+
+- chore: add vitepress [`9b960de`](https://github.com/KarmaBlackshaw/knex-meta/commit/9b960de8fe07cb6b1e4f0f389e7554ad26f97d85)
+- chore: change structure [`828d938`](https://github.com/KarmaBlackshaw/knex-meta/commit/828d9385a533322f42e9168b2079f6b82c470333)
+- chore: add script for write src index [`aaf5bc1`](https://github.com/KarmaBlackshaw/knex-meta/commit/aaf5bc1847771fc64580c9a8f62e242dfb83e4bc)
+- test [`075d227`](https://github.com/KarmaBlackshaw/knex-meta/commit/075d22764a3aa1b37b1fc334a51c4b6bfbf450ce)
+- chore: update structure and use glob for index.ts [`4730a1b`](https://github.com/KarmaBlackshaw/knex-meta/commit/4730a1bf9e5b3cd206a330b01273555a6d765307)
+- chroe: update test connection [`67efc06`](https://github.com/KarmaBlackshaw/knex-meta/commit/67efc06afb5ae11846f53e6f0f577b1897bb5641)
+- wip: setup vitepress structure [`a442581`](https://github.com/KarmaBlackshaw/knex-meta/commit/a44258171ef4fdb044359acc78049c9e27605d95)
+- chore(release): 2.0.0 [`a60a568`](https://github.com/KarmaBlackshaw/knex-meta/commit/a60a568499126d181df3ac8b8ce6a11a3d6f3e48)
+- test [`84e9865`](https://github.com/KarmaBlackshaw/knex-meta/commit/84e9865d38eee48ae462820eebd50e24805d6796)
+- remove pre-push hook [`c6b4ff0`](https://github.com/KarmaBlackshaw/knex-meta/commit/c6b4ff00dd73634147f4459457be9e36ec01a899)
+- chore: fix lint [`6ee61e1`](https://github.com/KarmaBlackshaw/knex-meta/commit/6ee61e1c9534849ff19671dde3fc4ba2d0aea26e)
+- chore: update eslintignore [`f8b14a8`](https://github.com/KarmaBlackshaw/knex-meta/commit/f8b14a8b1797ac6ed4fe99a5c6ebaecfc675c773)
+
 ## [1.3.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.2...1.3.3) - 2023-02-23
 
 ### Commits
