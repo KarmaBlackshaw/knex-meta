@@ -7,6 +7,7 @@ module.exports = {
       'npm run write-utility-doc',
       'npm run write-src-index',
       'npm run build',
+      'npm run docs:build',
       'git add .'
     ]
   },
