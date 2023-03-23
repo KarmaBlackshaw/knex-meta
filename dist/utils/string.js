@@ -1,8 +1,11 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
+"use strict";Object.defineProperty(exports, "__esModule", {value: true});// src/utils/string.ts
+function isQuoteWrapped(foo) {
+  return /^"(.+)"$/gi.test(foo);
+}
+function trimQuotes(str) {
+  return str.replace(/^"|"$/gi, "");
+}
 
 
-var _chunkHOFJ5C5Hjs = require('../chunk-HOFJ5C5H.js');
 
-
-
-exports.isQuoteWrapped = _chunkHOFJ5C5Hjs.isQuoteWrapped; exports.trimQuotes = _chunkHOFJ5C5Hjs.trimQuotes;
+exports.isQuoteWrapped = isQuoteWrapped; exports.trimQuotes = trimQuotes;

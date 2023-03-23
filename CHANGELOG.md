@@ -5,7 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1](https://github.com/KarmaBlackshaw/knex-meta/compare/3.0.0...3.0.1) - 2023-03-23
+
+
+
+
+### Commits
+
+- chore(release): 3.0.1 [`075b6d1`](https://github.com/KarmaBlackshaw/knex-meta/commit/075b6d1236f2096d4e90a0b6715de611aeae40e8)
+- chore: add docs on build [`0dc2848`](https://github.com/KarmaBlackshaw/knex-meta/commit/0dc2848bf4f4611e27be9e7279a2f834955c5302)
+
 ## [3.0.0](https://github.com/KarmaBlackshaw/knex-meta/compare/2.0.1...3.0.0) - 2023-03-23
+
+
+
 
 ### Commits
 
@@ -14,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore: update metaUpdate [`435bd92`](https://github.com/KarmaBlackshaw/knex-meta/commit/435bd92b21cf5ffa3a1db7a6ddfec409c3c1bafb)
 
 ## [2.0.1](https://github.com/KarmaBlackshaw/knex-meta/compare/2.0.0...2.0.1) - 2023-03-17
+
+
+
 
 ### Commits
 
@@ -29,6 +45,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Create deploy [`f424c70`](https://github.com/KarmaBlackshaw/knex-meta/commit/f424c70237af27b4861514d2d2baa9a472fb11fa)
 
 ## [2.0.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.3...2.0.0) - 2023-03-13
+
+
+
 
 ### Commits
 
@@ -47,12 +66,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.2...1.3.3) - 2023-02-23
 
+
+
+
 ### Commits
 
 - chore: change query for metaQuery =&gt; $and, $or, $not [`c10a1b2`](https://github.com/KarmaBlackshaw/knex-meta/commit/c10a1b253b8d1d63eb7c243cb744f1c9de814084)
 - chore(release): 1.3.3 [`d935d04`](https://github.com/KarmaBlackshaw/knex-meta/commit/d935d044197e5321a68f8c9bbbcc91426ac7c6b2)
 
 ## [1.3.2](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.1...1.3.2) - 2023-02-09
+
+
+
 
 ### Commits
 
@@ -61,6 +86,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.1](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.0...1.3.1) - 2023-02-09
 
+
+
+
 ### Commits
 
 - chore(release): 1.3.1 [`46d207a`](https://github.com/KarmaBlackshaw/knex-meta/commit/46d207af6a72eb636cb10346343752327adfa06c)
@@ -68,9 +96,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.3.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.12...1.3.0) - 2023-02-09
 
+
 ### Merged
 
 - Feat/meta query [`#1`](https://github.com/KarmaBlackshaw/knex-meta/pull/1)
+
 
 ### Commits
 
@@ -82,12 +112,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.12](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.11...1.2.12) - 2023-01-19
 
+
+
+
 ### Commits
 
 - chore(release): 1.2.12 [`53d986f`](https://github.com/KarmaBlackshaw/knex-meta/commit/53d986feefa33440bc605df154b3e10827ece33d)
 - chore: update metaDate to accept multiple dateBy [`53caddc`](https://github.com/KarmaBlackshaw/knex-meta/commit/53caddc1ed77a42d46afb475236b3900f254eb1f)
 
 ## [1.2.11](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.10...1.2.11) - 2023-01-19
+
+
+
 
 ### Commits
 
@@ -96,12 +132,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.10](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.9...1.2.10) - 2022-11-18
 
+
+
+
 ### Commits
 
 - chore: fix meta find and some tests [`cb691c7`](https://github.com/KarmaBlackshaw/knex-meta/commit/cb691c7cfab4f2c81c07de164891c528087494d1)
 - chore(release): 1.2.10 [`2b5303d`](https://github.com/KarmaBlackshaw/knex-meta/commit/2b5303d43d37b4c80e0a8fe29e60ac8cc5ca3cde)
 
 ## [1.2.9](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.8...1.2.9) - 2022-10-28
+
+
+
 
 ### Commits
 
@@ -111,12 +153,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.8](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.7...1.2.8) - 2022-09-30
 
+
+
+
 ### Commits
 
 - chore(release): 1.2.8 [`893697e`](https://github.com/KarmaBlackshaw/knex-meta/commit/893697e226f18b5fbeea4b4b2ba9430a96076ff0)
 - chore: fix metaDate bug [`b3d9702`](https://github.com/KarmaBlackshaw/knex-meta/commit/b3d97023798f5c9b5eaccd4c5d9524987d1a0e7a)
 
 ## [1.2.7](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.6...1.2.7) - 2022-09-30
+
+
+
 
 ### Commits
 
@@ -125,6 +173,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore: refactor sort to accept array of fields [`1ce94a1`](https://github.com/KarmaBlackshaw/knex-meta/commit/1ce94a11aaa099a87d8d1dadbc9b4685de0edfc9)
 
 ## [1.2.6](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.5...1.2.6) - 2022-09-13
+
+
+
 
 ### Commits
 
@@ -137,12 +188,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.5](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.4...1.2.5) - 2022-09-02
 
+
+
+
 ### Commits
 
 - chore(release): 1.2.5 [`9f77ac9`](https://github.com/KarmaBlackshaw/knex-meta/commit/9f77ac9760401148c8faa08f445b7bef5abbb9ee)
 - chore: update readme [`3fbde03`](https://github.com/KarmaBlackshaw/knex-meta/commit/3fbde035eca1ff2c45782399f913307e258d2fa7)
 
 ## [1.2.4](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.3...1.2.4) - 2022-09-02
+
+
+
 
 ### Commits
 
@@ -151,12 +208,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.2...1.2.3) - 2022-09-01
 
+
+
+
 ### Commits
 
 - chore(release): 1.2.3 [`8f35e57`](https://github.com/KarmaBlackshaw/knex-meta/commit/8f35e5743d6d0d19fbb83a9825c15594feda2fbd)
 - feat: add exact search for quoted search string [`010553f`](https://github.com/KarmaBlackshaw/knex-meta/commit/010553f1622b3df4c09df189825659d2e3af32bc)
 
 ## [1.2.2](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.1...1.2.2) - 2022-08-29
+
+
+
 
 ### Commits
 
@@ -165,12 +228,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.1](https://github.com/KarmaBlackshaw/knex-meta/compare/1.2.0...1.2.1) - 2022-08-26
 
+
+
+
 ### Commits
 
 - chore(release): 1.2.1 [`4e3befd`](https://github.com/KarmaBlackshaw/knex-meta/commit/4e3befd068bf5aa9b4022fa29baeb3f75b42135b)
 - refactor: add limit one for metaFind [`a711fb7`](https://github.com/KarmaBlackshaw/knex-meta/commit/a711fb781474ad1db41533353bb7382884297c65)
 
 ## [1.2.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.4...1.2.0) - 2022-08-26
+
+
+
 
 ### Commits
 
@@ -223,6 +292,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.4](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.3...1.1.4) - 2022-08-03
 
+
+
+
 ### Commits
 
 - chore(release): 1.1.4 [`40ff643`](https://github.com/KarmaBlackshaw/knex-meta/commit/40ff643d702d7619a60fec309ffaeed8c69bac39)
@@ -230,7 +302,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.2...1.1.3) - 2022-08-03
 
+
+
+
+
 ## [1.1.2](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.1...1.1.2) - 2022-08-22
+
+
+
 
 ### Commits
 
@@ -239,12 +318,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.1](https://github.com/KarmaBlackshaw/knex-meta/compare/1.1.0...1.1.1) - 2022-08-22
 
+
+
+
 ### Commits
 
 - minor: update readme [`086e855`](https://github.com/KarmaBlackshaw/knex-meta/commit/086e85591ec865f47e6225cf961103e44dbda10d)
 - chore(release): 1.1.1 [`efe2d45`](https://github.com/KarmaBlackshaw/knex-meta/commit/efe2d455ae1e77cf853f693c0160ffd42b4ebe1e)
 
 ## [1.1.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.7...1.1.0) - 2022-08-17
+
+
+
 
 ### Commits
 
@@ -254,6 +339,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.7](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.6...1.0.7) - 2022-08-16
 
+
+
+
 ### Commits
 
 - minor: change readme [`d348cf0`](https://github.com/KarmaBlackshaw/knex-meta/commit/d348cf05cfc94b720346c3bae652263329682115)
@@ -261,6 +349,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - minor: change readme [`f70c657`](https://github.com/KarmaBlackshaw/knex-meta/commit/f70c657c6f5d7076e8047eb6970888ce26a0a5ae)
 
 ## [1.0.6](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.5...1.0.6) - 2022-08-16
+
+
+
 
 ### Commits
 
@@ -277,6 +368,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.4...1.0.5) - 2022-08-03
 
+
+
+
 ### Commits
 
 - chore(release): 1.0.5 [`969b3f5`](https://github.com/KarmaBlackshaw/knex-meta/commit/969b3f520daf66243d94f4c251d13f0167687697)
@@ -284,12 +378,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.4](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.3...1.0.4) - 2022-08-03
 
+
+
+
 ### Commits
 
 - chore(release): 1.0.4 [`276896b`](https://github.com/KarmaBlackshaw/knex-meta/commit/276896b036e42e9f2efe125f5c4f6e2e5ddba991)
 - refactor(readme) [`a1f385f`](https://github.com/KarmaBlackshaw/knex-meta/commit/a1f385f9a1e747c95c6d59e85778ca155c6983e6)
 
 ## [1.0.3](https://github.com/KarmaBlackshaw/knex-meta/compare/1.0.1...1.0.3) - 2022-08-03
+
+
+
 
 ### Commits
 
@@ -312,6 +412,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update node.js.yml [`43d3a53`](https://github.com/KarmaBlackshaw/knex-meta/commit/43d3a53f90d55096df927eb0d470330ea569ccb8)
 
 ## 1.0.1 - 2022-08-03
+
+
+
 
 ### Commits
 
@@ -372,3 +475,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ref: update visitor count style [`5f01494`](https://github.com/KarmaBlackshaw/knex-meta/commit/5f01494c83ccb18fc918e7e1545eecf47b43ca95)
 - ref: remove unused var [`af688a2`](https://github.com/KarmaBlackshaw/knex-meta/commit/af688a28005113c8b01c202c27b9d333628739c4)
 - add playground [`3177cad`](https://github.com/KarmaBlackshaw/knex-meta/commit/3177cad168a9197d42b295ea6b2c82aac10ffd2e)
+
