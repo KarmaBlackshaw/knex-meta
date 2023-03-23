@@ -1,5 +1,10 @@
-type TPayload = Record<string, any>;
-type TDictionary = Record<string, string>;
-declare function metaUpdate(payload: TPayload, dictionary: TDictionary): any;
+type dynamicObject = Record<string, any>;
+type TBulkUpdateKey = string | string[];
+type TBulkUpdatePayload = dynamicObject | dynamicObject[];
+type TBulkUpdateOptions = {
+    fields: dynamicObject;
+    else?: dynamicObject;
+};
+declare function metaUpdate(keyConditions: TBulkUpdateKey, payload: TBulkUpdatePayload, options: TBulkUpdateOptions): any;
 
 export { metaUpdate };

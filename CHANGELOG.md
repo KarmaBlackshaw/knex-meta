@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1](https://github.com/KarmaBlackshaw/knex-meta/compare/2.0.0...2.0.1) - 2023-03-17
+
+### Commits
+
+- chore: add script to auto generate docs [`85fc648`](https://github.com/KarmaBlackshaw/knex-meta/commit/85fc648a76eed79471fb95c6564c7cc3f335e27c)
+- chore: update docs [`0431ded`](https://github.com/KarmaBlackshaw/knex-meta/commit/0431dedb4e284ff670459e33b9966e1547ba4b6a)
+- chore: update docs [`767a11f`](https://github.com/KarmaBlackshaw/knex-meta/commit/767a11fb4188767784dfb448012c47f0e2311c05)
+- Update readme.md [`cef0adc`](https://github.com/KarmaBlackshaw/knex-meta/commit/cef0adc6745afd0ef7e69a280075500a91a30d7b)
+- chore: update test definitions [`1eeb3e5`](https://github.com/KarmaBlackshaw/knex-meta/commit/1eeb3e57730994b0eb2963f0e9d18408f3020474)
+- chore: add deprecation warning [`fb5ddaf`](https://github.com/KarmaBlackshaw/knex-meta/commit/fb5ddafc6a097fb190abbf904be77964f0bff578)
+- chore(release): 2.0.1 [`ac25190`](https://github.com/KarmaBlackshaw/knex-meta/commit/ac25190bd68a01e363ffa572862d7d787bd0340f)
+- chore: add deploy.yml [`ef0850d`](https://github.com/KarmaBlackshaw/knex-meta/commit/ef0850d4d9bf94c630184a8a212f62dff3a51d68)
+- chore: remove deploy yaml [`ab82aac`](https://github.com/KarmaBlackshaw/knex-meta/commit/ab82aac1d817d3398f267901dba851409551e8cd)
+- Create deploy [`f424c70`](https://github.com/KarmaBlackshaw/knex-meta/commit/f424c70237af27b4861514d2d2baa9a472fb11fa)
+
 ## [2.0.0](https://github.com/KarmaBlackshaw/knex-meta/compare/1.3.3...2.0.0) - 2023-03-13
 
 ### Commits
