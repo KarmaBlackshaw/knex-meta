@@ -18,13 +18,13 @@ var _chunkUISBBXILjs = require('./chunk-UISBBXIL.js');
 var _chunkHR2DTKKHjs = require('./chunk-HR2DTKKH.js');
 
 
+var _chunk2FBTMJI2js = require('./chunk-2FBTMJI2.js');
+
+
 var _chunkGF7ILZJMjs = require('./chunk-GF7ILZJM.js');
 
 
 var _chunkTODQZENSjs = require('./chunk-TODQZENS.js');
-
-
-var _chunk2FBTMJI2js = require('./chunk-2FBTMJI2.js');
 
 
 var _chunkJYGDWYMGjs = require('./chunk-JYGDWYMG.js');
@@ -33,10 +33,10 @@ var _chunkJYGDWYMGjs = require('./chunk-JYGDWYMG.js');
 var src_default = (knex) => {
   knex.QueryBuilder.extend(_chunkHR2DTKKHjs.jsonObject.name, _chunkHR2DTKKHjs.jsonObject);
   knex.QueryBuilder.extend(_chunkGF7ILZJMjs.meta.name, _chunkGF7ILZJMjs.meta);
+  knex.QueryBuilder.extend(_chunkTODQZENSjs.metaFilter.name, _chunkTODQZENSjs.metaFilter);
   knex.QueryBuilder.extend(_chunkJYGDWYMGjs.metaFind.name, _chunkJYGDWYMGjs.metaFind);
   knex.QueryBuilder.extend(_chunk2FBTMJI2js.metaDate.name, _chunk2FBTMJI2js.metaDate);
   knex.QueryBuilder.extend(_chunkDSEC33GRjs.metaInsert.name, _chunkDSEC33GRjs.metaInsert);
-  knex.QueryBuilder.extend(_chunkTODQZENSjs.metaFilter.name, _chunkTODQZENSjs.metaFilter);
   knex.QueryBuilder.extend(_chunkZUPV344Cjs.metaPage.name, _chunkZUPV344Cjs.metaPage);
   knex.QueryBuilder.extend(_chunkYQRW52RDjs.metaQuery.name, _chunkYQRW52RDjs.metaQuery);
   knex.QueryBuilder.extend(_chunkTVNAFHMWjs.metaSort.name, _chunkTVNAFHMWjs.metaSort);
