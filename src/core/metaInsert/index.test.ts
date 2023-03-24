@@ -2,17 +2,19 @@ import { expect, test } from 'vitest'
 
 import knex from '../../connection'
 
-test('Should perform simple insert', () => {
-  const fillables = [
-    'name'
-  ]
+test('Simple insert', () => {
+  const options = {
+    fields: [
+      'name'
+    ]
+  }
 
   const payload = {
     name: 'Jeash'
   }
 
   const result = knex('users')
-    .metaInsert(payload, fillables)
+    .metaInsert(payload, options)
     .toString()
 
   const expected = "insert into `users` (`name`) values ('Jeash')"
@@ -20,10 +22,12 @@ test('Should perform simple insert', () => {
   expect(result).toBe(expected)
 })
 
-test('Should perform simple array insert', () => {
-  const fillables = [
-    'name'
-  ]
+test('Simple insert with multiple payload', () => {
+  const options = {
+    fields: [
+      'name'
+    ]
+  }
 
   const payload = [
     {
@@ -35,7 +39,7 @@ test('Should perform simple array insert', () => {
   ]
 
   const result = knex('users')
-    .metaInsert(payload, fillables)
+    .metaInsert(payload, options)
     .toString()
 
   const expected = "insert into `users` (`name`) values ('Jeash'), ('Ernie')"
@@ -43,10 +47,12 @@ test('Should perform simple array insert', () => {
   expect(result).toBe(expected)
 })
 
-test('Should set undefined values to DEFAULT', () => {
-  const fillables = [
-    'name'
-  ]
+test('Undefined values will default to `DEFAULT`', () => {
+  const options = {
+    fields: [
+      'name'
+    ]
+  }
 
   const payload = [
     {
@@ -58,7 +64,7 @@ test('Should set undefined values to DEFAULT', () => {
   ]
 
   const result = knex('users')
-    .metaInsert(payload, fillables)
+    .metaInsert(payload, options)
     .toString()
 
   const expected = "insert into `users` (`name`) values ('Jeash'), (DEFAULT)"
@@ -66,28 +72,34 @@ test('Should set undefined values to DEFAULT', () => {
   expect(result).toBe(expected)
 })
 
-test('Should set undefined values to DEFAULT', () => {
-  const fillables = [
-    'name',
-    'age'
-  ]
+test('Transforms JSON fields', () => {
+  const options = {
+    fields: [
+      'name',
+      'age',
+      'settings'
+    ],
+    json_fields: [
+      'settings'
+    ]
+  }
 
   const payload = [
     {
       name: 'Jeash',
-      age: '12'
+      settings: { percentage: 12 }
     },
     {
-      name: undefined,
+      name: 'Josh',
       age: '52'
     }
   ]
 
   const result = knex('users')
-    .metaInsert(payload, fillables)
+    .metaInsert(payload, options)
     .toString()
 
-  const expected = "insert into `users` (`age`, `name`) values ('12', 'Jeash'), ('52', DEFAULT)"
+  const expected = "insert into `users` (`age`, `name`, `settings`) values (DEFAULT, 'Jeash', '{\"percentage\":12}'), ('52', 'Josh', DEFAULT)"
 
-  expect(result).toBe(expected)
+  expect(result.replace(/\\/g, '')).toBe(expected)
 })

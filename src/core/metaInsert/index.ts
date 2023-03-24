@@ -6,26 +6,45 @@ import _ from 'lodash'
 
 export type TObject = Record<string, any>
 export type TPayload = TObject | TObject[]
+export type TOptions = {
+  fields: string[],
+  // eslint-disable-next-line camelcase
+  json_fields: string[]
+}
+export function metaInsert (payload: TPayload, options: TOptions) {
+  const fields = options.fields
+  const jsonFields = options.json_fields
 
-export function metaInsert (payload: TPayload, fillables: string[]) {
-  if (!payload || !fillables) {
+  if (!payload || !fields) {
     if (!payload) {
       throw new TypeError('Payload of undefined is not permitted')
     }
 
-    if (!fillables) {
+    if (!fields) {
       throw new TypeError('Dictionary of undefined is not permitted')
     }
   }
 
-  const fillablesSet = new Set(fillables)
+  const fieldSet = new Set(fields)
+  const jsonFieldSet = new Set(jsonFields)
 
+  const toInsert = []
   const arrayPayload = _.castArray(payload)
-  const filterer = (hay: TObject) => _.pickBy(hay, (val, key) => {
-    return !_.isNil(val) && fillablesSet.has(key)
+
+  arrayPayload.forEach(currPayload => {
+    for (const field in currPayload) {
+      const fieldValue = currPayload[field]
+      if (!fieldSet.has(field)) {
+        delete currPayload[field]
+      }
+
+      if (jsonFieldSet.has(field) && _.isObject(fieldValue)) {
+        currPayload[field] = JSON.stringify(currPayload[field])
+      }
+    }
+
+    toInsert.push(currPayload)
   })
 
-  const data = arrayPayload.map(filterer)
-
-  return this.insert(data)
+  return this.insert(toInsert)
 }
