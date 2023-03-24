@@ -84,9 +84,11 @@ async function run () {
     let markdownContent = [
       '<!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->',
       `# ${fnName}`,
-      markdown ? '--------' : undefined,
+      '',
       markdown,
+      '\n',
       '--------',
+      '\n',
       '### Demo'
     ]
 

@@ -1,8 +1,12 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # metaUpdate
 
+A powerful function that allows you to easily update multiple fields using an object payload or multiple data updates. You can specify the fields you want to update and their corresponding table columns, and even add an else condition for when a specific key is not found. It also supports updating multiple keys at once for more complex updates.
+
 
 --------
+
+
 ### Demo
 ## Update with an object payload
 ::: code-group

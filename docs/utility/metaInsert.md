@@ -1,8 +1,12 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # metaInsert
 
+A simple wrapper for bulk insert. This checks for valid fields and accepts array or object.
+
 
 --------
+
+
 ### Demo
 ## Should perform simple insert
 ::: code-group

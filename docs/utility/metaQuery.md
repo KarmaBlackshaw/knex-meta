@@ -1,6 +1,6 @@
 <!-- This content is auto generated /scripts/writeUtilityDocs.ts  -->
 # metaQuery
---------
+
 ### Valid Operators
 - `=` Equals _(default)_
 - `<` Less than
@@ -22,7 +22,11 @@
 - `$and`
 - `$or`
 - `$not`
+
+
 --------
+
+
 ### Demo
 ## `$and` should work properly (1)
 ::: code-group

@@ -1,0 +1,1 @@
+A simple wrapper for bulk insert. This checks for valid fields and accepts array or object.
