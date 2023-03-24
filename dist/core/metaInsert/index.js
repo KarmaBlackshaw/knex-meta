@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunkDSEC33GRjs = require('../../chunk-DSEC33GR.js');
+var _chunkIO6QNODYjs = require('../../chunk-IO6QNODY.js');
 
 
-exports.metaInsert = _chunkDSEC33GRjs.metaInsert;
+exports.metaInsert = _chunkIO6QNODYjs.metaInsert;

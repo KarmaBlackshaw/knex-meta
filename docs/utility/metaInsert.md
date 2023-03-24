@@ -8,19 +8,21 @@ A simple wrapper for bulk insert. This checks for valid fields and accepts array
 
 
 ### Demo
-## Should perform simple insert
+## Simple insert
 ::: code-group
 ```js [Syntax]
-const fillables = [
-  'name'
-]
+const options = {
+  fields: [
+    'name'
+  ]
+}
 
 const payload = {
   name: 'Jeash'
 }
 
 const result = knex('users')
-  .metaInsert(payload, fillables)
+  .metaInsert(payload, options)
   .toString()
 ```
 ```sql [Output]
@@ -30,12 +32,14 @@ VALUES
   ('Jeash')
 ```
 :::
-## Should perform simple array insert
+## Simple insert with multiple payload
 ::: code-group
 ```js [Syntax]
-const fillables = [
-  'name'
-]
+const options = {
+  fields: [
+    'name'
+  ]
+}
 
 const payload = [
   {
@@ -47,7 +51,7 @@ const payload = [
 ]
 
 const result = knex('users')
-  .metaInsert(payload, fillables)
+  .metaInsert(payload, options)
   .toString()
 ```
 ```sql [Output]
@@ -58,12 +62,14 @@ VALUES
   ('Ernie')
 ```
 :::
-## Should set undefined values to DEFAULT
+## Undefined values will default to `DEFAULT`
 ::: code-group
 ```js [Syntax]
-const fillables = [
-  'name'
-]
+const options = {
+  fields: [
+    'name'
+  ]
+}
 
 const payload = [
   {
@@ -75,7 +81,7 @@ const payload = [
 ]
 
 const result = knex('users')
-  .metaInsert(payload, fillables)
+  .metaInsert(payload, options)
   .toString()
 ```
 ```sql [Output]
@@ -86,34 +92,40 @@ VALUES
   (DEFAULT)
 ```
 :::
-## Should set undefined values to DEFAULT
+## Transforms JSON fields
 ::: code-group
 ```js [Syntax]
-const fillables = [
-  'name',
-  'age'
-]
+const options = {
+  fields: [
+    'name',
+    'age',
+    'settings'
+  ],
+  json_fields: [
+    'settings'
+  ]
+}
 
 const payload = [
   {
     name: 'Jeash',
-    age: '12'
+    settings: { percentage: 12 }
   },
   {
-    name: undefined,
+    name: 'Josh',
     age: '52'
   }
 ]
 
 const result = knex('users')
-  .metaInsert(payload, fillables)
+  .metaInsert(payload, options)
   .toString()
 ```
 ```sql [Output]
 INSERT INTO
-  `users` (`age`, `name`)
+  `users` (`age`, `name`, `settings`)
 VALUES
-  ('12', 'Jeash'),
-  ('52', DEFAULT)
+  (DEFAULT, 'Jeash', '{\"percentage\":12}'),
+  ('52', 'Josh', DEFAULT)
 ```
 :::

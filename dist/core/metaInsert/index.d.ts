@@ -3,6 +3,10 @@
  */
 type TObject = Record<string, any>;
 type TPayload = TObject | TObject[];
-declare function metaInsert(payload: TPayload, fillables: string[]): any;
+type TOptions = {
+    fields: string[];
+    json_fields: string[];
+};
+declare function metaInsert(payload: TPayload, options: TOptions): any;
 
-export { TObject, TPayload, metaInsert };
+export { TObject, TOptions, TPayload, metaInsert };
