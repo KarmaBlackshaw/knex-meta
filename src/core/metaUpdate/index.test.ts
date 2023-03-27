@@ -134,3 +134,34 @@ test('Update with multiple keys', () => {
 
   expect(result).toBe(expected)
 })
+
+test('Update with json fields', () => {
+  const updateData = [
+    {
+      id: 1,
+      name: 'John',
+      settings: { background_color: 'red' }
+    },
+    {
+      id: 2,
+      name: 'Mark',
+      settings: { background_color: 'yellow' }
+    }
+  ]
+
+  const options = {
+    fields: {
+      id: 'users.id',
+      name: 'users.name',
+      settings: 'users.settings'
+    }
+  }
+
+  const result = knex('users')
+    .metaUpdate(['id', 'name'], updateData, options)
+    .toString()
+
+  const expected = "update `users` set `settings` = CASE WHEN (users.id = 1 AND users.name = 'John') THEN '{\"background_color\":\"red\"}'  WHEN (users.id = 2 AND users.name = 'Mark') THEN '{\"background_color\":\"yellow\"}'  END where ((`users`.`id` = 1 and `users`.`name` = 'John') or (`users`.`id` = 2 and `users`.`name` = 'Mark'))"
+
+  expect(result).toBe(expected)
+})

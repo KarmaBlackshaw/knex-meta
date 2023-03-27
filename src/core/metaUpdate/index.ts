@@ -20,6 +20,10 @@ const quoter = (foo: any) => {
     return `'${foo}'`
   }
 
+  if (_.isObject(foo)) {
+    return `'${JSON.stringify(foo)}'`
+  }
+
   /**
    * for raw queries
    */
