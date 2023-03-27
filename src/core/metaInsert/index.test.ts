@@ -3,18 +3,16 @@ import { expect, test } from 'vitest'
 import knex from '../../connection'
 
 test('Simple insert', () => {
-  const options = {
-    fields: [
-      'name'
-    ]
-  }
+  const fields = [
+    'name'
+  ]
 
   const payload = {
     name: 'Jeash'
   }
 
   const result = knex('users')
-    .metaInsert(payload, options)
+    .metaInsert(payload, fields)
     .toString()
 
   const expected = "insert into `users` (`name`) values ('Jeash')"
@@ -23,11 +21,9 @@ test('Simple insert', () => {
 })
 
 test('Simple insert with multiple payload', () => {
-  const options = {
-    fields: [
-      'name'
-    ]
-  }
+  const fields = [
+    'name'
+  ]
 
   const payload = [
     {
@@ -39,7 +35,7 @@ test('Simple insert with multiple payload', () => {
   ]
 
   const result = knex('users')
-    .metaInsert(payload, options)
+    .metaInsert(payload, fields)
     .toString()
 
   const expected = "insert into `users` (`name`) values ('Jeash'), ('Ernie')"
@@ -48,11 +44,9 @@ test('Simple insert with multiple payload', () => {
 })
 
 test('Undefined values will default to `DEFAULT`', () => {
-  const options = {
-    fields: [
-      'name'
-    ]
-  }
+  const fields = [
+    'name'
+  ]
 
   const payload = [
     {
@@ -64,7 +58,7 @@ test('Undefined values will default to `DEFAULT`', () => {
   ]
 
   const result = knex('users')
-    .metaInsert(payload, options)
+    .metaInsert(payload, fields)
     .toString()
 
   const expected = "insert into `users` (`name`) values ('Jeash'), (DEFAULT)"
@@ -73,16 +67,11 @@ test('Undefined values will default to `DEFAULT`', () => {
 })
 
 test('Transforms JSON fields', () => {
-  const options = {
-    fields: [
-      'name',
-      'age',
-      'settings'
-    ],
-    json_fields: [
-      'settings'
-    ]
-  }
+  const fields = [
+    'name',
+    'age',
+    'settings'
+  ]
 
   const payload = [
     {
@@ -96,7 +85,7 @@ test('Transforms JSON fields', () => {
   ]
 
   const result = knex('users')
-    .metaInsert(payload, options)
+    .metaInsert(payload, fields)
     .toString()
 
   const expected = "insert into `users` (`age`, `name`, `settings`) values (DEFAULT, 'Jeash', '{\"percentage\":12}'), ('52', 'Josh', DEFAULT)"
