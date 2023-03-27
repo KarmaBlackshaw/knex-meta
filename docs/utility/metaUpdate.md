@@ -203,3 +203,57 @@ WHERE
   )
 ```
 :::
+## Update with json fields
+::: code-group
+```js [Syntax]
+const updateData = [
+  {
+    id: 1,
+    name: 'John',
+    settings: { background_color: 'red' }
+  },
+  {
+    id: 2,
+    name: 'Mark',
+    settings: { background_color: 'yellow' }
+  }
+]
+
+const options = {
+  fields: {
+    id: 'users.id',
+    name: 'users.name',
+    settings: 'users.settings'
+  }
+}
+
+const result = knex('users')
+  .metaUpdate(['id', 'name'], updateData, options)
+  .toString()
+```
+```sql [Output]
+UPDATE `users`
+SET
+  `settings` = CASE
+    WHEN (
+      users.id = 1
+      AND users.name = 'John'
+    ) THEN '{\"background_color\":\"red\"}'
+    WHEN (
+      users.id = 2
+      AND users.name = 'Mark'
+    ) THEN '{\"background_color\":\"yellow\"}'
+  END
+WHERE
+  (
+    (
+      `users`.`id` = 1
+      AND `users`.`name` = 'John'
+    )
+    OR (
+      `users`.`id` = 2
+      AND `users`.`name` = 'Mark'
+    )
+  )
+```
+:::

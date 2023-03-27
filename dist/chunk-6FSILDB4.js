@@ -7,6 +7,9 @@ var quoter = (foo) => {
   if (typeof foo === "string") {
     return `'${foo}'`;
   }
+  if (_lodash2.default.isObject(foo)) {
+    return `'${JSON.stringify(foo)}'`;
+  }
   if (foo == null ? void 0 : foo.sql) {
     return foo.sql;
   }

@@ -11,18 +11,16 @@ A simple wrapper for bulk insert. This checks for valid fields and accepts array
 ## Simple insert
 ::: code-group
 ```js [Syntax]
-const options = {
-  fields: [
-    'name'
-  ]
-}
+const fields = [
+  'name'
+]
 
 const payload = {
   name: 'Jeash'
 }
 
 const result = knex('users')
-  .metaInsert(payload, options)
+  .metaInsert(payload, fields)
   .toString()
 ```
 ```sql [Output]
@@ -35,11 +33,9 @@ VALUES
 ## Simple insert with multiple payload
 ::: code-group
 ```js [Syntax]
-const options = {
-  fields: [
-    'name'
-  ]
-}
+const fields = [
+  'name'
+]
 
 const payload = [
   {
@@ -51,7 +47,7 @@ const payload = [
 ]
 
 const result = knex('users')
-  .metaInsert(payload, options)
+  .metaInsert(payload, fields)
   .toString()
 ```
 ```sql [Output]
@@ -65,11 +61,9 @@ VALUES
 ## Undefined values will default to `DEFAULT`
 ::: code-group
 ```js [Syntax]
-const options = {
-  fields: [
-    'name'
-  ]
-}
+const fields = [
+  'name'
+]
 
 const payload = [
   {
@@ -81,7 +75,7 @@ const payload = [
 ]
 
 const result = knex('users')
-  .metaInsert(payload, options)
+  .metaInsert(payload, fields)
   .toString()
 ```
 ```sql [Output]
@@ -95,16 +89,11 @@ VALUES
 ## Transforms JSON fields
 ::: code-group
 ```js [Syntax]
-const options = {
-  fields: [
-    'name',
-    'age',
-    'settings'
-  ],
-  json_fields: [
-    'settings'
-  ]
-}
+const fields = [
+  'name',
+  'age',
+  'settings'
+]
 
 const payload = [
   {
@@ -118,7 +107,7 @@ const payload = [
 ]
 
 const result = knex('users')
-  .metaInsert(payload, options)
+  .metaInsert(payload, fields)
   .toString()
 ```
 ```sql [Output]

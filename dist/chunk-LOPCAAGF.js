@@ -1,8 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }// src/core/metaInsert/index.ts
 var _lodash = require('lodash'); var _lodash2 = _interopRequireDefault(_lodash);
-function metaInsert(payload, options) {
-  const fields = options.fields;
-  const jsonFields = options.json_fields;
+function metaInsert(payload, fields) {
   if (!payload || !fields) {
     if (!payload) {
       throw new TypeError("Payload of undefined is not permitted");
@@ -12,7 +10,6 @@ function metaInsert(payload, options) {
     }
   }
   const fieldSet = new Set(fields);
-  const jsonFieldSet = new Set(jsonFields);
   const toInsert = [];
   const arrayPayload = _lodash2.default.castArray(payload);
   arrayPayload.forEach((currPayload) => {
@@ -21,7 +18,7 @@ function metaInsert(payload, options) {
       if (!fieldSet.has(field)) {
         delete currPayload[field];
       }
-      if (jsonFieldSet.has(field) && _lodash2.default.isObject(fieldValue)) {
+      if (_lodash2.default.isObject(fieldValue)) {
         currPayload[field] = JSON.stringify(currPayload[field]);
       }
     }
