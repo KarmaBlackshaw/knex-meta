@@ -257,3 +257,43 @@ WHERE
   )
 ```
 :::
+## Update with raw data
+::: code-group
+```js [Syntax]
+const updateData = [
+  {
+    id: 1,
+    name: { raw: 'users.name + users.id' }
+  },
+  {
+    id: 2,
+    name: 'Mark'
+  }
+]
+
+const options = {
+  fields: {
+    id: 'users.id',
+    name: 'users.name',
+    settings: 'users.settings'
+  }
+}
+
+const result = knex('users')
+  .metaUpdate('id', updateData, options)
+  .toString()
+```
+```sql [Output]
+UPDATE `users`
+SET
+  `name` = CASE
+    WHEN (users.id = 1) THEN users.name + users.id
+    WHEN (users.id = 2) THEN 'Mark'
+  END
+WHERE
+  (
+    (`users`.`id` = 1)
+    OR (`users`.`id` = 2)
+  )
+```
+:::

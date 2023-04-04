@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunk6FSILDB4js = require('../../chunk-6FSILDB4.js');
+var _chunk3CQKYRAEjs = require('../../chunk-3CQKYRAE.js');
 
 
-exports.metaUpdate = _chunk6FSILDB4js.metaUpdate;
+exports.metaUpdate = _chunk3CQKYRAEjs.metaUpdate;
