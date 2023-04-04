@@ -165,3 +165,32 @@ test('Update with json fields', () => {
 
   expect(result).toBe(expected)
 })
+
+test('Update with raw data', () => {
+  const updateData = [
+    {
+      id: 1,
+      name: { raw: 'users.name + users.id' }
+    },
+    {
+      id: 2,
+      name: 'Mark'
+    }
+  ]
+
+  const options = {
+    fields: {
+      id: 'users.id',
+      name: 'users.name',
+      settings: 'users.settings'
+    }
+  }
+
+  const result = knex('users')
+    .metaUpdate('id', updateData, options)
+    .toString()
+
+  const expected = "update `users` set `name` = CASE WHEN (users.id = 1) THEN users.name + users.id  WHEN (users.id = 2) THEN 'Mark'  END where ((`users`.`id` = 1) or (`users`.`id` = 2))"
+
+  expect(result).toBe(expected)
+})

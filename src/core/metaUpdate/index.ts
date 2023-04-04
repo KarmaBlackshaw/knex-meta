@@ -20,15 +20,15 @@ const quoter = (foo: any) => {
     return `'${foo}'`
   }
 
-  if (_.isObject(foo)) {
-    return `'${JSON.stringify(foo)}'`
-  }
-
   /**
    * for raw queries
    */
-  if (foo?.sql) {
-    return foo.sql
+  if (!_.isUndefined(foo?.raw)) {
+    return foo.raw
+  }
+
+  if (_.isObject(foo)) {
+    return `'${JSON.stringify(foo)}'`
   }
 
   console.warn(`${typeof foo} is not accounted.`)
