@@ -21,7 +21,7 @@ test('Update with an object payload', () => {
     .metaUpdate('id', updateData, options)
     .toString()
 
-  const expected = "update `users` set `name` = CASE WHEN (users.id = 1) THEN 'John'  END, `username` = CASE WHEN (users.id = 1) THEN 30  END where ((`users`.`id` = 1))"
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN 'John'  END, `username` = CASE WHEN (`users`.`id` = 1) THEN 30  END where ((`users`.`id` = 1))"
 
   expect(result).toBe(expected)
 })
@@ -48,7 +48,7 @@ test('Update with an object payload and else condition', () => {
     .metaUpdate('id', updateData, options)
     .toString()
 
-  const expected = "update `users` set `name` = CASE WHEN (users.id = 1) THEN 'John' ELSE 'foo' END, `username` = CASE WHEN (users.id = 1) THEN 30  END where ((`users`.`id` = 1))"
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN 'John' ELSE 'foo' END, `username` = CASE WHEN (`users`.`id` = 1) THEN 30  END where ((`users`.`id` = 1))"
 
   expect(result).toBe(expected)
 })
@@ -71,7 +71,7 @@ test('Update with an object whose key does not exist in the fields', () => {
     .metaUpdate('id', updateData, options)
     .toString()
 
-  const expected = "update `users` set `name` = CASE WHEN (users.id = 1) THEN 'John'  END where ((`users`.`id` = 1))"
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN 'John'  END where ((`users`.`id` = 1))"
 
   expect(result).toBe(expected)
 })
@@ -99,7 +99,7 @@ test('Update with multiple data', () => {
     .metaUpdate('id', updateData, options)
     .toString()
 
-  const expected = "update `users` set `name` = CASE WHEN (users.id = 1) THEN 'John'  WHEN (users.id = 2) THEN 'Mark'  END where ((`users`.`id` = 1) or (`users`.`id` = 2))"
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN 'John'  WHEN (`users`.`id` = 2) THEN 'Mark'  END where ((`users`.`id` = 1) or (`users`.`id` = 2))"
 
   expect(result).toBe(expected)
 })
@@ -130,7 +130,7 @@ test('Update with multiple keys', () => {
     .metaUpdate(['id', 'name'], updateData, options)
     .toString()
 
-  const expected = "update `users` set `balance` = CASE WHEN (users.id = 1 AND users.name = 'John') THEN 30  WHEN (users.id = 2 AND users.name = 'Mark') THEN 25  END where ((`users`.`id` = 1 and `users`.`name` = 'John') or (`users`.`id` = 2 and `users`.`name` = 'Mark'))"
+  const expected = "update `users` set `balance` = CASE WHEN (`users`.`id` = 1 AND `users`.`name` = 'John') THEN 30  WHEN (`users`.`id` = 2 AND `users`.`name` = 'Mark') THEN 25  END where ((`users`.`id` = 1 AND `users`.`name` = 'John') or (`users`.`id` = 2 AND `users`.`name` = 'Mark'))"
 
   expect(result).toBe(expected)
 })
@@ -161,7 +161,7 @@ test('Update with json fields', () => {
     .metaUpdate(['id', 'name'], updateData, options)
     .toString()
 
-  const expected = "update `users` set `settings` = CASE WHEN (users.id = 1 AND users.name = 'John') THEN '{\"background_color\":\"red\"}'  WHEN (users.id = 2 AND users.name = 'Mark') THEN '{\"background_color\":\"yellow\"}'  END where ((`users`.`id` = 1 and `users`.`name` = 'John') or (`users`.`id` = 2 and `users`.`name` = 'Mark'))"
+  const expected = "update `users` set `settings` = CASE WHEN (`users`.`id` = 1 AND `users`.`name` = 'John') THEN '{\"background_color\":\"red\"}'  WHEN (`users`.`id` = 2 AND `users`.`name` = 'Mark') THEN '{\"background_color\":\"yellow\"}'  END where ((`users`.`id` = 1 AND `users`.`name` = 'John') or (`users`.`id` = 2 AND `users`.`name` = 'Mark'))"
 
   expect(result).toBe(expected)
 })
@@ -190,7 +190,32 @@ test('Update with raw data', () => {
     .metaUpdate('id', updateData, options)
     .toString()
 
-  const expected = "update `users` set `name` = CASE WHEN (users.id = 1) THEN users.name + users.id  WHEN (users.id = 2) THEN 'Mark'  END where ((`users`.`id` = 1) or (`users`.`id` = 2))"
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN users.name + users.id  WHEN (`users`.`id` = 2) THEN 'Mark'  END where ((`users`.`id` = 1) or (`users`.`id` = 2))"
+
+  expect(result).toBe(expected)
+})
+
+test('Support array condition', () => {
+  const updateData = [
+    {
+      id: [1, 2, 3, 4, 5],
+      name: 'Foo'
+    }
+  ]
+
+  const options = {
+    fields: {
+      id: 'users.id',
+      name: 'users.name',
+      settings: 'users.settings'
+    }
+  }
+
+  const result = knex('users')
+    .metaUpdate('id', updateData, options)
+    .toString()
+
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` IN (1, 2, 3, 4, 5)) THEN 'Foo'  END where ((`users`.`id` IN (1, 2, 3, 4, 5)))"
 
   expect(result).toBe(expected)
 })

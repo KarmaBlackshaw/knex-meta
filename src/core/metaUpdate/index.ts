@@ -34,6 +34,13 @@ const quoter = (foo: any) => {
   console.warn(`${typeof foo} is not accounted.`)
 }
 
+function wrapWithBackticks (str) {
+  return str.split('.')
+    .map((s: string) => `\`${s}\``)
+    .join('.')
+    .toLowerCase()
+}
+
 export function metaUpdate (
   keyConditions: TBulkUpdateKey,
   payload: TBulkUpdatePayload = [],
@@ -55,7 +62,10 @@ export function metaUpdate (
         console.warn(`[WARNING] bulkUpdates: "${key}" is not defined in fields`)
       }
 
-      condition[fields[key]] = currPayload[key]
+      const field = fields[key]
+      const value = currPayload[key]
+
+      condition[field] = value
 
       /**
        * Do not update condition keys
@@ -63,12 +73,19 @@ export function metaUpdate (
       delete currPayload[key]
     })
 
-    whereConditions.push(condition)
-
     const whenCondition = Object
       .entries(condition)
-      .map(([field, value]) => `${field} = ${quoter(value)}`)
+      .map(([field, value]) => {
+        const backtickedField = wrapWithBackticks(field)
+        if (Array.isArray(value)) {
+          return `${backtickedField} IN (${value.join(', ')})`
+        }
+
+        return `${backtickedField} = ${quoter(value)}`
+      })
       .join(' AND ')
+
+    whereConditions.push(`(${whenCondition})`)
 
     for (const field in currPayload) {
       /**
@@ -96,9 +113,7 @@ export function metaUpdate (
 
   return this
     .where(function () {
-      whereConditions.forEach(condition => {
-        this.orWhere(condition)
-      })
+      whereConditions.forEach(condition => this.orWhereRaw(condition))
     })
     .update(caseConditionsByField)
 }
