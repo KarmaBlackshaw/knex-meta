@@ -15,6 +15,9 @@ var quoter = (foo) => {
   }
   console.warn(`${typeof foo} is not accounted.`);
 };
+function wrapWithBackticks(str) {
+  return str.split(".").map((s) => `\`${s}\``).join(".").toLowerCase();
+}
 function metaUpdate(keyConditions, payload = [], options) {
   const keyConditionsArray = _lodash2.default.castArray(keyConditions);
   const payloadArray = _lodash2.default.castArray(payload);
@@ -28,11 +31,19 @@ function metaUpdate(keyConditions, payload = [], options) {
       if (!fields[key]) {
         console.warn(`[WARNING] bulkUpdates: "${key}" is not defined in fields`);
       }
-      condition[fields[key]] = currPayload[key];
+      const field = fields[key];
+      const value = currPayload[key];
+      condition[field] = value;
       delete currPayload[key];
     });
-    whereConditions.push(condition);
-    const whenCondition = Object.entries(condition).map(([field, value]) => `${field} = ${quoter(value)}`).join(" AND ");
+    const whenCondition = Object.entries(condition).map(([field, value]) => {
+      const backtickedField = wrapWithBackticks(field);
+      if (Array.isArray(value)) {
+        return `${backtickedField} IN (${value.join(", ")})`;
+      }
+      return `${backtickedField} = ${quoter(value)}`;
+    }).join(" AND ");
+    whereConditions.push(`(${whenCondition})`);
     for (const field in currPayload) {
       if (!fields[field]) {
         continue;
@@ -50,9 +61,7 @@ function metaUpdate(keyConditions, payload = [], options) {
     caseConditionsByField[field] = this.client.raw(`CASE ${fieldCases.join(" ")} END`);
   }
   return this.where(function() {
-    whereConditions.forEach((condition) => {
-      this.orWhere(condition);
-    });
+    whereConditions.forEach((condition) => this.orWhereRaw(condition));
   }).update(caseConditionsByField);
 }
 

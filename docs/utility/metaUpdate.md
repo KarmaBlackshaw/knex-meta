@@ -33,10 +33,10 @@ const result = knex('users')
 UPDATE `users`
 SET
   `name` = CASE
-    WHEN (users.id = 1) THEN 'John'
+    WHEN (`users`.`id` = 1) THEN 'John'
   END,
   `username` = CASE
-    WHEN (users.id = 1) THEN 30
+    WHEN (`users`.`id` = 1) THEN 30
   END
 WHERE
   ((`users`.`id` = 1))
@@ -70,11 +70,11 @@ const result = knex('users')
 UPDATE `users`
 SET
   `name` = CASE
-    WHEN (users.id = 1) THEN 'John'
+    WHEN (`users`.`id` = 1) THEN 'John'
     ELSE 'foo'
   END,
   `username` = CASE
-    WHEN (users.id = 1) THEN 30
+    WHEN (`users`.`id` = 1) THEN 30
   END
 WHERE
   ((`users`.`id` = 1))
@@ -104,7 +104,7 @@ const result = knex('users')
 UPDATE `users`
 SET
   `name` = CASE
-    WHEN (users.id = 1) THEN 'John'
+    WHEN (`users`.`id` = 1) THEN 'John'
   END
 WHERE
   ((`users`.`id` = 1))
@@ -139,8 +139,8 @@ const result = knex('users')
 UPDATE `users`
 SET
   `name` = CASE
-    WHEN (users.id = 1) THEN 'John'
-    WHEN (users.id = 2) THEN 'Mark'
+    WHEN (`users`.`id` = 1) THEN 'John'
+    WHEN (`users`.`id` = 2) THEN 'Mark'
   END
 WHERE
   (
@@ -182,12 +182,12 @@ UPDATE `users`
 SET
   `balance` = CASE
     WHEN (
-      users.id = 1
-      AND users.name = 'John'
+      `users`.`id` = 1
+      AND `users`.`name` = 'John'
     ) THEN 30
     WHEN (
-      users.id = 2
-      AND users.name = 'Mark'
+      `users`.`id` = 2
+      AND `users`.`name` = 'Mark'
     ) THEN 25
   END
 WHERE
@@ -236,12 +236,12 @@ UPDATE `users`
 SET
   `settings` = CASE
     WHEN (
-      users.id = 1
-      AND users.name = 'John'
+      `users`.`id` = 1
+      AND `users`.`name` = 'John'
     ) THEN '{\"background_color\":\"red\"}'
     WHEN (
-      users.id = 2
-      AND users.name = 'Mark'
+      `users`.`id` = 2
+      AND `users`.`name` = 'Mark'
     ) THEN '{\"background_color\":\"yellow\"}'
   END
 WHERE
@@ -287,13 +287,45 @@ const result = knex('users')
 UPDATE `users`
 SET
   `name` = CASE
-    WHEN (users.id = 1) THEN users.name + users.id
-    WHEN (users.id = 2) THEN 'Mark'
+    WHEN (`users`.`id` = 1) THEN users.name + users.id
+    WHEN (`users`.`id` = 2) THEN 'Mark'
   END
 WHERE
   (
     (`users`.`id` = 1)
     OR (`users`.`id` = 2)
   )
+```
+:::
+## Support array condition
+::: code-group
+```js [Syntax]
+const updateData = [
+  {
+    id: [1, 2, 3, 4, 5],
+    name: 'Foo'
+  }
+]
+
+const options = {
+  fields: {
+    id: 'users.id',
+    name: 'users.name',
+    settings: 'users.settings'
+  }
+}
+
+const result = knex('users')
+  .metaUpdate('id', updateData, options)
+  .toString()
+```
+```sql [Output]
+UPDATE `users`
+SET
+  `name` = CASE
+    WHEN (`users`.`id` IN (1, 2, 3, 4, 5)) THEN 'Foo'
+  END
+WHERE
+  ((`users`.`id` IN (1, 2, 3, 4, 5)))
 ```
 :::

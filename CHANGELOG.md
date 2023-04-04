@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.3](https://github.com/KarmaBlackshaw/knex-meta/compare/4.0.2...4.0.3) - 2023-04-04
+
+### Commits
+
+- chore(release): 4.0.3 [`cc41b62`](https://github.com/KarmaBlackshaw/knex-meta/commit/cc41b62105900a9d1c3917021ee9e065ccb4f000)
+- chore: update metaUpdate [`677c31a`](https://github.com/KarmaBlackshaw/knex-meta/commit/677c31a19bed482e7d1312ebfe9e44bdab8501de)
+
 ## [4.0.2](https://github.com/KarmaBlackshaw/knex-meta/compare/4.0.1...4.0.2) - 2023-03-27
 
 ### Commits
