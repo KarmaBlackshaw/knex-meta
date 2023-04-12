@@ -1,10 +1,9 @@
 import { Knex as KnexOriginal } from 'knex'
 
-/**
- * UTILITIES
- */
+// libs
 import _ from 'lodash'
 
+// types
 export type TJsonObject = Record<string, any>
 
 export function jsonObject (data: TJsonObject): KnexOriginal {

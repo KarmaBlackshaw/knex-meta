@@ -1,9 +1,7 @@
-/**
- * UTILITIES
- */
-
+// libs
 import _ from 'lodash'
 
+// types
 export type TObject = Record<string, any>
 export type TPayload = TObject | TObject[]
 export type TFields = string[]

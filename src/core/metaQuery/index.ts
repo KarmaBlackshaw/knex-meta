@@ -1,5 +1,6 @@
 import { Knex } from 'knex'
 
+// types
 export interface FilterCondition {
   field?: string;
   operator?: string;
