@@ -1,6 +1,3 @@
-/**
- * UTILITIES
- */
 type TObject = Record<string, any>;
 type TPayload = TObject | TObject[];
 type TFields = string[];
