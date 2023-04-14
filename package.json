@@ -1,6 +1,6 @@
 {
   "name": "@jeash/knex-meta",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Utility extensions for knex query builder",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

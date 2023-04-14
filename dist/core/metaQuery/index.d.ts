@@ -29,6 +29,9 @@ interface FieldMapValue {
     column: string;
     filterable?: boolean;
     sortable?: boolean;
+    join?: [string | Record<string, string>, string, string];
+    leftJoin?: [string | Record<string, string>, string, string];
+    rightJoin?: [string | Record<string, string>, string, string];
 }
 interface FieldsMap {
     [key: string]: FieldMapValue;

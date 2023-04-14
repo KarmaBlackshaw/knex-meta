@@ -87,7 +87,65 @@ function makePagination(pagination) {
   }
   return this.limit(pagination.rows).offset(pagination.rows * (pagination.page - 1));
 }
+function makeJoin(query, fields) {
+  const usedFieldNames = getFields(query);
+  const joins = /* @__PURE__ */ new Map();
+  usedFieldNames.forEach((usedfieldName) => {
+    const field = fields[usedfieldName];
+    if (field.join) {
+      joins.set(field, {
+        type: "join",
+        value: field.join
+      });
+    }
+    if (field.leftJoin) {
+      joins.set(field, {
+        type: "leftJoin",
+        value: field.leftJoin
+      });
+    }
+    if (field.rightJoin) {
+      joins.set(field, {
+        type: "rightJoin",
+        value: field.rightJoin
+      });
+    }
+  });
+  joins.forEach((join) => {
+    this[join.type](...join.value);
+  });
+}
+function getFields(query) {
+  const fields = /* @__PURE__ */ new Set();
+  function traverseFilters(filter) {
+    if (!filter) {
+      return;
+    }
+    const keys = ["$and", "$or", "$not"];
+    keys.forEach((key) => {
+      const currFilter = filter[key];
+      if (currFilter && currFilter.length) {
+        currFilter.forEach(traverseFilters);
+      }
+    });
+    if (filter.field) {
+      fields.add(filter.field);
+    }
+  }
+  function traverseSort(sorts) {
+    if (!sorts || !sorts.length) {
+      return;
+    }
+    sorts.forEach((sort) => {
+      fields.add(sort.field);
+    });
+  }
+  traverseFilters(query.filter);
+  traverseSort(query.sort);
+  return [...fields];
+}
 function metaQuery(query, fields) {
+  makeJoin.call(this, query, fields);
   if (query && query.filter) {
     makeWhere.call(this, query.filter, fields);
   }

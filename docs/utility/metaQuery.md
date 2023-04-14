@@ -28,7 +28,7 @@
 
 
 ### Demo
-## `$and` should work properly (1)
+## `$and` filter
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -75,7 +75,7 @@ WHERE
   )
 ```
 :::
-## `$and` should work properly (2)
+## `$and` filter with falsy `filterable` attribute
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -114,51 +114,7 @@ const result = knex('users')
 const expected = 'select * from `users` where ((`users`.`point` > 2000))'
 ```
 :::
-## `$and` should work properly (3)
-::: code-group
-```js [Syntax]
-const query = {
-  filter: {
-    $and: [
-      {
-        field: 'login_id',
-        operator: 'like',
-        value: '%nnn%'
-      },
-      {
-        field: 'point',
-        operator: '>',
-        value: 2000
-      }
-    ]
-  }
-}
-
-const fields = {
-  login_id: {
-    column: 'users.login_id',
-    filterable: true
-  },
-  point: {
-    column: 'users.point',
-    filterable: false
-  }
-}
-
-const result = knex('users')
-  .metaQuery(query, fields)
-  .toString()
-```
-```sql [Output]
-SELECT
-  *
-FROM
-  `users`
-WHERE
-  ((`users`.`login_id` LIKE '%nnn%'))
-```
-:::
-## `$or` should work properly (1)
+## `$or` filter
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -205,7 +161,7 @@ WHERE
   )
 ```
 :::
-## `$or` should work properly (2)
+## `$or` filter with falsy `filterable` attribute
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -244,12 +200,59 @@ const result = knex('users')
 const expected = 'select * from `users` where ((`users`.`point` > 2000))'
 ```
 :::
-## `$or` should work properly (3)
+## `$not` filter
 ::: code-group
 ```js [Syntax]
 const query = {
   filter: {
-    $or: [
+    $not: [
+      {
+        field: 'login_id',
+        operator: 'like',
+        value: '%nnn%'
+      },
+      {
+        field: 'point',
+        operator: '>',
+        value: 2000
+      }
+    ]
+  }
+}
+
+const fields = {
+  login_id: {
+    column: 'users.login_id',
+    filterable: true
+  },
+  point: {
+    column: 'users.point',
+    filterable: true
+  }
+}
+
+const result = knex('users')
+  .metaQuery(query, fields)
+  .toString()
+```
+```sql [Output]
+SELECT
+  *
+FROM
+  `users`
+WHERE
+  (
+    NOT (`users`.`login_id` LIKE '%nnn%')
+    AND NOT (`users`.`point` > 2000)
+  )
+```
+:::
+## `$not` filter with falsy `filterable` attribute
+::: code-group
+```js [Syntax]
+const query = {
+  filter: {
+    $not: [
       {
         field: 'login_id',
         operator: 'like',
@@ -285,10 +288,10 @@ SELECT
 FROM
   `users`
 WHERE
-  ((`users`.`login_id` LIKE '%nnn%'))
+  (NOT (`users`.`login_id` LIKE '%nnn%'))
 ```
 :::
-## `$or` && `$and` should work properly (1)
+## `$or` && `$and` && `$not` filter
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -306,6 +309,18 @@ const query = {
       }
     ],
     $and: [
+      {
+        field: 'login_id',
+        operator: 'like',
+        value: '%nnn%'
+      },
+      {
+        field: 'point',
+        operator: '>',
+        value: 2000
+      }
+    ],
+    $not: [
       {
         field: 'login_id',
         operator: 'like',
@@ -349,133 +364,13 @@ WHERE
     (`users`.`login_id` LIKE '%nnn%')
     OR (`users`.`point` > 2000)
   )
-```
-:::
-## `$or` && `$and` should work properly (2)
-::: code-group
-```js [Syntax]
-const query = {
-  filter: {
-    $or: [
-      {
-        field: 'login_id',
-        operator: 'like',
-        value: '%nnn%'
-      },
-      {
-        field: 'point',
-        operator: '>',
-        value: 2000
-      }
-    ],
-    $and: [
-      {
-        field: 'login_id',
-        operator: 'like',
-        value: '%nnn%'
-      },
-      {
-        field: 'point',
-        operator: '>',
-        value: 2000
-      }
-    ]
-  }
-}
-
-const fields = {
-  login_id: {
-    column: 'users.login_id',
-    filterable: true
-  },
-  point: {
-    column: 'users.point',
-    filterable: false
-  }
-}
-
-const result = knex('users')
-  .metaQuery(query, fields)
-  .toString()
-```
-```sql [Output]
-SELECT
-  *
-FROM
-  `users`
-WHERE
-  ((`users`.`login_id` LIKE '%nnn%'))
-  AND ((`users`.`login_id` LIKE '%nnn%'))
-```
-:::
-## `$or` && `$and` should work properly (3)
-::: code-group
-```js [Syntax]
-const query = {
-  filter: {
-    $and: [
-      {
-        field: 'login_id',
-        operator: 'like',
-        value: '%nnn%'
-      },
-      {
-        field: 'point',
-        operator: '>',
-        value: 2000
-      },
-      {
-        $or: [
-          {
-            field: 'login_id',
-            operator: 'like',
-            value: '%nnn%'
-          },
-          {
-            field: 'point',
-            operator: '>',
-            value: 2000
-          }
-        ]
-      }
-    ]
-  }
-}
-
-const fields = {
-  login_id: {
-    column: 'users.login_id',
-    filterable: true
-  },
-  point: {
-    column: 'users.point',
-    filterable: true
-  }
-}
-
-const result = knex('users')
-  .metaQuery(query, fields)
-  .toString()
-```
-```sql [Output]
-SELECT
-  *
-FROM
-  `users`
-WHERE
-  (
-    (`users`.`login_id` LIKE '%nnn%')
-    AND (`users`.`point` > 2000)
-    AND (
-      (
-        (`users`.`login_id` LIKE '%nnn%')
-        OR (`users`.`point` > 2000)
-      )
-    )
+  AND (
+    NOT (`users`.`login_id` LIKE '%nnn%')
+    AND NOT (`users`.`point` > 2000)
   )
 ```
 :::
-## `$or` && `$and` $or work properly (4)
+## `$or` && `$and` nested filter
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -578,7 +473,7 @@ WHERE
   )
 ```
 :::
-## $or sort properly
+## Filter with sort
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -696,7 +591,7 @@ ORDER BY
   `users`.`point` desc
 ```
 :::
-## $or paginate properly
+## Filter with pagination
 ::: code-group
 ```js [Syntax]
 const query = {
@@ -822,21 +717,16 @@ OFFSET
   50
 ```
 :::
-## `$not` should work properly (1)
+## Filter with joins
 ::: code-group
 ```js [Syntax]
 const query = {
   filter: {
-    $not: [
+    $and: [
       {
-        field: 'login_id',
+        field: 'client_name',
         operator: 'like',
-        value: '%nnn%'
-      },
-      {
-        field: 'point',
-        operator: '>',
-        value: 2000
+        value: '%Jeash%'
       }
     ]
   }
@@ -845,11 +735,14 @@ const query = {
 const fields = {
   login_id: {
     column: 'users.login_id',
-    filterable: true
+    filterable: true,
+    sortable: true
   },
-  point: {
-    column: 'users.point',
-    filterable: true
+  client_name: {
+    column: 'clients.name',
+    filterable: true,
+    sortable: true,
+    leftJoin: ['clients', 'clients.id', 'users.client_id']
   }
 }
 
@@ -862,191 +755,8 @@ SELECT
   *
 FROM
   `users`
+  LEFT JOIN `clients` ON `clients`.`id` = `users`.`client_id`
 WHERE
-  (
-    NOT (`users`.`login_id` LIKE '%nnn%')
-    AND NOT (`users`.`point` > 2000)
-  )
-```
-:::
-## `$not` should work properly (2)
-::: code-group
-```js [Syntax]
-const query = {
-  filter: {
-    $not: [
-      {
-        $and: [
-          {
-            field: 'login_id',
-            operator: 'like',
-            value: '%nnn%'
-          },
-          {
-            field: 'point',
-            operator: '>',
-            value: 2000
-          }
-        ]
-      }
-    ]
-  }
-}
-
-const fields = {
-  login_id: {
-    column: 'users.login_id',
-    filterable: true
-  },
-  point: {
-    column: 'users.point',
-    filterable: true
-  }
-}
-
-const result = knex('users')
-  .metaQuery(query, fields)
-  .toString()
-```
-```sql [Output]
-SELECT
-  *
-FROM
-  `users`
-WHERE
-  (
-    NOT (
-      (
-        (`users`.`login_id` LIKE '%nnn%')
-        AND (`users`.`point` > 2000)
-      )
-    )
-  )
-```
-:::
-## `$not` should work properly (3)
-::: code-group
-```js [Syntax]
-const query = {
-  filter: {
-    $not: [
-      {
-        $or: [
-          {
-            field: 'login_id',
-            operator: 'like',
-            value: '%nnn%'
-          },
-          {
-            field: 'point',
-            operator: '>',
-            value: 2000
-          }
-        ]
-      }
-    ]
-  }
-}
-
-const fields = {
-  login_id: {
-    column: 'users.login_id',
-    filterable: true
-  },
-  point: {
-    column: 'users.point',
-    filterable: true
-  }
-}
-
-const result = knex('users')
-  .metaQuery(query, fields)
-  .toString()
-```
-```sql [Output]
-SELECT
-  *
-FROM
-  `users`
-WHERE
-  (
-    NOT (
-      (
-        (`users`.`login_id` LIKE '%nnn%')
-        OR (`users`.`point` > 2000)
-      )
-    )
-  )
-```
-:::
-## `$not` should work properly (4)
-::: code-group
-```js [Syntax]
-const query = {
-  filter: {
-    $not: [
-      {
-        $or: [
-          {
-            field: 'login_id',
-            operator: 'like',
-            value: '%nnn%'
-          },
-          {
-            field: 'point',
-            operator: '>',
-            value: 2000
-          }
-        ],
-        $and: [
-          {
-            field: 'login_id',
-            operator: 'like',
-            value: '%nnn%'
-          },
-          {
-            field: 'point',
-            operator: '>',
-            value: 2000
-          }
-        ]
-      }
-    ]
-  }
-}
-
-const fields = {
-  login_id: {
-    column: 'users.login_id',
-    filterable: true
-  },
-  point: {
-    column: 'users.point',
-    filterable: true
-  }
-}
-
-const result = knex('users')
-  .metaQuery(query, fields)
-  .toString()
-```
-```sql [Output]
-SELECT
-  *
-FROM
-  `users`
-WHERE
-  (
-    NOT (
-      (
-        (`users`.`login_id` LIKE '%nnn%')
-        AND (`users`.`point` > 2000)
-      )
-      AND (
-        (`users`.`login_id` LIKE '%nnn%')
-        OR (`users`.`point` > 2000)
-      )
-    )
-  )
+  ((`clients`.`name` LIKE '%Jeash%'))
 ```
 :::
