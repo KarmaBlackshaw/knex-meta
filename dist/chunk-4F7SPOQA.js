@@ -9,7 +9,7 @@ var _chunk44JQLRBCjs = require('./chunk-44JQLRBC.js');
 var _chunkLOPCAAGFjs = require('./chunk-LOPCAAGF.js');
 
 
-var _chunkBQ3XUVKMjs = require('./chunk-BQ3XUVKM.js');
+var _chunkHFEOMZW7js = require('./chunk-HFEOMZW7.js');
 
 
 var _chunk55YT53L6js = require('./chunk-55YT53L6.js');
@@ -41,7 +41,7 @@ var src_default = (knex) => {
   knex.QueryBuilder.extend(_chunkMBFLX26Njs.metaFilter.name, _chunkMBFLX26Njs.metaFilter);
   knex.QueryBuilder.extend(_chunk44JQLRBCjs.metaFind.name, _chunk44JQLRBCjs.metaFind);
   knex.QueryBuilder.extend(_chunkLOPCAAGFjs.metaInsert.name, _chunkLOPCAAGFjs.metaInsert);
-  knex.QueryBuilder.extend(_chunkBQ3XUVKMjs.metaPage.name, _chunkBQ3XUVKMjs.metaPage);
+  knex.QueryBuilder.extend(_chunkHFEOMZW7js.metaPage.name, _chunkHFEOMZW7js.metaPage);
   knex.QueryBuilder.extend(_chunk55YT53L6js.metaQuery.name, _chunk55YT53L6js.metaQuery);
   knex.QueryBuilder.extend(_chunk5ZTS5JX7js.metaSort.name, _chunk5ZTS5JX7js.metaSort);
   knex.QueryBuilder.extend(_chunkPJUUQE6Tjs.metaUpdate.name, _chunkPJUUQE6Tjs.metaUpdate);
