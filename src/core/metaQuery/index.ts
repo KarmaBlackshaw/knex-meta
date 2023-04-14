@@ -240,7 +240,7 @@ function getFields (
   traverseFilters(query.filter)
   traverseSort(query.sort)
 
-  return [...fields]
+  return [...fields] as string[]
 }
 
 export function metaQuery (
