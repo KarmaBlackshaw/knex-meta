@@ -10,7 +10,7 @@
     "test": "vitest",
     "build": "tsup",
     "build:watch": "npm run build -- --watch src",
-    "release": "release-it",
+    "release": "release-it --ci",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
