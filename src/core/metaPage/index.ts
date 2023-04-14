@@ -24,7 +24,7 @@ export function metaPage ({
     return this
   }
 
-  if (!_.isNumber(page) || !_.isNumber(rows)) {
+  if (isNaN(page) || isNaN(rows)) {
     return this
   }
 
