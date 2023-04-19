@@ -42,6 +42,42 @@ WHERE
   ((`users`.`id` = 1))
 ```
 :::
+## Update with an undefined value
+::: code-group
+```js [Syntax]
+const updateData = {
+  id: 1,
+  name: 'John',
+  username: 30,
+  password: undefined
+}
+
+const options = {
+  fields: {
+    id: 'users.id',
+    name: 'users.name',
+    username: 'users.username',
+    password: 'users.password'
+  }
+}
+
+const result = knex('users')
+  .metaUpdate('id', updateData, options)
+  .toString()
+```
+```sql [Output]
+UPDATE `users`
+SET
+  `name` = CASE
+    WHEN (`users`.`id` = 1) THEN 'John'
+  END,
+  `username` = CASE
+    WHEN (`users`.`id` = 1) THEN 30
+  END
+WHERE
+  ((`users`.`id` = 1))
+```
+:::
 ## Update with an object payload and else condition
 ::: code-group
 ```js [Syntax]

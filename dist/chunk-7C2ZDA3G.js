@@ -48,6 +48,10 @@ function metaUpdate(keyConditions, payload = [], options) {
       if (!fields[field]) {
         continue;
       }
+      const value = currPayload[field];
+      if (_lodash2.default.isUndefined(value)) {
+        continue;
+      }
       if (!caseConditionsByField[field]) {
         caseConditionsByField[field] = [];
       }
