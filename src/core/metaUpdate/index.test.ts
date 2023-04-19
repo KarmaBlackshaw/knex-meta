@@ -26,6 +26,32 @@ test('Update with an object payload', () => {
   expect(result).toBe(expected)
 })
 
+test('Update with an undefined value', () => {
+  const updateData = {
+    id: 1,
+    name: 'John',
+    username: 30,
+    password: undefined
+  }
+
+  const options = {
+    fields: {
+      id: 'users.id',
+      name: 'users.name',
+      username: 'users.username',
+      password: 'users.password'
+    }
+  }
+
+  const result = knex('users')
+    .metaUpdate('id', updateData, options)
+    .toString()
+
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN 'John'  END, `username` = CASE WHEN (`users`.`id` = 1) THEN 30  END where ((`users`.`id` = 1))"
+
+  expect(result).toBe(expected)
+})
+
 test('Update with an object payload and else condition', () => {
   const updateData = {
     id: 1,

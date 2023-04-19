@@ -95,6 +95,12 @@ export function metaUpdate (
         continue
       }
 
+      const value = currPayload[field]
+
+      if (_.isUndefined(value)) {
+        continue
+      }
+
       if (!caseConditionsByField[field]) {
         caseConditionsByField[field] = []
       }
