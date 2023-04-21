@@ -247,7 +247,9 @@ export function metaQuery (
   query: Query,
   fields: FieldsMap
 ): Knex.QueryBuilder {
-  makeJoin.call(this, query, fields)
+  if (query) {
+    makeJoin.call(this, query, fields)
+  }
 
   if (query && query.filter) {
     makeWhere.call(this, query.filter, fields)

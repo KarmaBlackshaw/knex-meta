@@ -145,7 +145,9 @@ function getFields(query) {
   return [...fields];
 }
 function metaQuery(query, fields) {
-  makeJoin.call(this, query, fields);
+  if (query) {
+    makeJoin.call(this, query, fields);
+  }
   if (query && query.filter) {
     makeWhere.call(this, query.filter, fields);
   }
