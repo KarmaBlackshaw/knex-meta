@@ -2,8 +2,8 @@
 
 import { bulkUpdate } from './core/bulkUpdate'
 import { meta } from './core/meta'
-import { metaDate } from './core/metaDate'
 import { jsonObject } from './core/jsonObject'
+import { metaDate } from './core/metaDate'
 import { metaFilter } from './core/metaFilter'
 import { metaFind } from './core/metaFind'
 import { metaInsert } from './core/metaInsert'
@@ -15,8 +15,8 @@ import { metaUpdate } from './core/metaUpdate'
 export default knex => {
   knex.QueryBuilder.extend(bulkUpdate.name, bulkUpdate)
   knex.QueryBuilder.extend(meta.name, meta)
-  knex.QueryBuilder.extend(metaDate.name, metaDate)
   knex.QueryBuilder.extend(jsonObject.name, jsonObject)
+  knex.QueryBuilder.extend(metaDate.name, metaDate)
   knex.QueryBuilder.extend(metaFilter.name, metaFilter)
   knex.QueryBuilder.extend(metaFind.name, metaFind)
   knex.QueryBuilder.extend(metaInsert.name, metaInsert)
