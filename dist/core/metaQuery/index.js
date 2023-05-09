@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunkL5NFH6SUjs = require('../../chunk-L5NFH6SU.js');
+var _chunkYQRW52RDjs = require('../../chunk-YQRW52RD.js');
 
 
-exports.metaQuery = _chunkL5NFH6SUjs.metaQuery;
+exports.metaQuery = _chunkYQRW52RDjs.metaQuery;
