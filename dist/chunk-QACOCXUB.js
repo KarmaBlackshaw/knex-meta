@@ -91,10 +91,10 @@ function metaQuery(query, fields) {
   if (query && query.filter) {
     makeWhere.call(this, query.filter, fields);
   }
-  if (query && query.sort) {
+  if (query && query.sort && !query.is_count) {
     makeSort.call(this, query.sort, fields);
   }
-  if (query && query.pagination) {
+  if (query && query.pagination && !query.is_count) {
     makePagination.call(this, query.pagination);
   }
   return this;

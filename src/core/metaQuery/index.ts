@@ -21,6 +21,8 @@ interface Pagination {
 }
 
 export interface Query {
+  // eslint-disable-next-line camelcase
+  is_count: boolean;
   filter?: {
     $and?: FilterCondition[];
     $or?: FilterCondition[];
@@ -34,9 +36,6 @@ interface FieldMapValue {
   column: string;
   filterable?: boolean;
   sortable?: boolean;
-  join?: [string | Record<string, string>, string, string];
-  leftJoin?: [string | Record<string, string>, string, string];
-  rightJoin?: [string | Record<string, string>, string, string];
 }
 
 export interface FieldsMap {
@@ -171,11 +170,11 @@ export function metaQuery (
     makeWhere.call(this, query.filter, fields)
   }
 
-  if (query && query.sort) {
+  if (query && query.sort && !query.is_count) {
     makeSort.call(this, query.sort, fields)
   }
 
-  if (query && query.pagination) {
+  if (query && query.pagination && !query.is_count) {
     makePagination.call(this, query.pagination)
   }
 
