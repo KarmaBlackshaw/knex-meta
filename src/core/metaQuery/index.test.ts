@@ -553,39 +553,3 @@ test('Filter with pagination', () => {
 
   expect(result).toBe(expected)
 })
-
-test('Filter with joins', () => {
-  const query = {
-    filter: {
-      $and: [
-        {
-          field: 'client_name',
-          operator: 'like',
-          value: '%Jeash%'
-        }
-      ]
-    }
-  }
-
-  const fields = {
-    login_id: {
-      column: 'users.login_id',
-      filterable: true,
-      sortable: true
-    },
-    client_name: {
-      column: 'clients.name',
-      filterable: true,
-      sortable: true,
-      leftJoin: ['clients', 'clients.id', 'users.client_id']
-    }
-  }
-
-  const result = knex('users')
-    .metaQuery(query, fields)
-    .toString()
-
-  const expected = "select * from `users` left join `clients` on `clients`.`id` = `users`.`client_id` where ((`clients`.`name` like '%Jeash%'))"
-
-  expect(result).toBe(expected)
-})

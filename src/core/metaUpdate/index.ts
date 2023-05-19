@@ -31,6 +31,10 @@ const quoter = (foo: any) => {
     return `'${JSON.stringify(foo)}'`
   }
 
+  if (_.isNull(foo)) {
+    return 'NULL'
+  }
+
   console.warn(`${typeof foo} is not accounted.`)
 }
 
@@ -87,27 +91,27 @@ export function metaUpdate (
 
     whereConditions.push(`(${whenCondition})`)
 
-    for (const field in currPayload) {
+    for (const fieldName in currPayload) {
+      const fieldValue = currPayload[fieldName]
+
       /**
        * Exclude fields which are not defined
        */
-      if (!fields[field]) {
+      if (!fields[fieldName]) {
         continue
       }
 
-      const value = currPayload[field]
-
-      if (_.isUndefined(value)) {
+      if (_.isUndefined(fieldValue)) {
         continue
       }
 
-      if (!caseConditionsByField[field]) {
-        caseConditionsByField[field] = []
+      if (!caseConditionsByField[fieldName]) {
+        caseConditionsByField[fieldName] = []
       }
 
-      const elseStr = elses[field] ? `ELSE ${quoter(elses[field])}` : ''
-      const whenStr = `WHEN (${whenCondition}) THEN ${quoter(currPayload[field])} ${elseStr}`
-      caseConditionsByField[field].push(whenStr)
+      const elseStr = elses[fieldName] ? `ELSE ${quoter(elses[fieldName])}` : ''
+      const whenStr = `WHEN (${whenCondition}) THEN ${quoter(currPayload[fieldName])} ${elseStr}`
+      caseConditionsByField[fieldName].push(whenStr)
     }
   })
 

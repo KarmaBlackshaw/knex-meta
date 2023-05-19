@@ -52,6 +52,34 @@ test('Update with an undefined value', () => {
   expect(result).toBe(expected)
 })
 
+test('Update with an null value', () => {
+  const updateData = {
+    id: 1,
+    name: 'John',
+    username: 30,
+    password: null
+  }
+
+  const options = {
+    fields: {
+      id: 'users.id',
+      name: 'users.name',
+      username: 'users.username',
+      password: 'users.password'
+    }
+  }
+
+  const result = knex('users')
+    .metaUpdate('id', updateData, options)
+    .toString()
+
+  console.log(result)
+
+  const expected = "update `users` set `name` = CASE WHEN (`users`.`id` = 1) THEN 'John'  END, `username` = CASE WHEN (`users`.`id` = 1) THEN 30  END, `password` = CASE WHEN (`users`.`id` = 1) THEN NULL  END where ((`users`.`id` = 1))"
+
+  expect(result).toBe(expected)
+})
+
 test('Update with an object payload and else condition', () => {
   const updateData = {
     id: 1,
