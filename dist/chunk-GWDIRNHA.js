@@ -13,6 +13,9 @@ var quoter = (foo) => {
   if (_lodash2.default.isObject(foo)) {
     return `'${JSON.stringify(foo)}'`;
   }
+  if (_lodash2.default.isNull(foo)) {
+    return "NULL";
+  }
   console.warn(`${typeof foo} is not accounted.`);
 };
 function wrapWithBackticks(str) {
@@ -44,20 +47,20 @@ function metaUpdate(keyConditions, payload = [], options) {
       return `${backtickedField} = ${quoter(value)}`;
     }).join(" AND ");
     whereConditions.push(`(${whenCondition})`);
-    for (const field in currPayload) {
-      if (!fields[field]) {
+    for (const fieldName in currPayload) {
+      const fieldValue = currPayload[fieldName];
+      if (!fields[fieldName]) {
         continue;
       }
-      const value = currPayload[field];
-      if (_lodash2.default.isUndefined(value)) {
+      if (_lodash2.default.isUndefined(fieldValue)) {
         continue;
       }
-      if (!caseConditionsByField[field]) {
-        caseConditionsByField[field] = [];
+      if (!caseConditionsByField[fieldName]) {
+        caseConditionsByField[fieldName] = [];
       }
-      const elseStr = elses[field] ? `ELSE ${quoter(elses[field])}` : "";
-      const whenStr = `WHEN (${whenCondition}) THEN ${quoter(currPayload[field])} ${elseStr}`;
-      caseConditionsByField[field].push(whenStr);
+      const elseStr = elses[fieldName] ? `ELSE ${quoter(elses[fieldName])}` : "";
+      const whenStr = `WHEN (${whenCondition}) THEN ${quoter(currPayload[fieldName])} ${elseStr}`;
+      caseConditionsByField[fieldName].push(whenStr);
     }
   });
   for (const field in caseConditionsByField) {

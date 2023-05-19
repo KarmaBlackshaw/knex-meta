@@ -78,6 +78,47 @@ WHERE
   ((`users`.`id` = 1))
 ```
 :::
+## Update with an null value
+::: code-group
+```js [Syntax]
+const updateData = {
+  id: 1,
+  name: 'John',
+  username: 30,
+  password: null
+}
+
+const options = {
+  fields: {
+    id: 'users.id',
+    name: 'users.name',
+    username: 'users.username',
+    password: 'users.password'
+  }
+}
+
+const result = knex('users')
+  .metaUpdate('id', updateData, options)
+  .toString()
+
+console.log(result)
+```
+```sql [Output]
+UPDATE `users`
+SET
+  `name` = CASE
+    WHEN (`users`.`id` = 1) THEN 'John'
+  END,
+  `username` = CASE
+    WHEN (`users`.`id` = 1) THEN 30
+  END,
+  `password` = CASE
+    WHEN (`users`.`id` = 1) THEN NULL
+  END
+WHERE
+  ((`users`.`id` = 1))
+```
+:::
 ## Update with an object payload and else condition
 ::: code-group
 ```js [Syntax]
