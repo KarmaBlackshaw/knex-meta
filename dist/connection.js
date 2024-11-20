@@ -1,6 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true});
 
-var _chunkP7L57GALjs = require('./chunk-P7L57GAL.js');
+var _chunkE46NAH7Wjs = require('./chunk-E46NAH7W.js');
 require('./chunk-MBFLX26N.js');
 require('./chunk-44JQLRBC.js');
 require('./chunk-LOPCAAGF.js');
@@ -11,13 +11,13 @@ require('./chunk-GWDIRNHA.js');
 require('./chunk-HOFJ5C5H.js');
 require('./chunk-DW2L55WO.js');
 require('./chunk-HR2DTKKH.js');
+require('./chunk-GF7ILZJM.js');
 require('./chunk-RJNELI77.js');
 require('./chunk-MZJRW37V.js');
-require('./chunk-GF7ILZJM.js');
 
 // src/connection.ts
 var _knex = require('knex');
-var knex = _chunkP7L57GALjs.src_default.call(void 0, _knex.knex);
+var knex = _chunkE46NAH7Wjs.src_default.call(void 0, _knex.knex);
 var connection_default = knex({
   client: "mysql",
   connection: {
