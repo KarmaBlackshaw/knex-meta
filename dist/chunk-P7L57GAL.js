@@ -27,10 +27,10 @@ var _chunkDW2L55WOjs = require('./chunk-DW2L55WO.js');
 var _chunkHR2DTKKHjs = require('./chunk-HR2DTKKH.js');
 
 
-var _chunkGF7ILZJMjs = require('./chunk-GF7ILZJM.js');
-
-
 var _chunkRJNELI77js = require('./chunk-RJNELI77.js');
+
+
+var _chunkGF7ILZJMjs = require('./chunk-GF7ILZJM.js');
 
 // src/index.ts
 var src_default = (knex) => {
